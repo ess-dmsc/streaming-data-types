@@ -1,0 +1,21 @@
+// Schema for neutron event data according the RITA2 instrument at PSI.
+// Information were originally encoded in a json string
+// htype: short string describing the format (e.g. "sinq-1.0")
+// ts:    packet timestamp
+// hws:   hardware status (possible error status and description) 
+// ds:    specitifcation of the data format
+// st:    system time
+// pid:   sequantial identifier of the packet
+// data:  data array
+
+table Event {
+      htype:string;
+      ts:ulong;
+      hws:[ushort];
+      ds:[ushort];
+      st:ulong;
+      pid:ulong;
+      data:[ulong];
+}
+
+root_type Event;
