@@ -14,6 +14,12 @@ The schema ids must be unique on the network.
 Table of schema ids follows later in this README.
 
 
+## Namespace
+
+Please namespace your schema so that the generated c++ headers do not collide.
+Including e.g. the schema id in the namespace name avoids any collision.
+
+
 ## Backwards compatibility
 
 Please, avoid changes which break binary compatibility.  Flatbuffers documentation contains

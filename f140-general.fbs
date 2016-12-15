@@ -1,0 +1,155 @@
+// General schema which allows any PVStructure to be forwarded as a flatbuffer.
+// Generality comes at a price:  More overhead during construction in terms of space
+// and cpu, more work for the receiver of the flatbuffer to access.
+
+namespace BrightnESS.ForwardEpicsToKafka.FlatBufs;
+
+table pvByte {
+	v: byte;
+}
+
+table pvUByte {
+	v: ubyte;
+}
+
+table pvShort {
+	v: short;
+}
+
+table pvUShort {
+	v: ushort;
+}
+
+table pvInt {
+	v: int;
+}
+
+table pvUInt {
+	v: uint;
+}
+
+table pvLong {
+	v: long;
+}
+
+table pvULong {
+	v: ulong;
+}
+
+table pvFloat {
+	v: float;
+}
+
+table pvDouble {
+	v: double;
+}
+
+table pvString {
+	v: string;
+}
+
+
+
+
+table pvByte_a {
+	v: [byte];
+}
+
+table pvShort_a {
+	v: [short];
+}
+
+table pvInt_a {
+	v: [int];
+}
+
+table pvLong_a {
+	v: [long];
+}
+
+table pvUByte_a {
+	v: [ubyte];
+}
+
+table pvUShort_a {
+	v: [ushort];
+}
+
+table pvUInt_a {
+	v: [uint];
+}
+
+table pvULong_a {
+	v: [ulong];
+}
+
+table pvFloat_a {
+	v: [float];
+}
+
+table pvDouble_a {
+	v: [double];
+}
+
+table pvString_a {
+	v: [string];
+}
+
+
+union F {
+	pvByte,
+	pvShort,
+	pvInt,
+	pvLong,
+	pvUByte,
+	pvUShort,
+	pvUInt,
+	pvULong,
+
+	pvFloat,
+	pvDouble,
+
+	pvString,
+
+	pvByte_a,
+	pvShort_a,
+	pvInt_a,
+	pvLong_a,
+	pvUByte_a,
+	pvUShort_a,
+	pvUInt_a,
+	pvULong_a,
+
+	pvFloat_a,
+	pvDouble_a,
+
+	pvString_a,
+
+	Obj,
+	Obj_a,
+}
+
+
+table ObjM {
+	k: string;
+	v: F;
+}
+
+table Obj {
+	ms: [ObjM];
+}
+
+table Obj_a {
+	v: [Obj];
+}
+
+table PV {
+	v: F;
+	seq: ulong;
+	ts: ulong;
+	ts_epics_server: ulong;
+	forwarder_ix: ubyte;
+}
+
+// Root must be a table
+root_type PV;
