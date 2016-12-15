@@ -11,6 +11,18 @@ To that end, each message contains a 16-bit schema identifier in the beginning:
 
 The schema ids must be unique on the network.
 
+Table of schema ids follows later in this README.
+
+
+## Backwards compatibility
+
+Please, avoid changes which break binary compatibility.  Flatbuffers documentation contains
+good information about how to maintain binary compatibility.
+If you need to make breaking changes, acquire a new schema id.
+
+
+## 16 bit id not enough?
+
 If you feel that you may need many schema ids, you have the following options:
 
 1) Use a single schema but work with the flat buffers union data type in your root element.
@@ -19,7 +31,9 @@ If you feel that you may need many schema ids, you have the following options:
    format in this README.
 
 
-Naming:  Please prefix your schema files in this repository with your chosen schema id
+## Naming
+
+Please prefix your schema files in this repository with your chosen schema id
 so that we can easily avoid id collisions.
 
 
@@ -31,6 +45,7 @@ ID (hex)      Flatbuffer schema file name
 0xf140        f140-general.fbs
 0xf141        f141-chopper.fbs  (todo: upload)
 ```
+
 
 
 #### Note
