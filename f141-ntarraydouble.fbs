@@ -1,0 +1,10 @@
+namespace BrightnESS.ForwardEpicsToKafka.FlatBufs.f141_ntarraydouble;
+
+table PV {
+	seq: ulong;
+	ts: ulong;
+	src: string;
+	v: [double];
+}
+
+root_type PV;

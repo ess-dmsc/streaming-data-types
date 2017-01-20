@@ -2,7 +2,7 @@
 // Generality comes at a price:  More overhead during construction in terms of space
 // and cpu, more work for the receiver of the flatbuffer to access.
 
-namespace BrightnESS.ForwardEpicsToKafka.FlatBufs;
+namespace BrightnESS.ForwardEpicsToKafka.FlatBufs.f140_general;
 
 table pvByte {
 	v: byte;
@@ -147,6 +147,7 @@ table PV {
 	v: F;
 	seq: ulong;
 	ts: ulong;
+	src: string;
 	ts_epics_server: ulong;
 	forwarder_ix: ubyte;
 }
