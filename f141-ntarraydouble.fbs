@@ -2,7 +2,7 @@ namespace BrightnESS.ForwardEpicsToKafka.FlatBufs.f141_ntarraydouble;
 
 table PV {
 	seq: ulong;
-	ts: ulong;
+	ts: long;
 	src: string;
 	v: [double];
 }
