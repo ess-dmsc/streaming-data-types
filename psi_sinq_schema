@@ -8,6 +8,8 @@
 // pid:   sequantial identifier of the packet
 // data:  data array
 
+file_identifier "rit0";
+
 table Event {
       htype:string;
       ts:ulong;
