@@ -53,6 +53,7 @@ so that we can easily avoid id collisions.
 ```
 ID (hex)      Flatbuffer schema file name
 
-0xf140        f140-general.fbs
-0xf141        f141-ntarraydouble.fbs
+0xf140        f140-general.fbs          Can encode an arbitrary EPICS PV
+0xf141        f141-ntarraydouble.fbs    A simple array of double, testing file writing
+0xrit0        rit0-psi_sinq_schema.fbs  Neutron event data according the RITA2
 ```
