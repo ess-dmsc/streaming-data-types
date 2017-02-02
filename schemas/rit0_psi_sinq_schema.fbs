@@ -21,3 +21,11 @@ table Event {
 }
 
 root_type Event;
+
+// Data specification:
+// {"ts":32,"bsy":1,"cnt":1,"rok":1,"gat":1,"evt":4,"id1":12,"id0":12}
+// -> 32 bit timestamp ("ts")
+// ->  4 bit hardware status
+// ->  4 bit event type ("evt")
+// -> 12 bit y coordinate ("id1")
+// -> 12 bit x coordinate ("id0")
