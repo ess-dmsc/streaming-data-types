@@ -1,6 +1,5 @@
 #!/bin/bash
 
-pwd
 ERR=""
 
 function errmsg()
@@ -41,5 +40,5 @@ echo
 #done
 
 if [[ $ERR != "" ]]; then
-exit 1
+  exit 1
 fi
