@@ -4,6 +4,8 @@
 
 // file_identifier "\\xf1\\x40";
 
+file_identifier "f140";
+
 namespace BrightnESS.ForwardEpicsToKafka.FlatBufs.f140_general;
 
 table pvByte {

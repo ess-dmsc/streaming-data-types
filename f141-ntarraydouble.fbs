@@ -1,3 +1,9 @@
+// A schema to test some basics performance of forwarding of the
+// EPICS NTArrayDouble type.
+// Used currently by forward-epics-to-kafka and ess-file-writer.
+
+file_identifier "f141";
+
 namespace BrightnESS.ForwardEpicsToKafka.FlatBufs.f141_ntarraydouble;
 
 table PV {
