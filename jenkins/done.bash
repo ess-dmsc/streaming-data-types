@@ -1,11 +1,12 @@
 #!/bin/bash
 
 pwd
-cd code
+ERR=""
 
 function errmsg()
 {
   echo "  error:"$1
+  ERR="error"
 }
 
 FBSRC=schemas
@@ -19,29 +20,26 @@ if [[ $NBFILES != $NBFBFILES ]]; then
 fi
 echo
 
-echo "Checking for illegal filenames"
-for file in $FBFILES
-do
-  grep "-" $file &>/dev/null || errmsg "Invalid filename $file"
-done
-echo
-
 echo "Checking that schemas compile"
 for file in $FBFILES
 do
-  flatc $file &>/dev/null || errmsg "Schema $file does not compile"
+  flatc --cpp $file &>/dev/null || errmsg "Schema $file does not compile"
 done
 echo
 
-echo "Checking for doxygen comments"
-for file in $FBFILES
-do
-  grep "@file" $file &>/dev/null || errmsg "No doxygen comment in $file"
-done
-echo
+#echo "Checking for doxygen comments"
+#for file in $FBFILES
+#do
+#  grep "@file" $file &>/dev/null || errmsg "No doxygen comment in $file"
+#done
+#echo
 
-echo "Checking for copyright message"
-for file in $FBFILES
-do
-  head -n 1 $file | grep -i "copyright" &>/dev/null || errmsg "No Copyright notice in $file"
-done
+#echo "Checking for copyright message"
+#for file in $FBFILES
+#do
+#  head -n 1 $file | grep -i "copyright" &>/dev/null || errmsg "No Copyright notice in $file"
+#done
+
+if [[ $ERR != "" ]]; then
+exit 1
+fi
