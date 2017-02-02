@@ -1,5 +1,8 @@
 #!/bin/bash
 
+pwd
+cd code
+
 function errmsg()
 {
   echo "  error:"$1
