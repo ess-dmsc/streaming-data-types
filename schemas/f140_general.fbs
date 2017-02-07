@@ -6,7 +6,7 @@
 
 file_identifier "f140";
 
-namespace BrightnESS.ForwardEpicsToKafka.FlatBufs.f140_general;
+namespace BrightnESS.FlatBufs.f140_general;
 
 table pvByte {
 	v: byte;
@@ -147,13 +147,17 @@ table Obj_a {
 	v: [Obj];
 }
 
-table PV {
-	v: F;
+struct fwdinfo_t {
 	seq: ulong;
-	ts: long;
-	src: string;
-	ts_epics_server: ulong;
-	forwarder_ix: ubyte;
+	ts_data: ulong;
+	ts_fwd: ulong;
+	fwdix: ubyte;
+}
+
+table PV {
+	n: string;
+	v: F;
+	fwdinfo: fwdinfo_t;
 }
 
 // Root must be a table

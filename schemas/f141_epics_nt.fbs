@@ -1,0 +1,70 @@
+file_identifier "f141";
+
+namespace BrightnESS.FlatBufs.f141_epics_nt;
+
+struct timeStamp_t {
+	secondsPastEpoch: ulong;
+	nanoseconds: int;
+}
+
+table NTScalarByte   { value:  byte;   }
+table NTScalarUByte  { value: ubyte;   }
+table NTScalarShort  { value:  short;  }
+table NTScalarUShort { value: ushort;  }
+table NTScalarInt    { value:  int;    }
+table NTScalarUInt   { value: uint;    }
+table NTScalarLong   { value:  long;   }
+table NTScalarULong  { value: ulong;   }
+table NTScalarFloat  { value:  float;  }
+table NTScalarDouble { value:  double; }
+
+table NTScalarArrayByte   { value: [ byte];   }
+table NTScalarArrayUByte  { value: [ubyte];   }
+table NTScalarArrayShort  { value: [ short];  }
+table NTScalarArrayUShort { value: [ushort];  }
+table NTScalarArrayInt    { value: [ int];    }
+table NTScalarArrayUInt   { value: [uint];    }
+table NTScalarArrayLong   { value: [ long];   }
+table NTScalarArrayULong  { value: [ulong];   }
+table NTScalarArrayFloat  { value: [ float];  }
+table NTScalarArrayDouble { value: [ double]; }
+
+union PV {
+	NTScalarByte,
+	NTScalarUByte,
+	NTScalarShort,
+	NTScalarUShort,
+	NTScalarInt,
+	NTScalarUInt,
+	NTScalarLong,
+	NTScalarULong,
+	NTScalarFloat,
+	NTScalarDouble,
+	NTScalarArrayByte,
+	NTScalarArrayUByte,
+	NTScalarArrayShort,
+	NTScalarArrayUShort,
+	NTScalarArrayInt,
+	NTScalarArrayUInt,
+	NTScalarArrayLong,
+	NTScalarArrayULong,
+	NTScalarArrayFloat,
+	NTScalarArrayDouble
+}
+
+struct fwdinfo_t {
+	seq: ulong;
+	ts_data: ulong;
+	ts_fwd: ulong;
+	fwdix: ubyte;
+	teamid: ulong;
+}
+
+table EpicsPV {
+	name: string;
+	pv: PV;
+	timeStamp: timeStamp_t;
+	fwdinfo: fwdinfo_t;
+}
+
+root_type EpicsPV;
