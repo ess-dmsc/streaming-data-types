@@ -1,6 +1,6 @@
 # Streaming Data Types
 
-FlatBuffers is the format chosen for the ESS messaging system.
+FlatBuffers is the format chosen for the ESS messaging system..
 
 We would like to be able to read any message in the system at any time,
 therefore:
