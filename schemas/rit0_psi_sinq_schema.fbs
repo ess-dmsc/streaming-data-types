@@ -10,6 +10,8 @@
 
 file_identifier "rit0";
 
+namespace BrightnESS.EventGenerator.FlatBufs.AMOR;
+
 table Event {
       htype:string;
       ts:ulong;
