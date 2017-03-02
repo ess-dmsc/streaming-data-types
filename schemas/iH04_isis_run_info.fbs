@@ -6,10 +6,10 @@ namespace ISISStream;
 // if you join late
 table RunInfo {
     start_time : ulong;
-  	run_number : int;
-  	inst_name : string;
-  	stream_offset : long;   // offset into kafka topic for start of current data collection run
-  	n_periods : int;
+    run_number : int;
+    inst_name : string;
+    stream_offset : long;   // offset into kafka topic for start of current data collection run
+    n_periods : int;
 }
 
 root_type RunInfo;
