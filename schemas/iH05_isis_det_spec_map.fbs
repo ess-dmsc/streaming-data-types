@@ -1,0 +1,13 @@
+// schema for ISIS data streaming test
+
+namespace ISISStream;
+
+// this will be used in a separate kafka topic, used to pick up relevant wiring tables
+// this stream will have a larger than normal message size to accommodate data
+table SpectraDetectorMapping {
+    spec : [int];
+    det : [int];
+    n_spectra : int;
+}
+
+root_type SpectraDetectorMapping;
