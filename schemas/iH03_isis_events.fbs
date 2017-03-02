@@ -1,26 +1,15 @@
 // schema for ISIS data streaming test
 
-include "run_info_schema.fbs";
+include "iH04_isis_run_info.fbs";
 
 namespace ISISStream;
 
 enum RunState : byte { SETUP=0, RUNNING=1 }
 
-table IntValue {
-    value : int;
-}
-
-table LongValue {
-    value : long;
-}
-
-table DoubleValue {
-    value : double;
-}
-
-table StringValue {
-    value : string;
-}
+table IntValue { value : int; }
+table LongValue { value : long; }
+table DoubleValue { value : double; }
+table StringValue { value : string; }
 
 // for storing a sample environment log value
 union SEValue { IntValue, LongValue, DoubleValue, StringValue }
