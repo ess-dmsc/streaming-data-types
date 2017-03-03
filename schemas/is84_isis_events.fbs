@@ -1,0 +1,8 @@
+file_identifier "is84";
+
+enum RunState : byte { SETUP=0, RUNNING=1 }
+
+table ISISData {
+  period_number : uint;
+  run_state : RunState;
+}
