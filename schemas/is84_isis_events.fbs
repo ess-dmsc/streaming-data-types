@@ -1,0 +1,11 @@
+// Schema for ISIS specific fields to be added to neutron event messages
+
+file_identifier "is84";
+
+enum RunState : byte { SETUP=0, RUNNING=1 }
+
+table ISISData {
+  period_number : uint;
+  run_state : RunState;  // current instrument run state
+  proton_charge : float; // at ESS this will likely come through EPICS forwarder instead
+}

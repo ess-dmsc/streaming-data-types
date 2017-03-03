@@ -1,0 +1,17 @@
+// Schema for neutron detection event data
+
+include "is84_isis_events.fbs";
+
+file_identifier "ev42";
+
+union FacilityData { ISISData } // SINQData, ESSData etc
+
+table EventMessage {
+    source_name : string;    // optional field identifying the producer type, for example detector type
+    message_id : ulong;      // consecutive numbers, to detect missing or unordered messages
+    pulse_time : ulong;      // time of the source pulse associated with all events in this message
+    time_of_flight : [uint]; // neutron time of flight measured from pulse time
+    detector_id : [uint];    // detector on which the event was recorded
+    facility_specific_data : FacilityData;  // optional field
+}
+root_type EventMessage;
