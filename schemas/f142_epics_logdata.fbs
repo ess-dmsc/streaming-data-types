@@ -1,0 +1,81 @@
+file_identifier "f142";
+
+table Byte   { value:  byte;   }
+table UByte  { value: ubyte;   }
+table Short  { value:  short;  }
+table UShort { value: ushort;  }
+table Int    { value:  int;    }
+table UInt   { value: uint;    }
+table Long   { value:  long;   }
+table ULong  { value: ulong;   }
+table Float  { value:  float;  }
+table Double { value:  double; }
+
+table ArrayByte   { value: [ byte];   }
+table ArrayUByte  { value: [ubyte];   }
+table ArrayShort  { value: [ short];  }
+table ArrayUShort { value: [ushort];  }
+table ArrayInt    { value: [ int];    }
+table ArrayUInt   { value: [uint];    }
+table ArrayLong   { value: [ long];   }
+table ArrayULong  { value: [ulong];   }
+table ArrayFloat  { value: [ float];  }
+table ArrayDouble { value: [ double]; }
+
+union Value {
+	Byte,
+	UByte,
+	Short,
+	UShort,
+	Int,
+	UInt,
+	Long,
+	ULong,
+	Float,
+	Double,
+	ArrayByte,
+	ArrayUByte,
+	ArrayShort,
+	ArrayUShort,
+	ArrayInt,
+	ArrayUInt,
+	ArrayLong,
+	ArrayULong,
+	ArrayFloat,
+	ArrayDouble
+}
+
+struct fwdinfo_t {
+	seq: ulong;
+	ts_data: ulong;
+	ts_fwd: ulong;
+	fwdix: ubyte;
+	teamid: ulong;
+}
+
+table fwdinfo_2_t {
+	seq_data: ulong;
+	seq_fwd: ulong;
+	ts_data: ulong;
+	ts_forward: ulong;
+	fwdix: uint;
+	teamid: ulong;
+}
+
+union fwdinfo_u {
+	fwdinfo_2_t,
+}
+
+// Typical producers and consumers:
+// Produced by EPICS forwarder from EPICS PV
+// Consumed by NeXus file writer -> NXLog
+// Consumed by Mantid -> Sample environment log
+table LogData {
+	name: string;        // PV name if from EPICS
+	value: Value;        // may be scalar or array
+	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970)
+	fwdinfo: fwdinfo_t;  // optional, for development and debug used by EPICS forwarder
+	fwdinfo2: fwdinfo_u; // optional, for development and debug used by EPICS forwarder
+}
+
+root_type LogData;
