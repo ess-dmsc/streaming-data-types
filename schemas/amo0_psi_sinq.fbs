@@ -1,0 +1,11 @@
+
+file_identifier "amo0";
+
+table EventMessage {
+    source_name : string;    // used to be htype
+    message_id : ulong;      //      	   pid
+    pulse_time : ulong;      //		   ts
+    time_of_flight : [uint]; // 	   timestamp
+    detector_id : [uint];    // 	   data
+}
+root_type EventMessage;
