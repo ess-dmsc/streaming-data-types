@@ -1,0 +1,15 @@
+file_identifier "fwdi";
+
+// optional, currently only used by forwarder
+table fwdinfo_1_t {
+	seq_data: ulong;
+	seq_fwd: ulong;
+	ts_data: ulong;
+	ts_fwd: ulong;
+	fwdix: uint;
+	teamid: ulong;
+}
+
+union forwarder_internal {
+	fwdinfo_1_t,
+}

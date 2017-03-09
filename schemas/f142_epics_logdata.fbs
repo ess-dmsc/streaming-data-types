@@ -1,3 +1,5 @@
+include "fwdi_forwarder_internal.fbs";
+
 file_identifier "f142";
 
 table Byte   { value:  byte;   }
@@ -45,37 +47,15 @@ union Value {
 	ArrayDouble
 }
 
-struct fwdinfo_t {
-	seq: ulong;
-	ts_data: ulong;
-	ts_fwd: ulong;
-	fwdix: ubyte;
-	teamid: ulong;
-}
-
-table fwdinfo_2_t {
-	seq_data: ulong;
-	seq_fwd: ulong;
-	ts_data: ulong;
-	ts_forward: ulong;
-	fwdix: uint;
-	teamid: ulong;
-}
-
-union fwdinfo_u {
-	fwdinfo_2_t,
-}
-
 // Typical producers and consumers:
 // Produced by EPICS forwarder from EPICS PV
 // Consumed by NeXus file writer -> NXLog
 // Consumed by Mantid -> Sample environment log
 table LogData {
-	name: string;        // PV name if from EPICS
+	source_name: string; // identify source on multiplexed topics, e.g. PV name if from EPICS
 	value: Value;        // may be scalar or array
-	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970)
-	fwdinfo: fwdinfo_t;  // optional, for development and debug used by EPICS forwarder
-	fwdinfo2: fwdinfo_u; // optional, for development and debug used by EPICS forwarder
+	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
+	fwdinfo: forwarder_internal;  // optional, for development and debug used by EPICS forwarder
 }
 
 root_type LogData;
