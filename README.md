@@ -55,6 +55,7 @@ ID (hex)      Flatbuffer schema file name
 
 0xf140        f140_general.fbs          Can encode an arbitrary EPICS PV
 0xf141        f141_ntarraydouble.fbs    A simple array of double, testing file writing
+0xf143        f143_structure.fbs        Arbitrary nested data
 0xrit0        rit0_psi_sinq_schema.fbs  Neutron event data according the RITA2
 0xev42        ev42_events.fbs           Multi-institution neutron event data
 0xis84        is84_isis_events.fbs      ISIS specific addition to event messages

@@ -1,0 +1,77 @@
+// General schema which allows any EPICS structure to be forwarded as a flatbuffer.
+// Generality comes at a price:  More overhead during construction in terms of space
+// and cpu, more work for the receiver of the flatbuffer to access.
+
+include "fwdi_forwarder_internal.fbs";
+
+file_identifier "f143";
+
+namespace f143_structure;
+
+table Byte   { value:  byte;   }
+table UByte  { value: ubyte;   }
+table Short  { value:  short;  }
+table UShort { value: ushort;  }
+table Int    { value:  int;    }
+table UInt   { value: uint;    }
+table Long   { value:  long;   }
+table ULong  { value: ulong;   }
+table Float  { value:  float;  }
+table Double { value:  double; }
+table String { value:  string; }
+
+table ArrayByte   { value: [ byte];   }
+table ArrayUByte  { value: [ubyte];   }
+table ArrayShort  { value: [ short];  }
+table ArrayUShort { value: [ushort];  }
+table ArrayInt    { value: [ int];    }
+table ArrayUInt   { value: [uint];    }
+table ArrayLong   { value: [ long];   }
+table ArrayULong  { value: [ulong];   }
+table ArrayFloat  { value: [ float];  }
+table ArrayDouble { value: [ double]; }
+table ArrayString { value: [ string]; }
+
+union Value {
+	Byte,
+	Short,
+	Int,
+	Long,
+	UByte,
+	UShort,
+	UInt,
+	ULong,
+	Float,
+	Double,
+	String,
+	Obj,
+	ArrayByte,
+	ArrayShort,
+	ArrayInt,
+	ArrayLong,
+	ArrayUByte,
+	ArrayUShort,
+	ArrayUInt,
+	ArrayULong,
+	ArrayFloat,
+	ArrayDouble,
+	ArrayString,
+	ArrayObj,
+}
+
+table ObjM {
+	k: string;
+	v: Value;
+}
+
+table Obj { value: [ObjM]; }
+table ArrayObj { value: [Obj]; }
+
+table Structure {
+	name: string;
+	value: Value;
+	timestamp: ulong;
+	fwdinfo: forwarder_internal;
+}
+
+root_type Structure;
