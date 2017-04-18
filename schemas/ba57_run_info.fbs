@@ -3,10 +3,10 @@
 file_identifier "ba57";
 
 table RunStart {
-    start_time : ulong; // nanoseconds since Unix epoch (1 Jan 1970)
-    run_number : int;   // ID for the run
-    inst_name : string; // Name of the instrument
-    n_periods : int;    // Number of periods (ISIS only)
+    start_time : ulong;       // nanoseconds since Unix epoch (1 Jan 1970)
+    run_number : int;         // ID for the run
+    instrument_name : string; // Name of the instrument
+    n_periods : int;          // Number of periods (ISIS only)
 }
 
 table RunStop {
@@ -20,4 +20,3 @@ table RunInfo {
 }
 
 root_type RunInfo;
-
