@@ -1,0 +1,13 @@
+// Detector-spectrum mapping for use by Mantid
+// Topic may require larger than 1 MB default size limit for some instruments
+
+file_identifier "df12";
+
+table SpectraDetectorMapping {
+    spectrum : [int];    // spectrum number to map each detector_id to
+    detector_id : [int]; // list of unique detector IDs
+    n_spectra : int;     // total number of spectra
+}
+
+root_type SpectraDetectorMapping;
+
