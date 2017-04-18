@@ -59,6 +59,8 @@ ID (hex)      Flatbuffer schema file name
 0xrit0        rit0_psi_sinq_schema.fbs  Neutron event data according the RITA2
 0xev42        ev42_events.fbs           Multi-institution neutron event data
 0xis84        is84_isis_events.fbs      ISIS specific addition to event messages
+0xba57        ba57_run_info.fbs         Run start/stop information for Mantid
+0xdf12        df12_det_spec_map.fbs     Detector-spectrum map for Mantid
 ```
 
 ## Useful information:
