@@ -4,6 +4,6 @@ node {
     }
 
     stage('Test') {
-        shell('jenkins/done.bash')
+        sh "jenkins/done.bash"
     }
 }
