@@ -22,9 +22,10 @@ def nanoseconds_to_iso8601(nanoseconds):
 C++:
 ```cpp
 uint64_t epicsToNanosecsPastEpoch(uint64_t epicsSeconds, int32_t epicsNanoseconds) {
-  uint64_t unixToEpicsEpochInSeconds = 631152000;
-  auto unixSeconds = epicsSeconds + 631152000;
-  auto nanosecondsPastEpoch = (unixSeconds * 1e9) + epicsNanoseconds;
+  // You must be explicit about type here (hence the "L" suffix) or C++ will happily
+  // convert your constants to double, which will mess up the calculation.
+  std::uint64_t unixSeconds = epicsSeconds + 631152000L;
+  std::uint64_t nanosecondsPastEpoch = (unixSeconds * 1000000000L) + epicsNanoseconds;
   return nanosecondsPastEpoch;
 }
 ```
