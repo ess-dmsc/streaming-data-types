@@ -1,0 +1,15 @@
+// schema for ISIS data streaming test
+
+namespace ISISStream;
+
+// this will be used in a separate kafka topic, used to pick up where current run starts
+// if you join late
+table RunInfo {
+    start_time : ulong;
+    run_number : int;
+    inst_name : string;
+    stream_offset : long;   // offset into kafka topic for start of current data collection run
+    n_periods : int;
+}
+
+root_type RunInfo;

@@ -1,0 +1,51 @@
+// schema for ISIS data streaming test
+
+include "iH04_isis_run_info.fbs";
+
+namespace ISISStream;
+
+enum RunState : byte { SETUP=0, RUNNING=1 }
+
+table IntValue { value : int; }
+table LongValue { value : long; }
+table DoubleValue { value : double; }
+table StringValue { value : string; }
+
+// for storing a sample environment log value
+union SEValue { IntValue, LongValue, DoubleValue, StringValue }
+
+// isis neutron events list
+table NEvents {
+    tof : [float];
+    spec : [int];
+}
+
+// sample environment events log
+table SEEvent {
+    name : string; // name of seci block / NXlog entry
+    time_offset : float; // from start of run
+    value : SEValue;
+}
+
+// (part of) an ISIS pulse/frame, there may be several of these
+// per frame to keep kafka packets to optimum size
+table FramePart {
+    frame_number : int;
+    frame_time : float;
+    run_state : RunState;
+    proton_charge : float;
+    period : int; // DAE period number
+    end_of_frame : bool = false; // true for last frame "part"
+    end_of_run : bool = false; // true when final frame of data collection run
+    n_events : NEvents;
+    se_events : [SEEvent];
+}
+
+union MessageTypes { FramePart, RunInfo }
+
+table EventMessage {
+    message : MessageTypes;
+    id : ulong;
+}
+
+root_type EventMessage;
