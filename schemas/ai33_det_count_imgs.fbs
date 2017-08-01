@@ -7,4 +7,4 @@ table AccumulatedImage {
     detector_id : [uint];     // recorded detector ids. Corresponds directly by index with detector_freq
     detection_count : [uint]; // recorded total count of detections. Corresponds directly by index with detector_id
 }
-root_type EventMessage;
+root_type AccumulatedImage;
