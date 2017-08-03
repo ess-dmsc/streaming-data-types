@@ -1,0 +1,24 @@
+// Schema for Kafka-to-NeXus Streamers status
+
+file_identifier "fws0";
+
+struct Statistics {
+avg : float;
+std : float;
+}
+
+table StreamerInfo {
+topic : string;
+messages : int;
+bytes : int;
+errors : int;
+message_size : Statistics;
+frequency : Statistics;
+}
+
+table StatusInfo {
+streammaster_status : int;
+streamer : [StreamerInfo];
+}
+
+root_type StatusInfo;
