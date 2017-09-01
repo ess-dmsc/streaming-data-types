@@ -1,0 +1,28 @@
+// Schema for NMX detector EFU debug output
+
+file_identifier "mo01";
+
+union DataField { GEMHist, GEMTrack }
+
+table pos {
+    strip: uint;
+    time : uint;
+    adc  : uint;
+}
+
+table GEMTrack {
+    xtrack: [pos];
+    ytrack: [pos];
+}
+
+table GEMHist {
+    xhist : [uint];
+    yhist : [uint];
+}
+
+table MonitorMessage {
+    source_name : string;
+    data : DataField;
+}
+
+root_type MonitorMessage;
