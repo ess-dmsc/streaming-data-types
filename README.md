@@ -61,6 +61,7 @@ ID (hex)      Flatbuffer schema file name
 0xis84        is84_isis_events.fbs      ISIS specific addition to event messages
 0xba57        ba57_run_info.fbs         Run start/stop information for Mantid
 0xdf12        df12_det_spec_map.fbs     Detector-spectrum map for Mantid
+0xfws0        fws0_fwr_status.fbs       Filewriter status and statistics
 0xai33        ai33_det_count_imgs.fbs   Accumulated counts of detector events
 ```
 
