@@ -31,10 +31,9 @@ Including e.g. the schema id in the namespace name avoids any collision.
 
 ## Backwards compatibility
 
-Please, avoid changes which break binary compatibility.  Flatbuffers documentation contains
-good information about how to maintain binary compatibility.
-If you need to make breaking changes, acquire a new schema id.
+Please, avoid changes which break binary compatibility. Flatbuffers documentation contains good information about how to maintain binary compatibility.
 
+Schemas that are under development should be clearly marked as such in the schema file and in the **Schema ids** below to warn users of possible loss of backwards compatibility.
 
 ## Not enough file identifiers available?
 
@@ -62,6 +61,8 @@ ID (hex)      Flatbuffer schema file name
 0xba57        ba57_run_info.fbs         Run start/stop information for Mantid
 0xdf12        df12_det_spec_map.fbs     Detector-spectrum map for Mantid
 0xai33        ai33_det_count_imgs.fbs   Accumulated counts of detector events
+              ifdq_ifcdaq_data.fbs      **Under development**
+              NDAr_NDArray_schema.fbs   **Under development**
 ```
 
 ## Useful information:
