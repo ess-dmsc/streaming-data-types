@@ -31,7 +31,7 @@ Including e.g. the schema id in the namespace name avoids any collision.
 
 ## Backwards compatibility
 
-Please, avoid changes which break binary compatibility. Flatbuffers documentation contains good information about how to maintain binary compatibility.
+Please, avoid changes which break binary compatibility. Flatbuffers documentation contains good information about how to maintain binary compatibility. If you need to make breaking changes to schemas that are not under development, acquire a new schema id.
 
 Schemas that are under development should be clearly marked as such in the schema file and in the **Schema ids** below to warn users of possible loss of backwards compatibility.
 
