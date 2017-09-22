@@ -8,12 +8,13 @@ file_identifier "mo01";
 union DataField { GEMHist, GEMTrack }
 
 table pos {
-    strip: uint;
     time : uint;
-    adc  : uint;
+    strip: ushort;
+    adc  : ushort;
 }
 
 table GEMTrack {
+    time : ulong;
     xtrack: [pos];
     ytrack: [pos];
     xpos: double;
