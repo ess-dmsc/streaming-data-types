@@ -8,25 +8,26 @@ file_identifier "mo01";
 union DataField { GEMHist, GEMTrack }
 
 table pos {
-    time : uint;
+    time : ushort;
     strip: ushort;
     adc  : ushort;
 }
 
 table GEMTrack {
-    time : ulong;
-    xtrack: [pos];
-    ytrack: [pos];
-    xpos: double;
-    ypos: double;
+    time_offset : ulong;
+    xtrack      : [pos];
+    ytrack      : [pos];
+    xpos        : double;
+    ypos        : double;
 }
 
 table GEMHist {
-    xstrips : [uint];
-    ystrips : [uint];
+    xstrips   : [uint];
+    ystrips   : [uint];
     xspectrum : [uint];
     yspectrum : [uint];
     cluster_spectrum : [uint];
+    bin_width        : uint;
 }
 
 table MonitorMessage {
