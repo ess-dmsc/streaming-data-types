@@ -1,8 +1,10 @@
 
 file_identifier "ns10";
 
+
+/// pylint: skip-file
 table CacheEntryFB {
-	time:double;
+        time:double;
 	ttl:double;
 	expired:bool = false;
 	value:string;
