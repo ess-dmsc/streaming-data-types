@@ -1,0 +1,11 @@
+
+file_identifier "ns10";
+
+table CacheEntryFB {
+	time:double;
+	ttl:double;
+	expired:bool = false;
+	value:string;
+}
+
+root_type CacheEntryFB;

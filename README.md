@@ -50,6 +50,7 @@ so that we can easily avoid id collisions.
 ## Schema ids
 
 ```
+<<<<<<< HEAD
 ID            Flatbuffer schema file name
 
 f140        f140_general.fbs          Can encode an arbitrary EPICS PV
@@ -65,6 +66,7 @@ ai34        ai34_det_counts.fbs       Counts on each detector pixel from a singl
 ifdq        ifdq_ifcdaq_data.fbs      **Under development**
 NDAr        NDAr_NDArray_schema.fbs   **Under development**
 mo01        mo01_nmx.fbs              **Under development**
+ns10        ns10_cache_entry.fbs      Nicos cache entry
 ```
 
 ## Useful information:
