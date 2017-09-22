@@ -1,4 +1,7 @@
-// Schema for NMX detector EFU debug output
+//This schema is under development.
+//If you decide to use it, be aware that backwards compatibility is not guaranteed.
+
+// Schema for EFU internals monitoring for NMX
 
 file_identifier "mo01";
 
@@ -13,11 +16,16 @@ table pos {
 table GEMTrack {
     xtrack: [pos];
     ytrack: [pos];
+    xpos: double;
+    ypos: double;
 }
 
 table GEMHist {
-    xhist : [uint];
-    yhist : [uint];
+    xstrips : [uint];
+    ystrips : [uint];
+    xspectrum : [uint];
+    yspectrum : [uint];
+    cluster_spectrum : [uint];
 }
 
 table MonitorMessage {

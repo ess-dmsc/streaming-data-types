@@ -62,6 +62,7 @@ ID (hex)      Flatbuffer schema file name
 0xba57        ba57_run_info.fbs         Run start/stop information for Mantid
 0xdf12        df12_det_spec_map.fbs     Detector-spectrum map for Mantid
 0xai33        ai33_det_count_imgs.fbs   Accumulated counts of detector events
+0xmo01        mo01_nmx.fbs              EFU internals monitoring for NMX **Under development**
 ```
 
 ## Useful information:
