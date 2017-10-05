@@ -1,0 +1,45 @@
+//This schema is under development.
+//If you decide to use it, be aware that backwards compatibility is not guaranteed.
+
+namespace FB_Tables;
+
+file_identifier "NDAr";
+
+enum DType : byte { Int8, Uint8, Int16, Uint16, Int32, Uint32, Float32, Float64, c_string }
+
+struct epicsTimeStamp {
+    secPastEpoch : int;
+    nsec : int;
+}
+
+table NDAttribute {
+pName:
+    string;
+pDescription:
+    string;
+pSource:
+    string;
+dataType:
+    DType;
+pData:
+    [ubyte];
+}
+
+table NDArray {
+id:
+    int;
+timeStamp:
+    double;
+epicsTS:
+    epicsTimeStamp;
+dims:
+    [ulong];
+dataType:
+    DType;
+pData:
+    [ubyte];
+pAttributeList:
+    [NDAttribute];
+}
+
+root_type NDArray;
