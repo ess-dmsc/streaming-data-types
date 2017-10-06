@@ -5,6 +5,8 @@ def failure_function(exception_obj, failureMessage) {
 }
 
 node {
+    cleanWs()
+    
     try {
         stage('Checkout') {
             checkout scm
@@ -12,7 +14,7 @@ node {
     } catch (e) {
         failure_function(e, 'Checkout failed')
     }
-    
+
     try {
         stage('Test') {
             sh "jenkins/done.bash"
