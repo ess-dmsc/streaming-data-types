@@ -12,6 +12,7 @@ table Long   { value:  long;   }
 table ULong  { value: ulong;   }
 table Float  { value:  float;  }
 table Double { value:  double; }
+table String { value: string; }
 
 table ArrayByte   { value: [ byte];   }
 table ArrayUByte  { value: [ubyte];   }
@@ -23,6 +24,7 @@ table ArrayLong   { value: [ long];   }
 table ArrayULong  { value: [ulong];   }
 table ArrayFloat  { value: [ float];  }
 table ArrayDouble { value: [ double]; }
+table ArrayString { value: [string]; }
 
 union Value {
 	Byte,
@@ -44,7 +46,12 @@ union Value {
 	ArrayLong,
 	ArrayULong,
 	ArrayFloat,
-	ArrayDouble
+	ArrayDouble,
+
+	// NOTE
+	// FlatBuffers does not specify encoding, but we require it to be utf8.
+	String,
+	ArrayString
 }
 
 // Typical producers and consumers:
