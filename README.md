@@ -64,6 +64,8 @@ ai33        ai33_det_count_imgs.fbs   Accumulated counts of detector events
 ifdq        ifdq_ifcdaq_data.fbs      **Under development**
 NDAr        NDAr_NDArray_schema.fbs   **Under development**
 mo01        mo01_nmx.fbs              **Under development**
+cid0        cid0_component_id.fbs     **Under development**  Identify components in system
+stat        stat_status.fbs           **Under development**  Container for JSON status messages
 ```
 
 ## Useful information:
