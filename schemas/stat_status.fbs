@@ -1,0 +1,29 @@
+// ATTENTION
+//
+// This schema is still under development and may still break in the future.
+// Backwards compatibility is so far not guaranteed.
+// dominik.werder@gmail.com
+
+
+// Status updates from components in the system.  The actual status information
+// is provided as json, but it is useful to have a top-level flatbuffer for
+// more efficient filtering without having to parse the full json, and also to
+// statically avoid name collisions.
+
+include "cid0_component_id.fbs";
+
+file_identifier "stat";
+
+table Status {
+	// Origin of this status update. Defined in schema 'cid0'.
+	component_id: ComponentID;
+
+	// For simplicity, let's use nanoseconds since unix epoch as e.g. the event
+	// data does as well.
+	timestamp: ulong;
+
+	// The actual status data as json
+	json: string;
+}
+
+root_type Status;
