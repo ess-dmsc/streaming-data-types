@@ -1,0 +1,64 @@
+// ATTENTION
+//
+// This schema is still under development and may still break in the future.
+// Backwards compatibility is so far not guaranteed.
+// dominik.werder@gmail.com
+
+
+// Intended to be included in other schemas.
+// For example, status updates use it to indicate the origin of the status.
+
+// The purpose is to uniquely identify a running component in a meaningful way.
+// Each component may have their own internal hierarchy which can be
+// represented by extending the union 'ComponentType'.
+
+// For example, the epics forwarder code in NICOS wants to monitor status
+// updates from the forwarder.
+
+file_identifier "cid0";
+
+enum KafkaToNexusSubType : ubyte {
+  MASTER,
+  STREAM_MASTER,
+  STREAMER,
+}
+
+table KafkaToNexus {
+  subtype: KafkaToNexusSubType;
+}
+
+enum ForwardEpicsToKafkaSubType : ubyte {
+  MAIN,
+  EPICS_CLIENT,
+  CONVERSION_WORKER,
+}
+
+table ForwardEpicsToKafka {
+  subtype: ForwardEpicsToKafkaSubType;
+}
+
+union ComponentType {
+  KafkaToNexus,
+  ForwardEpicsToKafka,
+}
+
+table ComponentID {
+  // I expect that all machines get a globally unique hostname.
+  // Therefore, it may not be necessary to provide the IP address.
+  // Hostname will hopefully be the main way to identify a machine.
+  hostname: string;
+
+  // Just in case that 'hostname' is not available, we could identify the host
+  // via IP.  This is either 4 byte for IPv4 or 16 byte for IPv6
+  ip: [byte];
+
+  // Is there some device which does not talk IP?  Do we want MAC address?
+
+  // Examples: 'kafka-to-nexus', 'NICOS', ...
+  type: ComponentType;
+
+  // Process id makes sense to have for monitoring
+  process_id: int;
+}
+
+root_type ComponentID;
