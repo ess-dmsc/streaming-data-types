@@ -1,16 +1,23 @@
 //This schema is under development.
 //If you decide to use it, be aware that backwards compatibility is not guaranteed.
 
-// Schema for EFU internals monitoring for NMX
+// Schema for EFU internals monitoring for NMX (and other detectors)
 
 file_identifier "mo01";
 
-union DataField { GEMHist, GEMTrack }
+union DataField { GEMHist, GEMTrack, MONHit }
 
 table pos {
     time : ushort;
     strip: ushort;
     adc  : ushort;
+}
+
+table MONHit {
+    plane   : [ushort];
+    time    : [uint];
+    channel : [ushort];
+    adc     : [ushort];
 }
 
 table GEMTrack {
