@@ -4,9 +4,9 @@ def failure_function(exception_obj, failureMessage) {
     throw exception_obj
 }
 
-node {
+node('kafka-client') {
     cleanWs()
-    
+
     try {
         stage('Checkout') {
             checkout scm
