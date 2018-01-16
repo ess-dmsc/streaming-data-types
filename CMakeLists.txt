@@ -2,10 +2,18 @@
 # Personally, I like to generate these headers from the projects
 # which use them.
 
-# Assumes that 'flatc' is in PATH.
+# Tries to locate flatc with find_program.
 
 cmake_minimum_required(VERSION 2.8.11)
 project(streaming-data-types)
+
+if(EXISTS "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
+	include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
+	conan_basic_setup(SKIP_RPATH NO_OUTPUT_DIRS)
+endif()
+
+find_program(FLATC flatc)
+message("** Found flatc: ${FLATC}")
 
 set(flatbuffers_generated_headers "")
 set(schemas_subdir "schemas")
