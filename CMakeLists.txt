@@ -26,10 +26,10 @@ foreach (f0 ${flatbuffers_schemata})
 	set(fbh "${schemas_subdir}/${s0}_generated.h")
 	add_custom_command(
 		OUTPUT "${fbh}"
-		COMMAND flatc --cpp --gen-mutable --gen-name-strings --scoped-enums "${CMAKE_CURRENT_SOURCE_DIR}/${fbs}"
+		COMMAND ${FLATC} --cpp --gen-mutable --gen-name-strings --scoped-enums "${CMAKE_CURRENT_SOURCE_DIR}/${fbs}"
 		DEPENDS "${fbs}"
 		WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${schemas_subdir}"
-		COMMENT "Process ${fbs} using ${flatc}"
+		COMMENT "Process ${fbs} using ${FLATC}"
 	)
 	list(APPEND flatbuffers_generated_headers "${CMAKE_CURRENT_BINARY_DIR}/${fbh}")
 endforeach()
