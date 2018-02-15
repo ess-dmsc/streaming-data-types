@@ -1,0 +1,11 @@
+// Schema for PulseImage, storing detector counts for eventmessage visualisation
+
+file_identifier "ai34";
+
+// NB, this is a sparse representation, 0 counts and their corresponding detector id are not included
+table PulseImage {
+    pulse_time : ulong;       // Time of source pulse, nanoseconds since Unix epoch (1 Jan 1970)
+    detector_id : [uint];     // Recorded detector ids. Corresponds directly by index with detection_count
+    detection_count : [uint]; // Total detection counts on each pixel from this pulse. Corresponds directly by index with detector_id
+}
+root_type PulseImage;
