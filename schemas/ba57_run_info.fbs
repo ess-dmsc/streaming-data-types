@@ -11,6 +11,7 @@ table RunStart {
 
 table RunStop {
     stop_time : ulong;  // nanoseconds since Unix epoch (1 Jan 1970)
+    run_number : int;   // ID for the run
 }
 
 union InfoTypes { RunStart, RunStop }
