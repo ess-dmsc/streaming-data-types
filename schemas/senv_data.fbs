@@ -12,10 +12,11 @@ table SampleEnvironmentData {
     Channel: int;                // Channel number, currently a value from 0 to 3
     PacketTimeStamp: ulong;      // The time stamp of the first sample in the value vector
     TimeDelta: double;           // Time in nano seconds between samples
-    TimeStampLocation: Location; // Relevant only when oversampling has been done; is the time stamp from the start, middle or end of the samples that were summed to produce each oversampled sample 
+    TimeStampLocation: Location; // Relevant only when oversampling has been done; is the time stamp from the start,
+                                 // middle or end of the samples that were summed to produce each oversampled sample.
     Values: [ushort] (required); // The sample values. Note that only the lower 14bits are used.
     TimeStamps: [ulong];         // OPTIONAL, time stamps of each individual sample
     MessageCounter: int;         // Monotonically increasing counter
 }
 
-root_type senv_data;
+root_type SampleEnvironmentData;
