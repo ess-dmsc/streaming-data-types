@@ -7,7 +7,7 @@ file_identifier "senv";
 
 enum Location : byte { Unknown = 0, Start, Middle, End }
 
-table senv_data {
+table SampleEnvironmentData {
     Name: string (required);     // Name of the device plus channel number (e.g. "SomeName_3")
     Channel: int;                // Channel number, currently a value from 0 to 3
     PacketTimeStamp: ulong;      // The time stamp of the first sample in the value vector
