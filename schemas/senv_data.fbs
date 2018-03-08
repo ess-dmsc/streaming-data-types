@@ -5,7 +5,7 @@
 
 file_identifier "senv";
 
-enum Location : byte { Start = 1, Middle, End }
+enum Location : byte { Unknown = 0, Start, Middle, End }
 
 table senv_data {
     Name: string (required);     // Name of the device plus channel number (e.g. "SomeName_3")
