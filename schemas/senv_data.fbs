@@ -16,7 +16,7 @@ table SampleEnvironmentData {
                                  // middle or end of the samples that were summed to produce each oversampled sample.
     Values: [ushort] (required); // The sample values. Note that only the lower 14bits are used.
     TimeStamps: [ulong];         // OPTIONAL, time stamps of each individual sample
-    MessageCounter: int;         // Monotonically increasing counter
+    MessageCounter: ulong;         // Monotonically increasing counter
 }
 
 root_type SampleEnvironmentData;
