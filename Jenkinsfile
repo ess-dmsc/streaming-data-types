@@ -52,7 +52,7 @@ def get_pipeline(image_key) {
               ${conan_remote} ${local_conan_server}
             conan install \
               --generator virtualrunenv \
-              streaming-data-types/3e85b23@ess-dmsc/stable
+              FlatBuffers/1.8.0@ess-dmsc/stable
           \""""
         }  // stage
 
