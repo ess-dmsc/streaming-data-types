@@ -50,7 +50,6 @@ so that we can easily avoid id collisions.
 ## Schema ids
 
 ```
-<<<<<<< HEAD
 ID            Flatbuffer schema file name
 
 f140        f140_general.fbs          Can encode an arbitrary EPICS PV
