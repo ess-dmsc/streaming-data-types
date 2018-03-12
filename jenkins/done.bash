@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Add flatc to path
-export PATH=$DM_ROOT/usr/bin:$PATH
-
 ERR=""
 
 function errmsg()
