@@ -1,0 +1,24 @@
+//NOTE: This schema is under development.
+//If you decide to use it, be aware that backwards compatibility is not guaranteed.
+
+//Used to transmit fast sample environment data
+
+file_identifier "senv";
+
+enum Location : byte { Unknown = 0, Start, Middle, End }
+
+table SampleEnvironmentData {
+    Name: string (required);     // Name of the device plus channel number (e.g. "SomeName_3").
+    Channel: int;                // Channel number, currently a value from 0 to 3.
+    PacketTimestamp: ulong;      // The timestamp (in nanoseconds) of the first sample in the value vector.
+    TimeDelta: double;           // Time in nanoseconds between samples.
+    OversamplingFactor: int;     // The number of ADC samples that were used to produce each value.
+                                 // A value of 1 indicates no oversampling was used.
+    TimestampLocation: Location; // Relevant only when oversampling has been done; is the timestamp from the start.
+                                 // middle or end of the samples that were summed to produce each oversampled sample.
+    Values: [ushort] (required); // The sample values.
+    Timestamps: [ulong];         // OPTIONAL (nanosecond) timestamps of each individual sample.
+    MessageCounter: ulong;       // Monotonically increasing counter.
+}
+
+root_type SampleEnvironmentData;

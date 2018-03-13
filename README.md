@@ -62,7 +62,7 @@ ba57        ba57_run_info.fbs         Run start/stop information for Mantid
 df12        df12_det_spec_map.fbs     Detector-spectrum map for Mantid
 ai33        ai33_det_count_imgs.fbs   Accumulated counts of detection events
 ai34        ai34_det_counts.fbs       Counts on each detector pixel from a single pulse
-ifdq        ifdq_ifcdaq_data.fbs      **Under development**
+senv        senv_data.fbs             **Under development**
 NDAr        NDAr_NDArray_schema.fbs   **Under development**
 mo01        mo01_nmx.fbs              **Under development**
 ```
