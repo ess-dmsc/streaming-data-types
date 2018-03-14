@@ -65,6 +65,7 @@ ai34        ai34_det_counts.fbs       Counts on each detector pixel from a singl
 senv        senv_data.fbs             **Under development**
 NDAr        NDAr_NDArray_schema.fbs   **Under development**
 mo01        mo01_nmx.fbs              **Under development**
+ns10        ns10_cache_entry.fbs      Nicos cache entry
 ```
 
 ## Useful information:

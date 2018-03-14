@@ -1,0 +1,15 @@
+
+file_identifier "ns10";
+
+/// pylint: skip-file
+table CacheEntry {
+        key:string;            // key for this entry (usually nicos/device/parameter)
+        time:double;           // time (in seconds after epoch) when this entry was set
+        ttl:double;            // time to live (in seconds after time field of this entry)
+        expired:bool = false;  // already expired (manually or using ttl), supersedes ttl
+        // Value for the key.
+        // The value can be numerical types, strings, list, tuple, dictionaries, sets 
+        value:string;
+}
+
+root_type CacheEntry;
