@@ -12,8 +12,6 @@ table SampleEnvironmentData {
     Channel: int;                // Channel number, currently a value from 0 to 3.
     PacketTimestamp: ulong;      // The timestamp (in nanoseconds) of the first sample in the value vector.
     TimeDelta: double;           // Time in nanoseconds between samples.
-    OversamplingFactor: int;     // The number of ADC samples that were used to produce each value.
-                                 // A value of 1 indicates no oversampling was used.
     TimestampLocation: Location; // Relevant only when oversampling has been done; is the timestamp from the start.
                                  // middle or end of the samples that were summed to produce each oversampled sample.
     Values: [ushort] (required); // The sample values.
