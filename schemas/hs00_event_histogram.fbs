@@ -1,12 +1,16 @@
 
 file_identifier "hs00";
 
+// Represents the n dimensional histogram
+// Subsets of the histogram is also supported
+// using the offset field.
 table EventHistogram {
     source: string;   // Source name
     timestamp: ulong; // Timestamp (in ns, after epoch)
     size: [uint];     // Size in each dimension
+    offset: [unit];   // Offset giving the starting index in each dimension
     data: [uint];     // Data represented in RowMajor order (C Style)
-    info: string;     // Additional information (Integrated/Subset)
+    info: string;     // Additional information (Integrated/Processed)
 }
 
 root_type EventHistogram;
