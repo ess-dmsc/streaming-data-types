@@ -8,7 +8,7 @@ table EventHistogram {
     source: string;   // Source name
     timestamp: ulong; // Timestamp (in ns, after epoch)
     size: [uint];     // Size in each dimension
-    offset: [unit];   // Offset giving the starting index in each dimension
+    offset: [uint];   // Offset giving the starting index in each dimension
     data: [uint];     // Data represented in RowMajor order (C Style)
     info: string;     // Additional information (Integrated/Processed)
 }
