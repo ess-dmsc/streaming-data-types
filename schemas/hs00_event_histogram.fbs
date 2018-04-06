@@ -15,8 +15,8 @@ table EventHistogram {
     source: string;              // Source name
     timestamp: ulong;            // Timestamp (in ns, after unix epoch)
     dim_metadata: [DimMetaData]; // Meta data for each dimension
-    time_last_metadata: [ulong]; // Timestamp (ms, after unix epoch) when the last metadata information was written
-    current_shape: [uint];       // Shape of the current data in each dimension
+    timestamp_last_metadata: ulong; // Timestamp (ms, after unix epoch) when the last metadata information was written
+    current_shape: [uint] (required);  // Shape of the current data in each dimension
     offset: [uint];              // Offset giving the starting index in each dimension
     data: [uint];                // Data represented in RowMajor order (C Style)
     default: uint;               // When data is absent, this should be used to fill current subset
