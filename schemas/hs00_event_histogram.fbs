@@ -1,12 +1,23 @@
 
 file_identifier "hs00";
 
+table ArrayUInt   { value: [uint];    }
+table ArrayULong  { value: [ulong];   }
+table ArrayDouble { value: [ double]; }
+
+// Allows to use multiple data format for the arrays
+union Array {
+    ArrayUInt,
+    ArrayULong,
+    ArrayDouble
+}
+
 // Meta information for one dimension
-table DimMetaData {
-    histogram_shape: uint;    // Shape of the full histogram for this dimension
-    unit: string;             // Unit for this dimension
-    label: string;            // Label for this dimension
-    bins: [uint];             // binning information for this dimension
+table DimensionMetaData {
+    size: uint;        // Size of the full histogram for this dimension
+    unit: string;      // Unit for this dimension
+    label: string;     // Label for this dimension
+    bins: Array;       // binning information for this dimension
 }
 
 // Represents the n dimensional histogram
@@ -14,12 +25,12 @@ table DimMetaData {
 table EventHistogram {
     source: string;              // Source name
     timestamp: ulong;            // Timestamp (in ns, after unix epoch)
-    dim_metadata: [DimMetaData]; // Meta data for each dimension
-    timestamp_last_metadata: ulong; // Timestamp (ms, after unix epoch) when the last metadata information was written
+    dim_metadata: [DimensionMetaData]; // Meta data for each dimension
+    timestamp_last_metadata: ulong; // Timestamp (ns, after unix epoch) when the last metadata information was written
     current_shape: [uint] (required);  // Shape of the current data in each dimension
     offset: [uint];              // Offset giving the starting index in each dimension
-    data: [uint];                // Data represented in RowMajor order (C Style)
-    default: uint;               // When data is absent, this should be used to fill current subset
+    data: Array;                 // Data represented in RowMajor order (C Style), filled with 0 if missing
+    errors: Array;               // Errors in calculation of histogram data (same size as data)
     info: string;                // Additional information (Integrated/Processed)
 }
 
