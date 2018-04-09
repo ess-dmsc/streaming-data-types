@@ -17,7 +17,7 @@ table DimensionMetaData {
     size: uint;        // Size of the full histogram for this dimension
     unit: string;      // Unit for this dimension
     label: string;     // Label for this dimension
-    bins: Array;       // binning information for this dimension
+    bins: Array;       // Binning information for this dimension
 }
 
 // Represents the n dimensional histogram
