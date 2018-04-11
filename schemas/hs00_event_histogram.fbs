@@ -3,9 +3,9 @@ file_identifier "hs00";
 
 table ArrayUInt   { value: [uint];    }
 table ArrayULong  { value: [ulong];   }
-table ArrayDouble { value: [ double]; }
+table ArrayDouble { value: [double];  }
 
-// Allows to use multiple data format for the arrays
+// Union of allowed data types for the arrays
 union Array {
     ArrayUInt,
     ArrayULong,
@@ -14,19 +14,19 @@ union Array {
 
 // Meta information for one dimension
 table DimensionMetaData {
-    size: uint;        // Size of the full histogram for this dimension
-    unit: string;      // Unit for this dimension
-    label: string;     // Label for this dimension
-    bins: Array;       // Binning information for this dimension
+    length: uint;           // Length of the full histogram along this dimension
+    unit: string;           // Unit
+    label: string;          // Label
+    bin_boundaries: Array;  // Boundary information (should be of length: DimensionMetaData.length+1)
 }
 
-// Represents the n dimensional histogram
-// Subsets of the histogram are also supported
+// Represents a n-dimensional histogram
+// Subsets of histogram are also supported
 table EventHistogram {
     source: string;              // Source name
     timestamp: ulong;            // Timestamp (in ns, after unix epoch)
     dim_metadata: [DimensionMetaData]; // Meta data for each dimension
-    timestamp_last_metadata: ulong; // Timestamp (ns, after unix epoch) when the last metadata information was written
+    last_metadata_timestamp: ulong; // Timestamp (ns, after unix epoch) when the last metadata information was written
     current_shape: [uint] (required);  // Shape of the current data in each dimension
     offset: [uint];              // Offset giving the starting index in each dimension
     data: Array;                 // Data represented in RowMajor order (C Style), filled with 0 if missing
