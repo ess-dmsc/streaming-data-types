@@ -62,6 +62,7 @@ table LogData {
 	source_name: string; // identify source on multiplexed topics, e.g. PV name if from EPICS
 	value: Value;        // may be scalar or array
 	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
+	expires_after: ulong;  // optional, nanoseconds after the timestamp when this value is expired
 	fwdinfo: forwarder_internal;  // optional, for development and debug used by EPICS forwarder
 }
 
