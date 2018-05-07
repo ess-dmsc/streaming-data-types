@@ -55,7 +55,6 @@ union Value {
 	Double,
 	String,
 	Obj,            // Deprecated, use ObjMap instead
-        ObjMap,
 	ArrayByte,
 	ArrayShort,
 	ArrayInt,
@@ -68,13 +67,14 @@ union Value {
 	ArrayDouble,
 	ArrayString,
 	ArrayObj,      // Deprecated, use ArrayObjMap instead
-        ArrayObjMap,
+	ObjMap,
+	ArrayObjMap,
 }
 
 // Deprecated, use ObjMapping instead
 table ObjM {
-        k: string;
-        v: Value;
+	k: string;
+	v: Value;
 }
 
 table Obj { value: [ObjM]; }        // Deprecated, use ObjMap instead
