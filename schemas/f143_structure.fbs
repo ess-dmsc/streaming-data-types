@@ -20,17 +20,27 @@ table Float  { value:  float;  }
 table Double { value:  double; }
 table String { value:  string; }
 
-table ArrayByte   { value: [ byte];   }
-table ArrayUByte  { value: [ubyte];   }
-table ArrayShort  { value: [ short];  }
-table ArrayUShort { value: [ushort];  }
-table ArrayInt    { value: [ int];    }
-table ArrayUInt   { value: [uint];    }
-table ArrayLong   { value: [ long];   }
-table ArrayULong  { value: [ulong];   }
-table ArrayFloat  { value: [ float];  }
-table ArrayDouble { value: [ double]; }
-table ArrayString { value: [ string]; }
+table ListType {}
+table TupleType {}
+table SetType {}
+
+union ArrayType {
+    ListType,
+    TupleType,
+    SetType
+}   
+
+table ArrayByte   { value: [ byte];   type: ArrayType; }
+table ArrayUByte  { value: [ubyte];   type: ArrayType; }
+table ArrayShort  { value: [ short];  type: ArrayType; }
+table ArrayUShort { value: [ushort];  type: ArrayType; }
+table ArrayInt    { value: [ int];    type: ArrayType; }
+table ArrayUInt   { value: [uint];    type: ArrayType; }
+table ArrayLong   { value: [ long];   type: ArrayType; }
+table ArrayULong  { value: [ulong];   type: ArrayType; }
+table ArrayFloat  { value: [ float];  type: ArrayType; }
+table ArrayDouble { value: [ double]; type: ArrayType; }
+table ArrayString { value: [ string]; type: ArrayType; }
 
 union Value {
 	Byte,
@@ -44,7 +54,8 @@ union Value {
 	Float,
 	Double,
 	String,
-	Obj,
+	Obj,            // Deprecated, use ObjMap instead
+        ObjMap,
 	ArrayByte,
 	ArrayShort,
 	ArrayInt,
@@ -56,16 +67,27 @@ union Value {
 	ArrayFloat,
 	ArrayDouble,
 	ArrayString,
-	ArrayObj,
+	ArrayObj,      // Deprecated, use ArrayObjMap instead
+        ArrayObjMap,
 }
 
+// Deprecated, use ObjMapping instead
 table ObjM {
-	k: string;
-	v: Value;
+        k: string;
+        v: Value;
 }
 
-table Obj { value: [ObjM]; }
-table ArrayObj { value: [Obj]; }
+table Obj { value: [ObjM]; }        // Deprecated, use ObjMap instead
+table ArrayObj { value: [Obj]; }    // Deprecated, use ArrayObjMap instead
+
+// Provides a mapping of arbitraty key type to arbita
+table ObjMapping {
+        k: Value;
+        v: Value;
+}
+
+table ObjMap { value: [ObjMapping]; }
+table ArrayObjMap { value: [ObjMap]; }
 
 table Structure {
 	name: string;
