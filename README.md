@@ -16,6 +16,7 @@ file_identifier = "abcd";
 ```
 
 The schema ids must be unique on the network.
+You can generate a new `file_identifier` by visiting [this webpage](https://www.random.org/strings/?num=1&len=4&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new).
 
 Table of schema file identifiers follows later in this README.
 
