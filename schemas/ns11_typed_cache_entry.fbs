@@ -1,0 +1,81 @@
+file_identifier "ns11";
+
+table Byte   { value:  byte;   }
+table UByte  { value: ubyte;   }
+table Short  { value:  short;  }
+table UShort { value: ushort;  }
+table Int    { value:  int;    }
+table UInt   { value: uint;    }
+table Long   { value:  long;   }
+table ULong  { value: ulong;   }
+table Float  { value:  float;  }
+table Double { value:  double; }
+table String { value:  string; }
+
+table ListType {}
+table TupleType {}
+table SetType {}
+
+union ArrayType {
+    ListType,
+    TupleType,
+    SetType
+}   
+
+table ArrayByte   { value: [ byte];   type: ArrayType; }
+table ArrayUByte  { value: [ubyte];   type: ArrayType; }
+table ArrayShort  { value: [ short];  type: ArrayType; }
+table ArrayUShort { value: [ushort];  type: ArrayType; }
+table ArrayInt    { value: [ int];    type: ArrayType; }
+table ArrayUInt   { value: [uint];    type: ArrayType; }
+table ArrayLong   { value: [ long];   type: ArrayType; }
+table ArrayULong  { value: [ulong];   type: ArrayType; }
+table ArrayFloat  { value: [ float];  type: ArrayType; }
+table ArrayDouble { value: [ double]; type: ArrayType; }
+table ArrayString { value: [ string]; type: ArrayType; }
+
+union Value {
+	Byte,
+	Short,
+	Int,
+	Long,
+	UByte,
+	UShort,
+	UInt,
+	ULong,
+	Float,
+	Double,
+	String,
+	Dict,
+	ArrayByte,
+	ArrayShort,
+	ArrayInt,
+	ArrayLong,
+	ArrayUByte,
+	ArrayUShort,
+	ArrayUInt,
+	ArrayULong,
+	ArrayFloat,
+	ArrayDouble,
+	ArrayString,
+	ArrayDict,
+}
+
+table DictMapping {
+        k: Value;
+        v: Value;
+}
+
+table Dict { value: [DictMapping]; }
+table ArrayDict { value: [Dict]; }
+
+/// pylint: skip-file
+table CacheEntry {
+        key: string;            // key for this entry (usually nicos/device/parameter)
+        time: double;           // time (in seconds after epoch) when this entry was set
+        ttl: double;            // time to live (in seconds after time field of this entry)
+        expired: bool = false;  // already expired (manually or using ttl), supersedes ttl
+        value: Value;
+}
+
+root_type CacheEntry;
