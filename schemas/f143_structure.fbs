@@ -72,6 +72,7 @@ table Structure {
 	value: Value;
 	timestamp: ulong;
 	fwdinfo: forwarder_internal;
+        expires_after: ulong;  // optional, nanoseconds after the timestamp when this value is expired
 }
 
 root_type Structure;

@@ -63,6 +63,7 @@ table LogData {
 	value: Value;        // may be scalar or array
 	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
 	fwdinfo: forwarder_internal;  // optional, for development and debug used by EPICS forwarder
+	expires_after: ulong;  // optional, nanoseconds after the timestamp when this value is expired
 }
 
 root_type LogData;
