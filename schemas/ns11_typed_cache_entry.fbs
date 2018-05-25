@@ -12,12 +12,8 @@ table Float  { value:  float;  }
 table Double { value:  double; }
 table String { value:  string; }
 
-table ListType {}
-table TupleType {}
-table SetType {}
-
-union ArrayType {
-    ListType,
+enum ArrayType : byte {
+    ListType = 0,
     TupleType,
     SetType
 }   
