@@ -1,4 +1,4 @@
-### Description of work
+### Description of Work
 
 *Add a description of the changes here. The aim is provide information to help the approvers review and approve the PR.*
 
@@ -6,7 +6,7 @@
 
 *If there is an associated issue, write 'Closes #XXX'*
 
-### Developer checklist
+### Developer Checklist
 
 - [ ] If there are new schema in this PR I have added them to the list in README.md
 - [ ] If there are breaking changes to a schema, I have used a new file identifier and updated the list in README.md
