@@ -18,17 +18,17 @@ enum ArrayType : byte {
     SetType
 }   
 
-table ArrayByte   { value: [ byte];   type: ArrayType; }
-table ArrayUByte  { value: [ubyte];   type: ArrayType; }
-table ArrayShort  { value: [ short];  type: ArrayType; }
-table ArrayUShort { value: [ushort];  type: ArrayType; }
-table ArrayInt    { value: [ int];    type: ArrayType; }
-table ArrayUInt   { value: [uint];    type: ArrayType; }
-table ArrayLong   { value: [ long];   type: ArrayType; }
-table ArrayULong  { value: [ulong];   type: ArrayType; }
-table ArrayFloat  { value: [ float];  type: ArrayType; }
-table ArrayDouble { value: [ double]; type: ArrayType; }
-table ArrayString { value: [ string]; type: ArrayType; }
+table ArrayByte   { value: [ byte];   array_type: ArrayType; }
+table ArrayUByte  { value: [ubyte];   array_type: ArrayType; }
+table ArrayShort  { value: [ short];  array_type: ArrayType; }
+table ArrayUShort { value: [ushort];  array_type: ArrayType; }
+table ArrayInt    { value: [ int];    array_type: ArrayType; }
+table ArrayUInt   { value: [uint];    array_type: ArrayType; }
+table ArrayLong   { value: [ long];   array_type: ArrayType; }
+table ArrayULong  { value: [ulong];   array_type: ArrayType; }
+table ArrayFloat  { value: [ float];  array_type: ArrayType; }
+table ArrayDouble { value: [ double]; array_type: ArrayType; }
+table ArrayString { value: [ string]; array_type: ArrayType; }
 
 union Value {
 	Byte,
@@ -54,7 +54,6 @@ union Value {
 	ArrayFloat,
 	ArrayDouble,
 	ArrayString,
-	ArrayDict,
 }
 
 table DictMapping {
@@ -63,7 +62,6 @@ table DictMapping {
 }
 
 table Dict { value: [DictMapping]; }
-table ArrayDict { value: [Dict]; }
 
 /// pylint: skip-file
 table CacheEntry {
