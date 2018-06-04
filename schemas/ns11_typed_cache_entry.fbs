@@ -1,14 +1,6 @@
 file_identifier "ns11";
 
-table Byte   { value:  byte;   }
-table UByte  { value: ubyte;   }
-table Short  { value:  short;  }
-table UShort { value: ushort;  }
-table Int    { value:  int;    }
-table UInt   { value: uint;    }
 table Long   { value:  long;   }
-table ULong  { value: ulong;   }
-table Float  { value:  float;  }
 table Double { value:  double; }
 table String { value:  string; }
 
@@ -19,15 +11,7 @@ enum ArrayType : byte {
 }   
 
 union Value {
-	Byte,
-	Short,
-	Int,
 	Long,
-	UByte,
-	UShort,
-	UInt,
-	ULong,
-	Float,
 	Double,
 	String,
 	Dict,
