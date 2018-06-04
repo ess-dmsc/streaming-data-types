@@ -18,18 +18,6 @@ enum ArrayType : byte {
     SetType
 }   
 
-table ArrayByte   { value: [ byte];   array_type: ArrayType; }
-table ArrayUByte  { value: [ubyte];   array_type: ArrayType; }
-table ArrayShort  { value: [ short];  array_type: ArrayType; }
-table ArrayUShort { value: [ushort];  array_type: ArrayType; }
-table ArrayInt    { value: [ int];    array_type: ArrayType; }
-table ArrayUInt   { value: [uint];    array_type: ArrayType; }
-table ArrayLong   { value: [ long];   array_type: ArrayType; }
-table ArrayULong  { value: [ulong];   array_type: ArrayType; }
-table ArrayFloat  { value: [ float];  array_type: ArrayType; }
-table ArrayDouble { value: [ double]; array_type: ArrayType; }
-table ArrayString { value: [ string]; array_type: ArrayType; }
-
 union Value {
 	Byte,
 	Short,
@@ -43,17 +31,7 @@ union Value {
 	Double,
 	String,
 	Dict,
-	ArrayByte,
-	ArrayShort,
-	ArrayInt,
-	ArrayLong,
-	ArrayUByte,
-	ArrayUShort,
-	ArrayUInt,
-	ArrayULong,
-	ArrayFloat,
-	ArrayDouble,
-	ArrayString,
+        Array
 }
 
 table DictMapping {
@@ -62,6 +40,13 @@ table DictMapping {
 }
 
 table Dict { value: [DictMapping]; }
+
+table ArrayElement { v: Value; }
+
+table Array { 
+        value: [ArrayElement]; 
+        array_type: ArrayType; 
+}
 
 /// pylint: skip-file
 table CacheEntry {
