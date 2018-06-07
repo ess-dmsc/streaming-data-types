@@ -1,8 +1,10 @@
 file_identifier "ns11";
 
+table Bool   { value:  bool;   }
 table Long   { value:  long;   }
 table Double { value:  double; }
 table String { value:  string; }
+table Object { value:  string; } // Python object represented as string
 
 enum ArrayType : byte {
     ListType = 0,
@@ -11,11 +13,13 @@ enum ArrayType : byte {
 }   
 
 union Value {
-	Long,
-	Double,
-	String,
-	Dict,
-        Array
+    Object,
+    Bool,
+    Long,
+    Double,
+    String,
+    Dict,
+    Array
 }
 
 table DictMapping {
