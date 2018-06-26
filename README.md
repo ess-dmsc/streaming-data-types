@@ -1,5 +1,7 @@
 # Streaming Data Types
 
+[![DOI](https://zenodo.org/badge/81330954.svg)](https://zenodo.org/badge/latestdoi/81330954)
+
 FlatBuffers is the format chosen for the ESS messaging system.
 
 We would like to be able to read any message in the system at any time,
