@@ -8,9 +8,9 @@ def failure_function(exception_obj, failureMessage) {
 
 images = [
   'centos7': [
-    'name': 'essdmscdm/centos7-build-node:1.0.1',
-    'sh': 'sh'
-  ]
+    'name': 'essdmscdm/centos7-build-node:3.0.0',
+    'sh': '/usr/bin/scl enable devtoolset-6 -- /bin/bash'
+  ],
 ]
 
 base_container_name = "${project}-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
