@@ -2,8 +2,6 @@
 // Generality comes at a price:  More overhead during construction in terms of space
 // and cpu, more work for the receiver of the flatbuffer to access.
 
-include "fwdi_forwarder_internal.fbs";
-
 file_identifier "f143";
 
 namespace f143_structure;
@@ -71,7 +69,6 @@ table Structure {
 	name: string;
 	value: Value;
 	timestamp: ulong;
-	fwdinfo: forwarder_internal;
 }
 
 root_type Structure;

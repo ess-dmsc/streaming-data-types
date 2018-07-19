@@ -147,17 +147,9 @@ table Obj_a {
 	v: [Obj];
 }
 
-struct fwdinfo_t {
-	seq: ulong;
-	ts_data: ulong;
-	ts_fwd: ulong;
-	fwdix: ubyte;
-}
-
 table PV {
 	n: string;
 	v: F;
-	fwdinfo: fwdinfo_t;
 }
 
 // Root must be a table
