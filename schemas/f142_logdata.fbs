@@ -1,5 +1,3 @@
-include "fwdi_forwarder_internal.fbs";
-
 file_identifier "f142";
 
 table Byte   { value:  byte;   }
@@ -62,7 +60,6 @@ table LogData {
 	source_name: string; // identify source on multiplexed topics, e.g. PV name if from EPICS
 	value: Value;        // may be scalar or array
 	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
-	fwdinfo: forwarder_internal;  // optional, for development and debug used by EPICS forwarder
 }
 
 root_type LogData;

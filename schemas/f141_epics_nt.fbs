@@ -52,33 +52,10 @@ union PV {
 	NTScalarArrayDouble
 }
 
-struct fwdinfo_t {
-	seq: ulong;
-	ts_data: ulong;
-	ts_fwd: ulong;
-	fwdix: ubyte;
-	teamid: ulong;
-}
-
-table fwdinfo_2_t {
-	seq_data: ulong;
-	seq_fwd: ulong;
-	ts_data: ulong;
-	ts_fwd: ulong;
-	fwdix: uint;
-	teamid: ulong;
-}
-
-union fwdinfo_u {
-	fwdinfo_2_t,
-}
-
 table EpicsPV {
 	name: string;
 	pv: PV;
 	timeStamp: timeStamp_t;
-	fwdinfo: fwdinfo_t;
-	fwdinfo2: fwdinfo_u;
 }
 
 root_type EpicsPV;
