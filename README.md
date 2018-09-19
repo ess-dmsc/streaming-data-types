@@ -70,6 +70,7 @@ NDAr        NDAr_NDArray_schema.fbs   **Under development**
 mo01        mo01_nmx.fbs              **Under development**
 ns10        ns10_cache_entry.fbs      Nicos cache entry
 hs00        hs00_event_histogram.fbs  Event histogram stored in n dim array
+JSON        json_json.fbs             Carries a JSON payload
 ```
 
 ## Useful information:
