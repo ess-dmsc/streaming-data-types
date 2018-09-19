@@ -1,0 +1,9 @@
+file_identifier "json";
+
+// A simple schema to carry a JSON payload
+
+table JsonData {
+	json: string; // must be valid json with utf8 encoding
+}
+
+root_type JsonData;
