@@ -26,6 +26,8 @@ pData:
 }
 
 table NDArray {
+sourceName:
+    string (required);
 id:
     int;
 timeStamp:
@@ -33,11 +35,11 @@ timeStamp:
 epicsTS:
     epicsTimeStamp;
 dims:
-    [ulong];
+    [ulong] (required);
 dataType:
     DType;
 pData:
-    [ubyte];
+    [ubyte] (required);
 pAttributeList:
     [NDAttribute];
 }
