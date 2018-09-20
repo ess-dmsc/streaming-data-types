@@ -15,15 +15,15 @@ images = [
 
 base_container_name = "${project}-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
 
-def docker_copy_code(image_key, container_name) {
+def docker_copy_code(container_name) {
     def custom_sh = images[image_key]['sh']
-    sh "docker cp ${project} ${container_name(image_key)}:/home/jenkins/${project}"
-    sh """docker exec --user root ${container_name(image_key)} ${custom_sh} -c \"
+    sh "docker cp ${project} ${container_name}:/home/jenkins/${project}"
+    sh """docker exec --user root ${container_name} ${custom_sh} -c \"
                         chown -R jenkins.jenkins /home/jenkins/${project}
                         \""""
 }
 
-def docker_dependencies(image_key, container_name) {
+def docker_dependencies(container_name) {
   def conan_remote = "ess-dmsc-local"
   def custom_sh = images[image_key]['sh']
   sh """docker exec ${container_name} ${custom_sh} -c \"
@@ -50,7 +50,7 @@ def docker_test(image_key, container_name) {
 
 def get_pipeline(image_key) {
   return {
-    node('docker') {
+    stage("${image_key}") {
       def container_name = "${base_container_name}-${image_key}"
       try {
         def image = docker.image(images[image_key]['name'])
@@ -65,9 +65,9 @@ def get_pipeline(image_key) {
           --env local_conan_server=${env.local_conan_server} \
         ")
 
-        docker_copy_code(image_key, container_name)
-        docker_dependencies(image_key, container_name)
-        docker_test(image_key, container_name)
+        docker_copy_code(container_name)
+        docker_dependencies(container_name)
+        docker_test(container_name)
 
       } catch(e) {
         failure_function(e, 'Build failed')
@@ -75,7 +75,7 @@ def get_pipeline(image_key) {
         sh "docker stop ${container_name}"
         sh "docker rm -f ${container_name}"
       }  // finally
-    }  // node
+    }  // stage
   }  // return
 }  // def
 
@@ -85,7 +85,7 @@ node('docker') {
   dir("${project}") {
     stage('Checkout') {
       try {
-          scm_vars = checkout scm
+          checkout scm
       } catch (e) {
           failure_function(e, 'Checkout failed')
       }
@@ -94,10 +94,14 @@ node('docker') {
 
   def builders = [:]
   for (x in images.keySet()) {
-   def image_key = x
-   builders[image_key] = get_pipeline(image_key)
+    def image_key = x
+    builders[image_key] = get_pipeline(image_key)
   }
-  parallel builders
+  try {
+    parallel builders
+  } catch (e) {
+    failure_function(e, 'Job failed')
+  }
 
   // Delete workspace when build is done.
   cleanWs()
