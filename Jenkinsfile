@@ -15,7 +15,7 @@ images = [
 
 base_container_name = "${project}-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
 
-def docker_copy_code(image_key) {
+def docker_copy_code(image_key, container_name) {
     def custom_sh = images[image_key]['sh']
     sh "docker cp ${project} ${container_name(image_key)}:/home/jenkins/${project}"
     sh """docker exec --user root ${container_name(image_key)} ${custom_sh} -c \"
@@ -23,7 +23,7 @@ def docker_copy_code(image_key) {
                         \""""
 }
 
-def docker_dependencies(image_key) {
+def docker_dependencies(image_key, container_name) {
   def conan_remote = "ess-dmsc-local"
   def custom_sh = images[image_key]['sh']
   sh """docker exec ${container_name} ${custom_sh} -c \"
@@ -39,7 +39,7 @@ def docker_dependencies(image_key) {
   \""""
 }
 
-def docker_test(image_key) {
+def docker_test(image_key, container_name) {
   def custom_sh = images[image_key]['sh']
   sh """docker exec ${container_name} ${custom_sh} -c \"
     source build/activate_run.sh
@@ -65,9 +65,9 @@ def get_pipeline(image_key) {
           --env local_conan_server=${env.local_conan_server} \
         ")
 
-        docker_copy_code(image_key)
-        docker_dependencies(image_key)
-        docker_test(image_key)
+        docker_copy_code(image_key, container_name)
+        docker_dependencies(image_key, container_name)
+        docker_test(image_key, container_name)
 
       } catch(e) {
         failure_function(e, 'Build failed')
