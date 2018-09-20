@@ -15,13 +15,45 @@ images = [
 
 base_container_name = "${project}-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
 
+def docker_copy_code(image_key) {
+    def custom_sh = images[image_key]['sh']
+    sh "docker cp ${project} ${container_name(image_key)}:/home/jenkins/${project}"
+    sh """docker exec --user root ${container_name(image_key)} ${custom_sh} -c \"
+                        chown -R jenkins.jenkins /home/jenkins/${project}
+                        \""""
+}
+
+def docker_dependencies(image_key) {
+  def conan_remote = "ess-dmsc-local"
+  def custom_sh = images[image_key]['sh']
+  sh """docker exec ${container_name} ${custom_sh} -c \"
+    mkdir build
+    cd build
+    conan --version
+    conan remote add \
+      --insert 0 \
+      ${conan_remote} ${local_conan_server}
+    conan install \
+      --generator virtualrunenv \
+      FlatBuffers/1.9.0@ess-dmsc/stable
+  \""""
+}
+
+def docker_test(image_key) {
+  def custom_sh = images[image_key]['sh']
+  sh """docker exec ${container_name} ${custom_sh} -c \"
+    source build/activate_run.sh
+    cd ${project}
+    jenkins/done.bash
+  \""""
+}
+
 def get_pipeline(image_key) {
   return {
     node('docker') {
       def container_name = "${base_container_name}-${image_key}"
       try {
         def image = docker.image(images[image_key]['name'])
-        def custom_sh = images[image_key]['sh']
         def container = image.run("\
           --name ${container_name} \
           --tty \
@@ -33,35 +65,10 @@ def get_pipeline(image_key) {
           --env local_conan_server=${env.local_conan_server} \
         ")
 
-        stage("${image_key}: Copy code to container") {
-          sh "docker cp ${project} ${container_name(image_key)}:/home/jenkins/${project}"
-          sh """docker exec --user root ${container_name(image_key)} ${custom_sh} -c \"
-                              chown -R jenkins.jenkins /home/jenkins/${project}
-                              \""""
-        }  // stage
+        docker_copy_code(image_key)
+        docker_dependencies(image_key)
+        docker_test(image_key)
 
-        stage("${image_key}: Dependencies") {
-          def conan_remote = "ess-dmsc-local"
-          sh """docker exec ${container_name} sh -c \"
-            mkdir build
-            cd build
-            conan --version
-            conan remote add \
-              --insert 0 \
-              ${conan_remote} ${local_conan_server}
-            conan install \
-              --generator virtualrunenv \
-              FlatBuffers/1.8.0@ess-dmsc/stable
-          \""""
-        }  // stage
-
-        stage("${image_key}: Test") {
-          sh """docker exec ${container_name} ${custom_sh} -c \"
-            source build/activate_run.sh
-            cd ${project}
-            jenkins/done.bash
-          \""""
-        }  // stage
       } catch(e) {
         failure_function(e, 'Build failed')
       } finally {
