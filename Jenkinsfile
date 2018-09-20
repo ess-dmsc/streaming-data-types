@@ -72,11 +72,17 @@ def get_pipeline(image_key) {
   }  // return
 }  // def
 
-node {
+node('docker') {
   // Checkout on docker node,
   // we need to be able to copy the code into each container
-  node('docker') {
-    checkout scm
+  dir("${project}") {
+    stage('Checkout') {
+      try {
+          scm_vars = checkout scm
+      } catch (e) {
+          failure_function(e, 'Checkout failed')
+      }
+    }
   }
 
   def builders = [:]
