@@ -27,7 +27,7 @@ pData:
 
 table NDArray {
 sourceName:
-    string (required);
+    string;
 id:
     int;
 timeStamp:
