@@ -33,12 +33,11 @@ def get_pipeline(image_key) {
           --env local_conan_server=${env.local_conan_server} \
         ")
 
-        stage("${image_key}: Checkout") {
-          sh """docker exec ${container_name} ${custom_sh} -c \"
-            git clone \
-              --branch ${env.BRANCH_NAME} \
-              https://github.com/ess-dmsc/${project}.git
-          \""""
+        stage("${image_key}: Copy code to container") {
+          sh "docker cp ${project} ${container_name(image_key)}:/home/jenkins/${project}"
+          sh """docker exec --user root ${container_name(image_key)} ${custom_sh} -c \"
+                              chown -R jenkins.jenkins /home/jenkins/${project}
+                              \""""
         }  // stage
 
         stage("${image_key}: Dependencies") {
@@ -74,7 +73,11 @@ def get_pipeline(image_key) {
 }  // def
 
 node {
-  checkout scm
+  // Checkout on docker node,
+  // we need to be able to copy the code into each container
+  node('docker') {
+    checkout scm
+  }
 
   def builders = [:]
   for (x in images.keySet()) {
