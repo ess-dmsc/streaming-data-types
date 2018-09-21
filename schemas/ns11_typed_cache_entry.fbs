@@ -1,0 +1,48 @@
+file_identifier "ns11";
+
+table Bool   { value:  bool;   }
+table Long   { value:  long;   }
+table Double { value:  double; }
+table String { value:  string; }
+table Object { value:  string; } // Python object represented as string
+
+enum ArrayType : byte {
+    ListType = 0,
+    TupleType,
+    SetType
+}   
+
+union Value {
+    Object,
+    Bool,
+    Long,
+    Double,
+    String,
+    Dict,
+    Array
+}
+
+table DictMapping {
+        k: Value;
+        v: Value;
+}
+
+table Dict { value: [DictMapping]; }
+
+table ArrayElement { v: Value; }
+
+table Array { 
+        value: [ArrayElement]; 
+        array_type: ArrayType; 
+}
+
+/// pylint: skip-file
+table CacheEntry {
+        key: string;            // key for this entry (usually nicos/device/parameter)
+        time: double;           // time (in seconds after epoch) when this entry was set
+        ttl: double;            // time to live (in seconds after time field of this entry). NOT TO BE USED OUTSIDE OF NICOS!
+        expired: bool = false;  // already expired (manually or using ttl), supersedes ttl. NOT TO BE USED OUTSIDE OF NICOS!
+        value: Value;
+}
+
+root_type CacheEntry;
