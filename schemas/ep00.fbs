@@ -1,0 +1,36 @@
+// Represent events about the underlying EPICS connection.
+
+file_identifier "ep00";
+
+enum PVEventType: ushort {
+  CONNECTED,
+  FAIL,
+  CANCEL,
+  DISCONNECT
+}
+
+table PVEvent {
+  pv_name: string;
+  type: PVEventType;
+}
+
+table CAEvent {
+  channel_name: string;
+}
+
+union Event {
+  PVEvent,
+  CAEvent
+}
+
+enum Protocol: ushort {
+  PV_ACCESS,
+  CHANNEL_ACCESS
+}
+
+table EpicsConnectionInfo {
+  timestamp: ulong;
+  event: Event;
+}
+
+root_type EpicsConnectionInfo;
