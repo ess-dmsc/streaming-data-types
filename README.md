@@ -71,6 +71,7 @@ mo01        mo01_nmx.fbs              **Under development**
 ns10        ns10_cache_entry.fbs      Nicos cache entry
 ns11        ns11_typed_cache_entry.fbs Nicos cache entry with typed data
 hs00        hs00_event_histogram.fbs  Event histogram stored in n dim array
+dtdb        dtdb_adc_pulse_debug.fbs  Debug fields that can be added to the ev42 schema
 ```
 
 ## Useful information:

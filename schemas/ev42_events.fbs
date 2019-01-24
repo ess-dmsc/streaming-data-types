@@ -1,17 +1,22 @@
 // Schema for neutron detection event data
 
 include "is84_isis_events.fbs";
+include "dtdb_adc_pulse_debug.fbs";
 
 file_identifier "ev42";
 
-union FacilityData { ISISData } // SINQData, ESSData etc
+union FacilityData { ISISData, AdcPulseDebug }
 
 table EventMessage {
     source_name : string;    // optional field identifying the producer type, for example detector type
     message_id : ulong;      // consecutive numbers, to detect missing or unordered messages
-    pulse_time : ulong;      // time of source pulse associated with these events, nanoseconds since Unix epoch (1 Jan 1970)
-    time_of_flight : [uint]; // nanoseconds measured from pulse time
-    detector_id : [uint];    // detector on which the event was recorded
+    pulse_time : ulong;      // Nanoseconds since Unix epoch (1 Jan 1970)
+                             // If a pulse time is available in the aquisition system, this field holds
+                             // that timestamp. Holds wall time otherwise.
+    time_of_flight : [uint]; // Nanoseconds
+                             // Time of flight for each event if pulse time is available. If not, a
+                             // (positive) offset from the wall time stored in the `pulse_time`.
+    detector_id : [uint];    // Identifiers that represent the positions of the events in the detector(s).
     facility_specific_data : FacilityData;  // optional field
 }
 root_type EventMessage;
