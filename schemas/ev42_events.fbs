@@ -1,11 +1,11 @@
 // Schema for neutron detection event data
 
 include "is84_isis_events.fbs";
-include "dtdb_ess_event_debug.fbs";
+include "dtdb_adc_pulse_debug.fbs";
 
 file_identifier "ev42";
 
-union FacilityData { ISISData, ESSEventDebug }
+union FacilityData { ISISData, AdcPulseDebug }
 
 table EventMessage {
     source_name : string;    // optional field identifying the producer type, for example detector type

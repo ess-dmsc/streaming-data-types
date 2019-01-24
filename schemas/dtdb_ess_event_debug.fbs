@@ -1,9 +1,0 @@
-// Schema for transmitting additonal (debug) event information.
-// All fields are optional.
-
-file_identifier "dtdb";
-
-table ESSEventDebug {
-  amplitude : [uint];    // Amplitude of the events.
-  background : [uint];   // Background level of pulses (events).
-}
