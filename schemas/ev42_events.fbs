@@ -17,8 +17,6 @@ table EventMessage {
                              // Time of flight for each event if pulse time is available. If not, a
                              // (positive) offset from the wall time stored in the `pulse_time`.
     detector_id : [uint];    // Identifiers that represent the positions of the events in the detector(s).
-                             // Should follow the specification given here:
-                             // https://github.com/ess-dmsc/logical-geometry
     facility_specific_data : FacilityData;  // optional field
 }
 root_type EventMessage;
