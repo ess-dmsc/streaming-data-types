@@ -3,6 +3,7 @@
 file_identifier "ep00";
 
 enum EventType: ushort {
+  UNKNOWN,
   TRY_CONNECT,
   CONNECT,
   FAIL,
