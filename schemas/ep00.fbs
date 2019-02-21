@@ -19,9 +19,9 @@ table EpicsConnectionInfo {
   // Nanoseconds since epoch
   timestamp: NanosecondsSinceEpoch;
   type: EventType;
-  pv_name: string;
+  channel_name: string;
   // Identifies the client which has observed the event
-  service: string;
+  service_id: string;
 }
 
 root_type EpicsConnectionInfo;
