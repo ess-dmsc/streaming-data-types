@@ -2,40 +2,12 @@
 
 file_identifier "ep00";
 
-enum PVEventType: ushort {
-  TRY_CONNECT,
-  CONNECT,
-  FAIL,
-  CANCEL,
-  DISCONNECT
-}
-
-table PVEvent {
-  pv_name: string;
-  type: PVEventType;
-}
-
-enum CAEventType: ushort {
+enum EventType: ushort {
   TRY_CONNECT,
   CONNECT,
   FAIL,
   CLOSE,
   DISCONNECT
-}
-
-table CAEvent {
-  channel_name: string;
-  type: CAEventType;
-}
-
-union Event {
-  PVEvent,
-  CAEvent
-}
-
-enum Protocol: ushort {
-  PV_ACCESS,
-  CHANNEL_ACCESS
 }
 
 struct NanosecondsSinceEpoch {
@@ -45,7 +17,8 @@ struct NanosecondsSinceEpoch {
 table EpicsConnectionInfo {
   // Nanoseconds since epoch
   timestamp: NanosecondsSinceEpoch;
-  event: Event;
+  type: EventType;
+  pv_name: string;
   // Identifies the client which has observed the event
   service: string;
 }
