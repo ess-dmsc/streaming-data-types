@@ -11,7 +11,7 @@ enum EventType: ushort {
 }
 
 table EpicsConnectionInfo {
-  // Nanoseconds since epoch
+  // Nanoseconds since UNIX epoch
   timestamp: ulong;
   type: EventType;
   // The channel name, called `source_name` to stay in sync with `f142`
