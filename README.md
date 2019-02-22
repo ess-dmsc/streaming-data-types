@@ -55,23 +55,24 @@ so that we can easily avoid id collisions.
 ```
 ID            Flatbuffer schema file name
 
-f140        f140_general.fbs          Can encode an arbitrary EPICS PV
-f141        f141_ntarraydouble.fbs    A simple array of double, testing file writing
-f143        f143_structure.fbs        Arbitrary nested data
-rit0        rit0_psi_sinq_schema.fbs  Neutron event data according the RITA2
-ev42        ev42_events.fbs           Multi-institution neutron event data
-is84        is84_isis_events.fbs      ISIS specific addition to event messages
-ba57        ba57_run_info.fbs         Run start/stop information for Mantid
-df12        df12_det_spec_map.fbs     Detector-spectrum map for Mantid
-ai33        ai33_det_count_imgs.fbs   Accumulated counts of detection events
-ai34        ai34_det_counts.fbs       Counts on each detector pixel from a single pulse
-senv        senv_data.fbs             **Under development**
-NDAr        NDAr_NDArray_schema.fbs   **Under development**
-mo01        mo01_nmx.fbs              **Under development**
-ns10        ns10_cache_entry.fbs      Nicos cache entry
-ns11        ns11_typed_cache_entry.fbs Nicos cache entry with typed data
-hs00        hs00_event_histogram.fbs  Event histogram stored in n dim array
-dtdb        dtdb_adc_pulse_debug.fbs  Debug fields that can be added to the ev42 schema
+f140        f140_general.fbs                  Can encode an arbitrary EPICS PV
+f141        f141_ntarraydouble.fbs            A simple array of double, testing file writing
+f143        f143_structure.fbs                Arbitrary nested data
+rit0        rit0_psi_sinq_schema.fbs          Neutron event data according the RITA2
+ev42        ev42_events.fbs                   Multi-institution neutron event data
+is84        is84_isis_events.fbs              ISIS specific addition to event messages
+ba57        ba57_run_info.fbs                 Run start/stop information for Mantid
+df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
+ai33        ai33_det_count_imgs.fbs           Accumulated counts of detection events
+ai34        ai34_det_counts.fbs               Counts on each detector pixel from a single pulse
+senv        senv_data.fbs                     **Under development**
+NDAr        NDAr_NDArray_schema.fbs           **Under development**
+mo01        mo01_nmx.fbs                      **Under development**
+ns10        ns10_cache_entry.fbs              Nicos cache entry
+ns11        ns11_typed_cache_entry.fbs        Nicos cache entry with typed data
+hs00        hs00_event_histogram.fbs          Event histogram stored in n dim array
+dtdb        dtdb_adc_pulse_debug.fbs          Debug fields that can be added to the ev42 schema
+ep00        ep00_epics_connection_info.fbs    Status of the EPICS connection
 ```
 
 ## Useful information:
