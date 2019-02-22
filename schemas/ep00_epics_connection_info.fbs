@@ -4,20 +4,15 @@ file_identifier "ep00";
 
 enum EventType: ushort {
   UNKNOWN,
-  TRY_CONNECT,
-  CONNECT,
-  FAIL,
-  CLOSE,
-  DISCONNECT
-}
-
-struct NanosecondsSinceEpoch {
-  ns: ulong;
+  NEVER_CONNECTED,
+  CONNECTED,
+  DISCONNECTED,
+  DESTROYED,
 }
 
 table EpicsConnectionInfo {
   // Nanoseconds since epoch
-  timestamp: NanosecondsSinceEpoch;
+  timestamp_ns: ulong;
   type: EventType;
   channel_name: string;
   // Identifies the client which has observed the event
