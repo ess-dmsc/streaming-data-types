@@ -1,0 +1,65 @@
+file_identifier "f144";
+
+table Byte   { value:  byte;   }
+table UByte  { value: ubyte;   }
+table Short  { value:  short;  }
+table UShort { value: ushort;  }
+table Int    { value:  int;    }
+table UInt   { value: uint;    }
+table Long   { value:  long;   }
+table ULong  { value: ulong;   }
+table Float  { value:  float;  }
+table Double { value:  double; }
+table String { value: string; }
+
+table ArrayByte   { value: [ byte];   }
+table ArrayUByte  { value: [ubyte];   }
+table ArrayShort  { value: [ short];  }
+table ArrayUShort { value: [ushort];  }
+table ArrayInt    { value: [ int];    }
+table ArrayUInt   { value: [uint];    }
+table ArrayLong   { value: [ long];   }
+table ArrayULong  { value: [ulong];   }
+table ArrayFloat  { value: [ float];  }
+table ArrayDouble { value: [ double]; }
+table ArrayString { value: [string]; }
+
+union Value {
+	Byte,
+	UByte,
+	Short,
+	UShort,
+	Int,
+	UInt,
+	Long,
+	ULong,
+	Float,
+	Double,
+	ArrayByte,
+	ArrayUByte,
+	ArrayShort,
+	ArrayUShort,
+	ArrayInt,
+	ArrayUInt,
+	ArrayLong,
+	ArrayULong,
+	ArrayFloat,
+	ArrayDouble,
+
+	// NOTE
+	// FlatBuffers does not specify encoding, but we require it to be utf8.
+	String,
+	ArrayString
+}
+
+// Typical producers and consumers:
+// Produced by EPICS forwarder from EPICS PV
+// Consumed by NeXus file writer -> NXLog
+// Consumed by Mantid -> Sample environment log
+table LogData {
+	source_name: string; // identify source on multiplexed topics, e.g. PV name if from EPICS
+	value: Value;        // may be scalar or array
+	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
+}
+
+root_type LogData;
