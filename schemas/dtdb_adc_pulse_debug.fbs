@@ -1,0 +1,15 @@
+// Schema for transmitting additonal (debug) event information.
+// All fields are optional.
+
+file_identifier "dtdb";
+
+table AdcPulseDebug {
+  amplitude : [uint];           // Amplitude of the pulse above bkg.
+  peak_area : [uint];           // Area under the curve of the pulse.
+  background : [uint];          // Background level of pulses.
+  threshold_time : [uint];      // Nanoseconds, offset time since `pulse_time`
+                                // when the pulse passed threshold on the
+                                // rising edge
+  peak_time : [uint];           // Nanoseconds, offset time since `pulse_time`
+                                // when the pulse reaches its peak value                                
+}

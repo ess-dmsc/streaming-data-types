@@ -1,0 +1,23 @@
+// Represent events about the underlying EPICS connection.
+
+file_identifier "ep00";
+
+enum EventType: ushort {
+  UNKNOWN,
+  NEVER_CONNECTED,
+  CONNECTED,
+  DISCONNECTED,
+  DESTROYED,
+}
+
+table EpicsConnectionInfo {
+  // Nanoseconds since UNIX epoch
+  timestamp: ulong;
+  type: EventType;
+  // The channel name, called `source_name` to stay in sync with `f142`
+  source_name: string;
+  // Identifies the client which has observed the event
+  service_id: string;
+}
+
+root_type EpicsConnectionInfo;
