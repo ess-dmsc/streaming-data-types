@@ -73,7 +73,7 @@ ns11        ns11_typed_cache_entry.fbs        Nicos cache entry with typed data
 hs00        hs00_event_histogram.fbs          Event histogram stored in n dim array
 dtdb        dtdb_adc_pulse_debug.fbs          Debug fields that can be added to the ev42 schema
 ep00        ep00_epics_connection_info.fbs    Status of the EPICS connection
-JSON        json_json.fbs                     Carries a JSON payload
+json        json_json.fbs                     Carries a JSON payload
 ```
 
 ## Useful information:
