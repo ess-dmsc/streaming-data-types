@@ -1,0 +1,11 @@
+file_identifier "json";
+
+// A simple schema to carry a JSON payload.
+// Use when set flatbuffer structures are too inflexible,
+// for example for the File Writer command defining NeXus file structure
+
+table JsonData {
+	json: string; // must be valid json with utf8 encoding
+}
+
+root_type JsonData;
