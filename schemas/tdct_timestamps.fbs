@@ -1,0 +1,9 @@
+file_identifier "tdct";
+
+table Timestamps {
+    Name: string (required);          // Name of the device (e.g. "Chopper_3").
+    Timestamps: [ulong] (requried);   // Timestamps in the form of nano seconds since UNIX epoch.
+    SequenceCounter: ulong;           // Monotonically increasing counter.
+}
+
+root_type Timestamps;
