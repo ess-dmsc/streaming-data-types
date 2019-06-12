@@ -1,18 +1,25 @@
-//This schema is under development.
-//If you decide to use it, be aware that backwards compatibility is not guaranteed.
-
-// Schema for EFU internals monitoring for NMX (and other detectors)
+// Schema for event-formation-unit detector monitoring, such as ADC and
+// channel histograms, particle tracks or 'Hits'.
+// Sent periodically (typically once per second or so) by the
+// detector pipelines to Kafka and consumed by Daquiri for visualisation.
+// Useful for debugging, commissioning and testing but not necessarily an
+// essential service provided when ESS becomes fully operational.
 
 file_identifier "mo01";
 
+// GEMHist is used by gdgem, sonde, multiblade for adc and channel histograms
+// GEMTrack is used by gdgem for particle tracks
+// MONHit is used by multigrid for streaming readouts
 union DataField { GEMHist, GEMTrack, MONHit }
 
+// used for GEMTrack
 table pos {
     time : ushort;
     strip: ushort;
     adc  : ushort;
 }
 
+//
 table MONHit {
     plane   : [ushort];
     time    : [uint];
