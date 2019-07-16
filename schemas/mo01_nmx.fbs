@@ -1,36 +1,48 @@
-//This schema is under development.
-//If you decide to use it, be aware that backwards compatibility is not guaranteed.
-
-// Schema for EFU internals monitoring for NMX (and other detectors)
+// Schema for event-formation-unit detector monitoring, such as ADC and
+// channel histograms, particle tracks or 'Hits'.
+// Sent periodically (typically once per second or so) by the
+// detector pipelines to Kafka and consumed by Daquiri for visualisation.
+// Useful for debugging, commissioning and testing but not necessarily an
+// essential service provided when ESS becomes fully operational.
 
 file_identifier "mo01";
 
+// GEMHist is used by gdgem, sonde, multiblade for adc and channel histograms in HistSerializer.cpp
+// https://github.com/ess-dmsc/event-formation-unit/blob/master/prototype2/common/HistSerializer.cpp
+// GEMTrack is used by gdgem for particle tracks in TrackSerializer.cpp
+// https://github.com/ess-dmsc/event-formation-unit/blob/master/prototype2/gdgem/nmx/TrackSerializer.cpp
+// MONHit is used by multigrid for streaming readouts in ReadoutSerializer.cpp
+// https://github.com/ess-dmsc/event-formation-unit/blob/master/prototype2/common/ReadoutSerializer.cpp
+
+
 union DataField { GEMHist, GEMTrack, MONHit }
 
+// used for GEMTrack
 table pos {
-    time : ushort;
-    strip: ushort;
-    adc  : ushort;
+    time : ushort;  // Arbitrary units, could be ns or clock ticks
+    strip: ushort;  // An index along one axis
+    adc  : ushort;  // ADC value from digitiser or other intensity/weight
 }
 
+//
 table MONHit {
-    plane   : [ushort];
-    time    : [uint];
-    channel : [ushort];
-    adc     : [ushort];
+    plane   : [ushort];  // A coordinate dimension (x, y, z) or detector dimension (wires, strips)
+    time    : [uint];    // Arbitrary units, could be ns or clock ticks
+    channel : [ushort];  // a channels representing a 'position' along the plane
+    adc     : [ushort];  // ADC value from digitiser or other intensity/weight
 }
 
 table GEMTrack {
-    time_offset : ulong;
-    xtrack      : [pos];
-    ytrack      : [pos];
-    xpos        : double;
-    ypos        : double;
+    time_offset : ulong;  //
+    xtrack      : [pos];  // Particle track projection on x
+    ytrack      : [pos];  // Particle track projection on y
+    xpos        : double; // Calculated neutron entry position, x-coord
+    ypos        : double; // Calculated neutron entry position, y-coord
 }
 
 table GEMHist {
-    xstrips   : [uint];
-    ystrips   : [uint];
+    xstrips   : [uint]; // Histogram counts along x-coord
+    ystrips   : [uint]; // Histogram counts along y-coord
     xspectrum : [uint];
     yspectrum : [uint];
     cluster_spectrum : [uint];
