@@ -1,0 +1,26 @@
+// Run start/stop messages used by Mantid
+// Not to be confused with file writer start/stop messages
+
+file_identifier "y2gw";
+
+table RunStart {
+    start_time : ulong;       // nanoseconds since Unix epoch (1 Jan 1970)
+    run_id : string;          // ID for the run
+    instrument_name : string; // Name of the instrument
+    n_periods : int;          // Number of periods (optional, for ISIS only)
+    nexus_structure : string; // JSON description of NeXus file, used as source of instrument geometry information
+                              // See https://github.com/ess-dmsc/kafka-to-nexus/ for documentation of nexus_structure
+}
+
+table RunStop {
+    stop_time : ulong;  // nanoseconds since Unix epoch (1 Jan 1970)
+    run_id : string;    // ID for the run, must match corresponding RunStart
+}
+
+union InfoTypes { RunStart, RunStop }
+
+table RunInfo {
+    info_type : InfoTypes;
+}
+
+root_type RunInfo;
