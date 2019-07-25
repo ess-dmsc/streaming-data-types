@@ -1,4 +1,5 @@
-// Run start/stop messages used by Mantid
+// Run start/stop messages consumed by Mantid
+// Potential producers include NeXus-Streamer and Nicos
 // Not to be confused with file writer start/stop messages
 
 file_identifier "y2gw";
