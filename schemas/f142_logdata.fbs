@@ -54,6 +54,13 @@ union Value {
 	ArrayString
 }
 
+enum AlarmSeverity: ushort {
+    NO_ALARM,
+    MINOR,
+    MAJOR,
+    INVALID,    
+}
+
 // Typical producers and consumers:
 // Produced by EPICS forwarder from EPICS PV
 // Consumed by NeXus file writer -> NXLog
