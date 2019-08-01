@@ -61,6 +61,31 @@ enum AlarmSeverity: ushort {
     INVALID,    
 }
 
+enum AlarmStatus: ushort {
+    NO_ALARM,
+    READ,
+    WRITE,
+    HIHI,
+    HIGH,
+    LOLO,
+    LOW,
+    STATE,
+    COS,
+    COMM,
+    TIMED,
+    HWLIMIT,
+    CALC,
+    SCAN,
+    LINK,
+    SOFT,
+    BAD_SUB,
+    UDF,
+    DISABLE,
+    SIMM,
+    READ_ACCESS,
+    WRITE_ACCESS
+}
+
 // Typical producers and consumers:
 // Produced by EPICS forwarder from EPICS PV
 // Consumed by NeXus file writer -> NXLog
