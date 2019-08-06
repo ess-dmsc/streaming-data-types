@@ -54,6 +54,31 @@ union Value {
 	ArrayString
 }
 
+enum AlarmStatus: ushort {
+    NO_ALARM,
+    READ,
+    WRITE,
+    HIHI,
+    HIGH,
+    LOLO,
+    LOW,
+    STATE,
+    COS,
+    COMM,
+    TIMED,
+    HWLIMIT,
+    CALC,
+    SCAN,
+    LINK,
+    SOFT,
+    BAD_SUB,
+    UDF,
+    DISABLE,
+    SIMM,
+    READ_ACCESS,
+    WRITE_ACCESS
+}
+
 // Typical producers and consumers:
 // Produced by EPICS forwarder from EPICS PV
 // Consumed by NeXus file writer -> NXLog
@@ -63,6 +88,7 @@ table LogData {
 	value: Value;        // may be scalar or array
 	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
 	fwdinfo: forwarder_internal;  // optional, for development and debug used by EPICS forwarder
+	status: AlarmStatus; // details of EPICS alarm
 }
 
 root_type LogData;
