@@ -76,7 +76,8 @@ enum AlarmStatus: ushort {
     DISABLE,
     SIMM,
     READ_ACCESS,
-    WRITE_ACCESS
+    WRITE_ACCESS,
+    NO_CHANGE
 }
 
 // Typical producers and consumers:
@@ -88,7 +89,7 @@ table LogData {
 	value: Value;        // may be scalar or array
 	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
 	fwdinfo: forwarder_internal;  // optional, for development and debug used by EPICS forwarder
-	status: AlarmStatus; // details of EPICS alarm
+	status: AlarmStatus = NO_CHANGE; // details of EPICS alarm with default being no change
 }
 
 root_type LogData;
