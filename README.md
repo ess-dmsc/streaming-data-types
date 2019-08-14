@@ -55,9 +55,9 @@ so that we can easily avoid id collisions.
 ```
 ID            Flatbuffer schema file name
 
-f140        f140_general.fbs                  Can encode an arbitrary EPICS PV [OBSOLETE]
-f141        f141_ntarraydouble.fbs            A simple array of double, testing file writing [OBSOLETE]
-f143        f143_structure.fbs                Arbitrary nested data [OBSOLETE]
+f140        f140_general.fbs                  [OBSOLETE] Can encode an arbitrary EPICS PV
+f141        f141_ntarraydouble.fbs            [OBSOLETE] A simple array of double, testing file writing
+f143        f143_structure.fbs                [OBSOLETE] Arbitrary nested data
 rit0        rit0_psi_sinq_schema.fbs          Neutron event data according the RITA2
 ev42        ev42_events.fbs                   Multi-institution neutron event data
 is84        is84_isis_events.fbs              ISIS specific addition to event messages
@@ -73,7 +73,7 @@ ns11        ns11_typed_cache_entry.fbs        Nicos cache entry with typed data
 hs00        hs00_event_histogram.fbs          Event histogram stored in n dim array
 dtdb        dtdb_adc_pulse_debug.fbs          Debug fields that can be added to the ev42 schema
 ep00        ep00_epics_connection_info.fbs    Status of the EPICS connection
-f142        f142_logdata.fbs                  For log data, for example forwarded EPICS PV updates [OBSOLETE]
+f142        f142_logdata.fbs                  [OBSOLETE] For log data, for example forwarded EPICS PV update
 f144        f144_logdata.fbs                  For log data, for example forwarded EPICS PV updates
 json        json_json.fbs                     Carries a JSON payload
 ```
