@@ -48,7 +48,7 @@ and work with the flat buffers union data type in your root element.
 
 Please prefix your schema files in this repository with your chosen schema id
 so that we can easily avoid id collisions.
-Tables and fields in the schema should use UpperCamelCase (consistent with the LLVM-style naming we use in our C++ projects). Try to keep names consistent with equivalient fields in existing schema.
+Tables should use UpperCamelCase and fields should use snake_case. Try to keep names consistent with equivalient fields in existing schema.
 
 
 ## Schema ids
