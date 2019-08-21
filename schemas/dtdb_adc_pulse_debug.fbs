@@ -4,12 +4,11 @@
 file_identifier "dtdb";
 
 table AdcPulseDebug {
-  amplitude : [uint];           // Amplitude of the pulse above bkg.
-  peak_area : [uint];           // Area under the curve of the pulse.
-  background : [uint];          // Background level of pulses.
-  threshold_time : [uint];      // Nanoseconds, offset time since `pulse_time`
-                                // when the pulse passed threshold on the
-                                // rising edge
-  peak_time : [uint];           // Nanoseconds, offset time since `pulse_time`
-                                // when the pulse reaches its peak value                                
+  amplitude : [uint32];         // Amplitude of the pulse above bkg.
+  peak_area : [uint32];         // Area under the curve of the pulse.
+  background : [uint32];        // Background level of pulses.
+  threshold_time : [uint64];    // Timestamp in (ns) UNIX epoch when the pulse
+                                // passed the threshold on the rising edge
+  peak_time : [uint64];         // Timestamp in (ns) UNIX epoch when the pulse
+                                // reached its peak value
 }
