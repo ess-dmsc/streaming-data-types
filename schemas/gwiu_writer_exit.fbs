@@ -2,10 +2,10 @@
 //
 // Requests the file writer to exit
 // Producers:
-// Possibly Nicos or a process orchestration tool
+// Possibly NICOS or a process orchestration tool
 
 file_identifier "gwiu";
 
 table WriterExit {
-    service_id
+    service_id : string;  // The identifier for the instance of the file-writer that should exit
 }
