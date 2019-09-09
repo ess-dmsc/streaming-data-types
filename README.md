@@ -61,8 +61,7 @@ f143        f143_structure.fbs                Arbitrary nested data
 rit0        rit0_psi_sinq_schema.fbs          Neutron event data according the RITA2
 ev42        ev42_events.fbs                   Multi-institution neutron event data
 is84        is84_isis_events.fbs              ISIS specific addition to event messages
-ba57        ba57_run_info.fbs                 Run start/stop information for Mantid [superceded by y2gw]
-y2gw        y2gw_run_info.fbs                 Run start/stop information for Mantid
+ba57        ba57_run_info.fbs                 Run start/stop information for Mantid [superceded by pl72]
 df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
 ai33        ai33_det_count_imgs.fbs           Accumulated counts of detection events
 ai34        ai34_det_counts.fbs               Counts on each detector pixel from a single pulse
@@ -76,6 +75,9 @@ dtdb        dtdb_adc_pulse_debug.fbs          Debug fields that can be added to 
 ep00        ep00_epics_connection_info.fbs    Status of the EPICS connection
 json        json_json.fbs                     Carries a JSON payload
 tdct        tdct_timestamps.fbs               Timestamps from a device (e.g. a chopper)
+pl72        pl72_run_start.fbs                File writing, run start message for file writer and Mantid
+6s4t        6s4t_run_stop.fbs                 File writing, run stop message for file writer and Mantid
+gwiu        gwiu_writer_exit.fbs              Tell file writer instance to exit
 ```
 
 ## Useful information:
