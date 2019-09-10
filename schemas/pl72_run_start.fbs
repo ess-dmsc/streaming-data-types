@@ -7,7 +7,7 @@
 //                      runs, such as stopping listening at the end of the current
 //                      run or populating a new workspace for each new run
 
-include "df12_det_spec_map.fbs"
+include "df12_det_spec_map.fbs";
 
 file_identifier "pl72";
 
@@ -19,10 +19,9 @@ table RunStart {                                     //  *Mantid*    // *File Wr
     nexus_structure : string;                        //  Optional    //  Required     // JSON description of NeXus file (See https://github.com/ess-dmsc/kafka-to-nexus/ for detail)
                                                                                       // If present Mantid will parse this to get the instrument geometry, otherwise it will attempt
                                                                                       // to look up an Instrument Definition File (IDF) based on the instrument name
-    job_id : string;                                 //  Unused      //  Required     // UUID for this run/write job
+    job_id : string;                                 //  Unused      //  Required     // A unique identifier for the file writing job
     broker : string;                                 //  Unused      //  Required     // Broker name and port, for example "localhost:9092", from which the file writer should get data
     service_id : string;                             //  Unused      //  Required     // The identifier for the instance of the file-writer that should handle this command
-    job_id : string;                                 //  Unused      //  Required     // A unique identifier for the file writing job
     abort_on_uninitialised_stream : bool = false;    //  Unused      //  Optional     // File writer aborts if it fails to consume from any stream given in nexus_strucutre
     use_hdf_swmr : bool = true;                      //  Unused      //  Optional     // Write the file in SWMR mode (https://support.hdfgroup.org/HDF5/Tutor/swmr.html)
     filename : string;                               //  Unused      //  Optional     // Name of the file to write, for example run_1234.nxs
