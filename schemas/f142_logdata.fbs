@@ -1,4 +1,10 @@
-include "fwdi_forwarder_internal.fbs";
+// Log data, for example "slow" sample environment measurements
+//
+// Typical producers and consumers:
+// Produced by EPICS forwarder from EPICS PV
+// Produced by NeXus-Streamer from NXlogs
+// Consumed by NeXus file writer -> NXLog
+// Consumed by Mantid -> Workspace log
 
 file_identifier "f142";
 
@@ -54,15 +60,37 @@ union Value {
 	ArrayString
 }
 
-// Typical producers and consumers:
-// Produced by EPICS forwarder from EPICS PV
-// Consumed by NeXus file writer -> NXLog
-// Consumed by Mantid -> Sample environment log
+enum AlarmStatus: ushort {
+    NO_ALARM,
+    READ,
+    WRITE,
+    HIHI,
+    HIGH,
+    LOLO,
+    LOW,
+    STATE,
+    COS,
+    COMM,
+    TIMED,
+    HWLIMIT,
+    CALC,
+    SCAN,
+    LINK,
+    SOFT,
+    BAD_SUB,
+    UDF,
+    DISABLE,
+    SIMM,
+    READ_ACCESS,
+    WRITE_ACCESS,
+    NO_CHANGE
+}
+
 table LogData {
-	source_name: string; // identify source on multiplexed topics, e.g. PV name if from EPICS
-	value: Value;        // may be scalar or array
-	timestamp: ulong;    // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
-	fwdinfo: forwarder_internal;  // optional, for development and debug used by EPICS forwarder
+	source_name: string;              // identify source on multiplexed topics, e.g. PV name if from EPICS
+	value: Value;                     // may be scalar or array
+	timestamp: ulong;                 // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
+	status: AlarmStatus = NO_CHANGE;  // details of EPICS alarm, default being no change: file writer only records changes
 }
 
 root_type LogData;
