@@ -61,7 +61,7 @@ f143        f143_structure.fbs                Arbitrary nested data
 rit0        rit0_psi_sinq_schema.fbs          Neutron event data according the RITA2
 ev42        ev42_events.fbs                   Multi-institution neutron event data
 is84        is84_isis_events.fbs              ISIS specific addition to event messages
-ba57        ba57_run_info.fbs                 Run start/stop information for Mantid [superceded by pl72]
+ba57        ba57_run_info.fbs                 [OBSOLETE] Run start/stop information for Mantid [superceded by pl72]
 df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
 ai33        ai33_det_count_imgs.fbs           Accumulated counts of detection events
 ai34        ai34_det_counts.fbs               Counts on each detector pixel from a single pulse
