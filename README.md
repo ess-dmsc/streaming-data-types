@@ -75,6 +75,7 @@ hs00        hs00_event_histogram.fbs          Event histogram stored in n dim ar
 dtdb        dtdb_adc_pulse_debug.fbs          Debug fields that can be added to the ev42 schema
 ep00        ep00_epics_connection_info.fbs    Status of the EPICS connection
 json        json_json.fbs                     Carries a JSON payload
+tdct        tdct_timestamps.fbs               Timestamps from a device (e.g. a chopper)
 ```
 
 ## Useful information:
