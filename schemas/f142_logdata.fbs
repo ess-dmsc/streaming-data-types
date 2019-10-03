@@ -86,11 +86,20 @@ enum AlarmStatus: ushort {
     NO_CHANGE
 }
 
+enum AlarmSeverity: ushort {
+    MINOR,
+    MAJOR,
+    NO_ALARM,
+    INVALID,
+    NO_CHANGE
+}
+
 table LogData {
-	source_name: string;              // identify source on multiplexed topics, e.g. PV name if from EPICS
-	value: Value;                     // may be scalar or array
-	timestamp: ulong;                 // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
-	status: AlarmStatus = NO_CHANGE;  // details of EPICS alarm, default being no change: file writer only records changes
+	source_name: string;                  // identify source on multiplexed topics, e.g. PV name if from EPICS
+	value: Value;                         // may be scalar or array
+	timestamp: ulong;                     // nanoseconds past epoch (1 Jan 1970), zero reserved for invalid timestamp
+	status: AlarmStatus = NO_CHANGE;      // details of EPICS alarm, default being NO_CHANGE: file writer only records changes
+	severity: AlarmSeverity = NO_CHANGE;  // severity of current EPICS alarm status, default of NO_CHANGE should be used if status has value of NO_CHANGE
 }
 
 root_type LogData;
