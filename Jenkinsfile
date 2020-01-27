@@ -32,7 +32,6 @@ builders = pipeline_builder.createBuilders { container ->
     
     pipeline_builder.stage("${container.key}: test") {
         container.sh """
-            docker exec ${container_name} ${custom_sh} -c \"
             source build/activate_run.sh
             cd ${project}
             jenkins/done.bash
