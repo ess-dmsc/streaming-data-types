@@ -26,7 +26,7 @@ builders = pipeline_builder.createBuilders { container ->
             mkdir build
             cd build
             conan remote add --insert 0 ess-dmsc-local ${local_conan_server}
-            conan install --generator virtualrunenv flatbuffers/1.10.0@google/stable
+            conan install --generator virtualrunenv flatbuffers/1.11.0@google/stable
         """
     }  // stage
     
