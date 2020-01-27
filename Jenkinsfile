@@ -38,7 +38,8 @@ builders = pipeline_builder.createBuilders { container ->
             jenkins/done.bash
         """
     
-    }
+    }  // stage
+}  // create builders
 
 node {
     cleanWs()
