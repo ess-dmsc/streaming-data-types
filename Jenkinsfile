@@ -35,7 +35,7 @@ def docker_dependencies(image_key, container_name) {
       ${conan_remote} ${local_conan_server}
     conan install \
       --generator virtualrunenv \
-      FlatBuffers/1.9.0@ess-dmsc/stable
+      flatbuffers/1.10.0@google/stable
   \""""
 }
 
