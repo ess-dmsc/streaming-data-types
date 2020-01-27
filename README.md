@@ -48,6 +48,7 @@ and work with the flat buffers union data type in your root element.
 
 Please prefix your schema files in this repository with your chosen schema id
 so that we can easily avoid id collisions.
+Tables should use UpperCamelCase and fields should use snake_case. Try to keep names consistent with equivalient fields in existing schema.
 
 
 ## Schema ids
@@ -55,9 +56,10 @@ so that we can easily avoid id collisions.
 ```
 ID            Flatbuffer schema file name
 
-f140        f140_general.fbs                  Can encode an arbitrary EPICS PV
-f141        f141_ntarraydouble.fbs            A simple array of double, testing file writing
-f143        f143_structure.fbs                Arbitrary nested data
+f140        f140_general.fbs                  [OBSOLETE] Can encode an arbitrary EPICS PV
+f141        f141_ntarraydouble.fbs            [OBSOLETE] A simple array of double, testing file writing
+f142        f142_logdata.fbs                  For log data, for example forwarded EPICS PV update
+f143        f143_structure.fbs                [OBSOLETE] Arbitrary nested data
 rit0        rit0_psi_sinq_schema.fbs          Neutron event data according the RITA2
 ev42        ev42_events.fbs                   Multi-institution neutron event data
 is84        is84_isis_events.fbs              ISIS specific addition to event messages
