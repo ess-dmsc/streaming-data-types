@@ -41,6 +41,12 @@ builders = pipeline_builder.createBuilders { container ->
     }  // stage
 }  // create builders
 
+def failure_function(exception_obj, failureMessage) {
+    def toEmails = [[$class: 'DevelopersRecipientProvider']]
+    emailext body: '${DEFAULT_CONTENT}\n\"' + failureMessage + '\"\n\nCheck console output at $BUILD_URL to view the results.', recipientProviders: toEmails, subject: '${DEFAULT_SUBJECT}'
+    throw exception_obj
+}
+
 node {
     cleanWs()
 
