@@ -1,5 +1,4 @@
-//This schema is under development.
-//If you decide to use it, be aware that backwards compatibility is not guaranteed.
+// This schema is not in active use.
 
 namespace FB_Tables;
 

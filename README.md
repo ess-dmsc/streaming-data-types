@@ -67,8 +67,8 @@ ba57        ba57_run_info.fbs                 Run start/stop information for Man
 df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
 ai33        ai33_det_count_imgs.fbs           Accumulated counts of detection events
 ai34        ai34_det_counts.fbs               Counts on each detector pixel from a single pulse
-senv        senv_data.fbs                     **Under development**
-NDAr        NDAr_NDArray_schema.fbs           **Under development**
+senv        senv_data.fbs                     Used for storing for waveforms from DG ADC readout system.
+NDAr        NDAr_NDArray_schema.fbs           Not in active use.
 mo01        mo01_nmx.fbs                      **Under development**
 ns10        ns10_cache_entry.fbs              Nicos cache entry
 ns11        ns11_typed_cache_entry.fbs        Nicos cache entry with typed data
