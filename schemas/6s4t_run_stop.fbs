@@ -15,3 +15,5 @@ table RunStop {              //  *Mantid*    // *File Writer* // *Description*
     job_id : string;         //  Unused      //  Required     // A unique identifier for the file writing job
     service_id : string;     //  Unused      //  Optional     // The identifier for the instance of the file-writer that should handle this command
 }
+
+root_type RunStop;
