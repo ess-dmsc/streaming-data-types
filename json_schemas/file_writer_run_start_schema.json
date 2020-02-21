@@ -1,0 +1,147 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "nexus_structure"
+  ],
+  "properties": {
+    "nexus_structure": {
+      "$id": "#/properties/nexus_structure",
+      "type": "object",
+      "title": "The Nexus_structure Schema",
+      "required": [
+        "children"
+      ],
+      "properties": {
+        "children": {
+          "$id": "#/properties/nexus_structure/properties/children",
+          "type": "array",
+          "title": "The Children Schema",
+          "items": {
+            "$id": "#/properties/nexus_structure/properties/children/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "type"
+            ],
+            "optional": [
+              "name",
+              "children",
+              "attributes",
+              "stream"
+            ],
+            "properties": {
+              "stream": {
+                "$id": "/properties/nexus_structure/properties/children/items/properties/stream",
+                "type": "object",
+                "title": "The Stream Schema",
+                "required": [
+                  "writer_module",
+                  "topic"
+                ],
+                "optional": [
+                  "type",
+                  "source"
+                ],
+                "_comment": "Add writer-module specific fields to the optional field above",
+                "properties": {
+                  "writer_module": {
+                    "$id": "/properties/nexus_structure/properties/children/items/properties/stream/writer_module",
+                    "type": "string",
+                    "examples": [
+                      "f142",
+                      "ev42"
+                    ],
+                    "minLength": 1
+                  },
+                  "topic": {
+                    "$id": "/properties/nexus_structure/properties/children/items/properties/stream/topic",
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "source": {
+                    "type": "string",
+                    "$id": "/properties/nexus_structure/properties/children/items/properties/stream/source",
+                    "minLength": 1
+                  },
+                  "type": {
+                    "type": "string",
+                    "$id": "/properties/nexus_structure/properties/children/items/properties/stream/type",
+                    "minLength": 1
+                  }
+                }
+              },
+              "type": {
+                "$id": "#/properties/nexus_structure/properties/children/items/properties/type",
+                "type": "string",
+                "title": "The Type Schema",
+                "examples": [
+                  "group"
+                ],
+                "minLength": 1
+              },
+              "name": {
+                "$id": "#/properties/nexus_structure/properties/children/items/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "examples": [
+                  "instrument"
+                ],
+                "minLength": 1
+              },
+              "children": {
+                "items": {
+                  "$ref": "#/properties/nexus_structure/properties/children/items"
+                },
+                "type": "array"
+              },
+              "attributes": {
+                "$id": "#/properties/nexus_structure/properties/children/items/properties/attributes",
+                "type": [
+                  "array",
+                  "object"
+                ],
+                "title": "The Attributes Schema",
+                "items": {
+                  "$id": "#/properties/nexus_structure/properties/children/items/properties/attributes/items",
+                  "type": "object",
+                  "title": "The Items Schema",
+                  "required": [
+                    "name",
+                    "values"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/nexus_structure/properties/children/items/properties/attributes/items/properties/name",
+                      "type": "string",
+                      "title": "The Name Schema",
+                      "examples": [
+                        "NX_class"
+                      ],
+                      "minLength": 1
+                    },
+                    "values": {
+                      "$id": "#/properties/nexus_structure/properties/children/items/properties/attributes/items/properties/values",
+                      "type": [
+                        "string",
+                        "integer",
+                        "array"
+                      ],
+                      "title": "The Values Schema",
+                      "examples": [
+                        "NXentry"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
