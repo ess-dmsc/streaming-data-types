@@ -17,6 +17,7 @@
       ],
       "properties": {
         "children": {
+          "minItems": 1,
           "$id": "#/properties/nexus_structure/properties/children",
           "type": "array",
           "title": "The Children Schema",
