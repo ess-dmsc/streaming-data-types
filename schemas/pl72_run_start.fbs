@@ -12,8 +12,8 @@ include "df12_det_spec_map.fbs";
 file_identifier "pl72";
 
 table RunStart {                                     //  *Mantid*    // *File Writer* // *Description*
-    start_time : uint64;                             //  Required    //  Optional     // nanoseconds since Unix epoch (1 Jan 1970)
-    stop_time : uint64;                              //  Unused      //  Optional     // nanoseconds since Unix epoch (1 Jan 1970), optional, can send a RunStop instead
+    start_time : uint64;                             //  Required    //  Optional     // milliseconds since Unix epoch (1 Jan 1970)
+    stop_time : uint64;                              //  Unused      //  Optional     // milliseconds since Unix epoch (1 Jan 1970), optional, can send a RunStop instead
     run_name : string;                               //  Required    //  Unused       // Name for the run, used as workspace name by Mantid
     instrument_name : string;                        //  Required    //  Unused       // Name of the instrument, only required by Mantid
     nexus_structure : string;                        //  Optional    //  Required     // JSON description of NeXus file (See https://github.com/ess-dmsc/kafka-to-nexus/ for detail)
