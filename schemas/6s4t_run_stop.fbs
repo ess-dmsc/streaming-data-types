@@ -10,7 +10,7 @@
 file_identifier "6s4t";
 
 table RunStop {              //  *Mantid*    // *File Writer* // *Description*
-    stop_time : uint64;      //  Required    //  Required     // nanoseconds since Unix epoch (1 Jan 1970)
+    stop_time : uint64;      //  Required    //  Required     // milliseconds since Unix epoch (1 Jan 1970)
     run_name : string;       //  Required    //  Unused       // Name for the run, must match corresponding field in RunStart
     job_id : string;         //  Unused      //  Required     // A unique identifier for the file writing job
     service_id : string;     //  Unused      //  Optional     // The identifier for the instance of the file-writer that should handle this command
