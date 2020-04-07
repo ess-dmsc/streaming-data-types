@@ -6,6 +6,7 @@ file_identifier "x5f2";
 table Status {
     software_name : string;      // Name of the software publishing the status message
     software_version : string;   // Version number of the software publishing the status message
+    service_id : string;         // Configurable identifier for the service, e.g. "forwarder-CSPEC"
     host_name : string;          // Host name to identify where the software is running
     process_id : int32;          // Identify particular process in case there are multiple instances of the same software running on the same system
     update_interval : int32;     // Update interval in milliseconds for status messages, so consumer knows when to expect another message
