@@ -8,7 +8,7 @@ table Status {
     software_version : string;   // Version number of the software publishing the status message
     system_name : string;        // System name to identify where the software is running
     process_id : int32;          // Identify particular process in case there are multiple instances of the same software running on the same system
-    period : int32;              // Update period in seconds for status messages, so consumer knows when to expect another message
+    update_interval : int32;     // Update interval in milliseconds for status messages, so consumer knows when to expect another message
     status_json : string;        // Status information specific to the software publishing this message, in JSON format
 }
 
