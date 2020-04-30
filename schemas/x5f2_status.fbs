@@ -1,0 +1,16 @@
+// Status message
+// To act as heatbeat and status report from any software
+
+file_identifier "x5f2";
+
+table Status {
+    software_name : string;      // Name of the software publishing the status message
+    software_version : string;   // Version number of the software publishing the status message
+    service_id : string;         // Configurable identifier for the service, e.g. "forwarder-CSPEC"
+    host_name : string;          // Host name to identify where the software is running
+    process_id : uint32;         // Identify particular process in case there are multiple instances of the same software running on the same system
+    update_interval : uint32;    // Update interval in milliseconds for status messages, so consumer knows when to expect another message
+    status_json : string;        // Status information specific to the software publishing this message, in JSON format
+}
+
+root_type Status;
