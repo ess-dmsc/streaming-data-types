@@ -37,7 +37,7 @@ table Array {
 }
 
 /// pylint: skip-file
-table CacheEntry {
+table TypedCacheEntry {
         key: string;            // key for this entry (usually nicos/device/parameter)
         time: double;           // time (in seconds after epoch) when this entry was set
         ttl: double;            // time to live (in seconds after time field of this entry). NOT TO BE USED OUTSIDE OF NICOS!
@@ -45,4 +45,4 @@ table CacheEntry {
         value: Value;
 }
 
-root_type CacheEntry;
+root_type TypedCacheEntry;
