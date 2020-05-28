@@ -1,0 +1,31 @@
+// Run start message
+//
+// Typical producers and consumers:
+// Produced by NICOS and NeXus-Streamer
+// Consumed by NeXus file writer - to trigger start of file writing
+// Consumed by Mantid - marks the start of a run, Mantid has various options for
+//                      runs, such as stopping listening at the end of the current
+//                      run or populating a new workspace for each new run
+
+include "df12_det_spec_map.fbs";
+
+file_identifier "pl72";
+
+table RunStart {                                     //  *Mantid*    // *File Writer* // *Description*
+    start_time : uint64;                             //  Required    //  Optional     // milliseconds since Unix epoch (1 Jan 1970)
+    stop_time : uint64;                              //  Unused      //  Optional     // milliseconds since Unix epoch (1 Jan 1970), optional, can send a RunStop instead
+    run_name : string;                               //  Required    //  Unused       // Name for the run, used as workspace name by Mantid
+    instrument_name : string;                        //  Required    //  Unused       // Name of the instrument, only required by Mantid
+    nexus_structure : string;                        //  Optional    //  Required     // JSON description of NeXus file (See https://github.com/ess-dmsc/kafka-to-nexus/ for detail)
+                                                                                      // If present Mantid will parse this to get the instrument geometry, otherwise it will attempt
+                                                                                      // to look up an Instrument Definition File (IDF) based on the instrument name
+    job_id : string;                                 //  Unused      //  Required     // A unique identifier for the file writing job
+    broker : string;                                 //  Unused      //  Required     // Broker name and port, for example "localhost:9092", from which the file writer should get data
+    service_id : string;                             //  Unused      //  Optional     // The identifier for the instance of the file-writer that should handle this command
+    filename : string;                               //  Unused      //  Required     // Name of the file to write, for example run_1234.nxs
+    n_periods : uint32 = 1;                          //  Optional    //  Unused       // Number of periods (ISIS only)
+                                                                                      // Periods provide a way to segregate data at the data acquisition stage
+    detector_spectrum_map: SpectraDetectorMapping;   //  Optional    //  Unused       // Map spectrum numbers in the event messages to detector IDs in the instrument definition (optional, for ISIS only)
+}
+
+root_type RunStart;

@@ -1,0 +1,19 @@
+// Run stop message
+//
+// Typical producers and consumers:
+// Produced by NICOS and NeXus-Streamer
+// Consumed by NeXus file writer - to trigger stop of file writing
+// Consumed by Mantid - marks the end of a run, Mantid has various options for
+//                      runs, such as stopping listening at the end of the current
+//                      run or populating a new workspace for each new run
+
+file_identifier "6s4t";
+
+table RunStop {              //  *Mantid*    // *File Writer* // *Description*
+    stop_time : uint64;      //  Required    //  Required     // milliseconds since Unix epoch (1 Jan 1970)
+    run_name : string;       //  Required    //  Unused       // Name for the run, must match corresponding field in RunStart
+    job_id : string;         //  Unused      //  Required     // A unique identifier for the file writing job
+    service_id : string;     //  Unused      //  Optional     // The identifier for the instance of the file-writer that should handle this command
+}
+
+root_type RunStop;
