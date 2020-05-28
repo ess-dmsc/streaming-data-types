@@ -65,8 +65,10 @@ ev42        ev42_events.fbs                   Multi-institution neutron event da
 is84        is84_isis_events.fbs              ISIS specific addition to event messages
 ba57        ba57_run_info.fbs                 [OBSOLETE] Run start/stop information for Mantid [superceded by pl72]
 df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
-senv        senv_data.fbs                     **Under development**
-NDAr        NDAr_NDArray_schema.fbs           **Under development**
+ai33        ai33_det_count_imgs.fbs           Accumulated counts of detection events
+ai34        ai34_det_counts.fbs               Counts on each detector pixel from a single pulse
+senv        senv_data.fbs                     Used for storing for waveforms from DG ADC readout system.
+NDAr        NDAr_NDArray_schema.fbs           Holds binary blob of data with n dimensions.
 mo01        mo01_nmx.fbs                      **Under development**
 ns10        ns10_cache_entry.fbs              Nicos cache entry
 ns11        ns11_typed_cache_entry.fbs        Nicos cache entry with typed data

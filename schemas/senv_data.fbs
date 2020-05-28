@@ -1,6 +1,3 @@
-//NOTE: This schema is under development.
-//If you decide to use it, be aware that backwards compatibility is not guaranteed.
-
 //Used to transmit fast sample environment data
 
 file_identifier "senv";
