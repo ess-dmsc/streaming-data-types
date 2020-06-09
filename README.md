@@ -69,7 +69,7 @@ ai33        ai33_det_count_imgs.fbs           Accumulated counts of detection ev
 ai34        ai34_det_counts.fbs               Counts on each detector pixel from a single pulse
 senv        senv_data.fbs                     Used for storing for waveforms from DG ADC readout system.
 NDAr        NDAr_NDArray_schema.fbs           Holds binary blob of data with n dimensions.
-mo01        mo01_nmx.fbs                      **Under development**
+mo01        mo01_nmx.fbs                      Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks.
 ns10        ns10_cache_entry.fbs              Nicos cache entry
 ns11        ns11_typed_cache_entry.fbs        Nicos cache entry with typed data
 hs00        hs00_event_histogram.fbs          Event histogram stored in n dim array
