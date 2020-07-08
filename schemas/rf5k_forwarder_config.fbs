@@ -19,7 +19,6 @@ table Stream {
 table ConfigUpdate {
     config_change: UpdateType;   // Type of config change, add streams, remove streams or remove all streams
     streams: [Stream];           // Details what should be forwarded where, empty if config_change=REMOVEALL
-    source_name: string;         // Some string so that we can identify where this message came from if we need to
 }
 
 root_type ConfigUpdate;
