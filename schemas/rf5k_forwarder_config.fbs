@@ -1,0 +1,23 @@
+// Forwarder Configuration Update
+// Add or remove channels from a Forwarder configuration
+
+file_identifier "rf5k";
+
+enum UpdateType: ushort {
+  ADD,
+  REMOVE,
+  REMOVEALL
+}
+
+table Stream {
+  channel: string;   // Name of the EPICS channel/pv (e.g. "MYIOC:VALUE1")
+  // If config_change=REMOVE then schema and topic are not used, all configurations for given channel name will be removed
+  schema: string;    // Identify the output format for updates from the named channel (e.g. "f142" or "TdcTime")
+  topic: string;     // Name of the output topic for updates from the named channel (e.g. "LOKI_motionControl")
+}
+
+table ConfigUpdate {
+    config_change: UpdateType;   // Type of config change, add streams, remove streams or remove all streams
+    streams: [Stream];           // Details what should be forwarded where, empty if config_change=REMOVEALL
+    source_name: string;         // Some string so that we can identify where this message came from if we need to
+}
