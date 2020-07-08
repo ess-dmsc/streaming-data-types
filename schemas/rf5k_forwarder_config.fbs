@@ -1,5 +1,9 @@
 // Forwarder Configuration Update
 // Add or remove channels from a Forwarder configuration
+//
+// Typical producers and consumers:
+// Produced by NICOS
+// Consumed by Forwarder
 
 file_identifier "rf5k";
 
