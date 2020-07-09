@@ -34,7 +34,7 @@ Including e.g. the schema id in the namespace name avoids any collision.
 
 ## Backwards compatibility
 
-Please, avoid changes which break binary compatibility. Flatbuffers documentation contains good information about how to maintain binary compatibility. If you need to make breaking changes to schemas that are not under development, acquire a new schema id.
+Please, avoid changes which break binary compatibility. FlatBuffers documentation contains good information about how to maintain binary compatibility. If you need to make breaking changes to schemas that are not under development, acquire a new schema id.
 
 Schemas that are under development should be clearly marked as such in the schema file and in the **Schema ids** below to warn users of possible loss of backwards compatibility.
 
@@ -48,7 +48,7 @@ and work with the flat buffers union data type in your root element.
 
 Please prefix your schema files in this repository with your chosen schema id
 so that we can easily avoid id collisions.
-Tables should use UpperCamelCase and fields should use snake_case. Try to keep names consistent with equivalient fields in existing schema.
+Tables should use UpperCamelCase and fields should use snake_case. Try to keep names consistent with equivalent fields in existing schema.
 
 
 ## Schema ids
@@ -70,8 +70,8 @@ ai34        ai34_det_counts.fbs               Counts on each detector pixel from
 senv        senv_data.fbs                     Used for storing for waveforms from DG ADC readout system.
 NDAr        NDAr_NDArray_schema.fbs           Holds binary blob of data with n dimensions.
 mo01        mo01_nmx.fbs                      Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks.
-ns10        ns10_cache_entry.fbs              Nicos cache entry
-ns11        ns11_typed_cache_entry.fbs        Nicos cache entry with typed data
+ns10        ns10_cache_entry.fbs              NICOS cache entry
+ns11        ns11_typed_cache_entry.fbs        NICOS cache entry with typed data
 hs00        hs00_event_histogram.fbs          Event histogram stored in n dim array
 dtdb        dtdb_adc_pulse_debug.fbs          Debug fields that can be added to the ev42 schema
 ep00        ep00_epics_connection_info.fbs    Status of the EPICS connection
@@ -80,6 +80,7 @@ tdct        tdct_timestamps.fbs               Timestamps from a device (e.g. a c
 pl72        pl72_run_start.fbs                File writing, run start message for file writer and Mantid
 6s4t        6s4t_run_stop.fbs                 File writing, run stop message for file writer and Mantid
 x5f2        x5f2_status.fbs                   Status update and heartbeat message for any software
+rf5k        rf5k_forwarder_config.fbs         Configuration update for Forwarder
 ```
 
 ## Useful information:
