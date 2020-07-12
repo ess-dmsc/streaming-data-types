@@ -13,11 +13,18 @@ enum UpdateType: ushort {
   REMOVEALL
 }
 
+enum Protocol: ushort {
+  PVA,  // EPICS PV access
+  CA,   // EPICS channel access
+  FAKE  // Forwarder generates fake updates, frequency configurable with command line argument
+}
+
 table Stream {
-  channel: string;   // Name of the EPICS channel/pv (e.g. "MYIOC:VALUE1")
+  channel: string;           // Name of the EPICS channel/pv (e.g. "MYIOC:VALUE1")
   // If config_change=REMOVE then schema and topic are not used, all configurations for given channel name will be removed
-  schema: string;    // Identify the output format for updates from the named channel (e.g. "f142" or "TdcTime")
-  topic: string;     // Name of the output topic for updates from the named channel (e.g. "LOKI_motionControl")
+  schema: string;            // Identify the output format for updates from the named channel (e.g. "f142" or "TdcTime")
+  topic: string;             // Name of the output topic for updates from the named channel (e.g. "LOKI_motionControl")
+  protocol: Protocol = PVA;  // Protocol for channel, EPICS PV access by default
 }
 
 table ConfigUpdate {
