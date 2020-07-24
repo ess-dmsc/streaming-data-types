@@ -24,6 +24,8 @@ table Stream {
   // If config_change=REMOVE then at least one of the string fields must be populated,
   // and the Forwarder will remove any streams which match all of the populated string fields.
   // "populated" here means supplying a non-empty string for the field.
+  // Wildcards '?' (single character) and '*' (multi-character) can be used to match topic or channel name,
+  // Wildcards cannot be used to match schema as they are valid characters in schema identifiers.
   channel: string;           // Name of the EPICS channel/pv (e.g. "MYIOC:VALUE1")
   schema: string;            // Identify the output format for updates from the named channel (e.g. "f142" or "TdcTime")
   topic: string;             // Name of the output topic for updates from the named channel (e.g. "LOKI_motionControl")
