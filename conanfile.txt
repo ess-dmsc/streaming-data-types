@@ -1,0 +1,8 @@
+[requires]
+flatbuffers/1.12.0
+
+[build_requires]
+flatc/1.12.0
+
+[generators]
+virtualrunenv
