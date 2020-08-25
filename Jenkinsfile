@@ -5,7 +5,7 @@ import ecdcpipeline.PipelineBuilder
 project = "streaming-data-types"
 
 container_build_nodes = [
-  'centos7': ContainerBuildNode.getDefaultContainerBuildNode('centos7')
+  'centos7': ContainerBuildNode.getDefaultContainerBuildNode('centos7-gcc8')
 ]
 
 pipeline_builder = new PipelineBuilder(this, container_build_nodes)
@@ -22,11 +22,12 @@ builders = pipeline_builder.createBuilders { container ->
     }  // stage
 
     pipeline_builder.stage("${container.key}: get dependencies") {
+        // Rebuild flatc otherwise package from conan center remote is built against wrong version of glibc
         container.sh """
             mkdir build
             cd build
             conan remote add --insert 0 ess-dmsc-local ${local_conan_server}
-            conan install --generator virtualrunenv flatbuffers/1.11.0@google/stable --build=outdated
+            conan install ../${project}/conanfile.txt --build=outdated --build=flatc
         """
     }  // stage
     
