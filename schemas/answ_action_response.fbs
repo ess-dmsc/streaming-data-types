@@ -1,0 +1,16 @@
+// A message for holding information on the (immediate) outcome of a command to (or state change of) a filewriter
+
+file_identifier "answ";
+
+enum ActionType : byte { StartJob = 0, SetStopTime, StopNow, HasStopped }
+enum ActionOutcome : byte { Success = 0, Failure }
+
+table ActionResponse {
+    service_id : string (required);       // The identifier for the instance of the file-writer that respnded to the command
+    job_id : string (required);           // A unique identifier for the file writing job
+    action : ActionType;                  // What type of command is this a response to?
+    outcome : ActionOutcome;              // Was the command accepted (action successfull)?
+    message : string;                     // Must hold an error message if outcome was "Failure", is optional otherwise.
+}
+
+root_type ActionResponse;
