@@ -2,7 +2,7 @@
 
 file_identifier "answ";
 
-enum ActionType : byte { StartJob = 0, SetStopTime, StopNow, HasStopped }
+enum ActionType : byte { StartJob = 0, SetStopTime }
 enum ActionOutcome : byte { Success = 0, Failure }
 
 table ActionResponse {
@@ -10,8 +10,9 @@ table ActionResponse {
     job_id : string (required);           // A unique identifier for the file writing job
     action : ActionType;                  // What type of command is this a response to?
     outcome : ActionOutcome;              // Was the command accepted (action successfull)?
+    stop_time : uint64;                   // Holds the current stop time of the job
     message : string;                     // Must hold an error message if outcome was "Failure", is optional otherwise.
-    command_id : string;                  // Holds an id that is unique to the command that this is the response to. In the case of start commands, the id is the job-id. In the case of an "has stopped message", this field may be ignored. 
+    command_id : string;                  // Holds an id that is unique to the command that this is the response to. In the case of start commands, the id is the job-id.
 }
 
 root_type ActionResponse;
