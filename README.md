@@ -79,6 +79,8 @@ json        json_json.fbs                     Carries a JSON payload
 tdct        tdct_timestamps.fbs               Timestamps from a device (e.g. a chopper)
 pl72        pl72_run_start.fbs                File writing, run start message for file writer and Mantid
 6s4t        6s4t_run_stop.fbs                 File writing, run stop message for file writer and Mantid
+answ        answ_action_response.fbs          Holds the result of a command to the filewriter.
+wrdn        wrdn_finished_writing.fbs         Message from the filewriter when it is done writing a file.
 x5f2        x5f2_status.fbs                   Status update and heartbeat message for any software
 rf5k        rf5k_forwarder_config.fbs         Configuration update for Forwarder
 ```
