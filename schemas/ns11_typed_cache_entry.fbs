@@ -7,7 +7,7 @@ table String { value:  string; }
 table Object { value:  string; } // Python object represented as string
 
 // Specific 1-D arrays for simple types to enable easier serialisation
-// and deserialisation. Also, the numeric types get numpy support.
+// and deserialisation. Also, the numeric types get numpy support for free.
 table ArrayBool    { contents: [bool];    }
 table ArrayLong    { contents: [long];    }
 table ArrayDouble  { contents: [double];  }
