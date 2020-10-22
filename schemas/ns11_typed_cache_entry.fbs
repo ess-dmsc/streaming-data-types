@@ -6,34 +6,55 @@ table Double { value:  double; }
 table String { value:  string; }
 table Object { value:  string; } // Python object represented as string
 
-enum ArrayType : byte {
-    ListType = 0,
-    TupleType,
-    SetType
-}   
+// Specific 1-D arrays for simple types to enable easier serialisation
+// and deserialisation. Also, the numeric types get numpy support.
+table ArrayBool    { contents: [bool];    }
+table ArrayLong    { contents: [long];    }
+table ArrayDouble  { contents: [double];  }
+table ArrayString  { contents: [string];  }
+table ArrayObject  { contents: [string];  }
 
-union Value {
+union ValueType {
     Object,
     Bool,
     Long,
     Double,
     String,
     Dict,
-    Array
+    Array,
+    ArrayBool,
+    ArrayLong,
+    ArrayDouble,
+    ArrayString,
+    ArrayObject
 }
 
 table DictMapping {
-        k: Value;
-        v: Value;
+        key: ValueType;
+        value: ValueType;
 }
 
 table Dict { value: [DictMapping]; }
 
-table ArrayElement { v: Value; }
+table ArrayElement { value: ValueType; }
 
-table Array { 
-        value: [ArrayElement]; 
-        array_type: ArrayType; 
+// Very flexible array - for simple single-typed 1-D arrays use one of the specific arrays
+// e.g. ArrayDouble.
+// Equivalent to a Python list, e.g. can store different types, arrays within arrays etc.
+table Array {
+        contents: [ArrayElement];
+}
+
+// Equivalent to a Python set.
+// Can contain different types
+table Set {
+        contents: [ArrayElement];
+}
+
+// Equivalent to a Python tuple.
+// Can contain different types
+table Tuples {
+        contents: [ArrayElement];
 }
 
 /// pylint: skip-file
@@ -42,7 +63,7 @@ table TypedCacheEntry {
         time: double;           // time (in seconds after epoch) when this entry was set
         ttl: double;            // time to live (in seconds after time field of this entry). NOT TO BE USED OUTSIDE OF NICOS!
         expired: bool = false;  // already expired (manually or using ttl), supersedes ttl. NOT TO BE USED OUTSIDE OF NICOS!
-        value: Value;
+        value: ValueType;
 }
 
 root_type TypedCacheEntry;
