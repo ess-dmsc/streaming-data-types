@@ -6,7 +6,7 @@ table Double { value:  double; }
 table String { value:  string; }
 table Object { value:  string; } // Python object represented as string
 
-// Specific 1-D arrays for simple types to enable easier serialisation
+// Specific 1-D arrays for simple value types to enable easier serialisation
 // and deserialisation. Also, the numeric types get numpy support for free.
 table ArrayBool    { contents: [bool];    }
 table ArrayLong    { contents: [long];    }
@@ -38,21 +38,21 @@ table Dict { value: [DictMapping]; }
 
 table ArrayElement { value: ValueType; }
 
-// Very flexible array - for simple single-typed 1-D arrays use one of the specific arrays
-// e.g. ArrayDouble.
-// Equivalent to a Python list, e.g. can store different types, arrays within arrays etc.
+// Approximately equivalent to a Python list, e.g. hetrogeneous, allows arrays within arrays, etc.
+// For simple homogeneous 1-D arrays use one of the specific arrays types
+// such as ArrayDouble, ArrayString, etc.
 table Array {
         contents: [ArrayElement];
 }
 
-// Equivalent to a Python set.
-// Can contain different types
+// Approximately equivalent to a Python set.
+// Can be hetrogeneous
 table Set {
         contents: [ArrayElement];
 }
 
-// Equivalent to a Python tuple.
-// Can contain different types
+// Approximately equivalent to a Python tuple.
+// Can be hetrogeneous
 table Tuples {
         contents: [ArrayElement];
 }
