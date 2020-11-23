@@ -1,0 +1,26 @@
+
+// A flatbuffer schema for holding EPICS area detector updates
+
+file_identifier "ADAr";
+
+enum DType:byte { int8, uint8, int16, uint16, int32, uint32, int64, uint64, float32, float64, c_string }
+
+table Attribute {
+    name: string (required);   // Name of attribute
+    description: string;       // Description of attribute
+    source: string;            // EPICS PV name or DRV_INFO string of attribute
+    data_type: DType;          // The type of the data (value) in this attribute
+    data: [ubyte] (required);  // The data/value of the attribute
+}
+
+table ADArray {
+    source_name: string (required); // Source name of array
+    id: int;                        // Unique id to this particular NDArray
+    timestamp: ulong;               // Timestamp in nanoseconds since UNIX epoch
+    dimensions: [ulong] (required); // Dimensions of the array
+    data_type: DType;               // The type of the data stored in the array
+    data: [ubyte] (required);       // Elements in the array
+    attributes: [Attribute];        // Extra metadata about the array
+}
+
+root_type ADArray;

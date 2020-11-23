@@ -1,4 +1,6 @@
 
+// NOTE: THIS SCHEMA HAS BEEN DEPRECATED AND WILL BE REMOVED SOON
+
 namespace FB_Tables;
 
 file_identifier "NDAr";

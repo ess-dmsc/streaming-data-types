@@ -68,7 +68,8 @@ df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
 ai33        ai33_det_count_imgs.fbs           Accumulated counts of detection events
 ai34        ai34_det_counts.fbs               Counts on each detector pixel from a single pulse
 senv        senv_data.fbs                     Used for storing for waveforms from DG ADC readout system.
-NDAr        NDAr_NDArray_schema.fbs           Holds binary blob of data with n dimensions.
+NDAr        NDAr_NDArray_schema.fbs           (DEPRECATED) Holds binary blob of data with n dimensions.
+ADAr        ADAr_area_detector_array.fbs      Holds EPICS area detector array data (in a flatbuffer format).
 mo01        mo01_nmx.fbs                      Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks.
 ns10        ns10_cache_entry.fbs              NICOS cache entry
 ns11        ns11_typed_cache_entry.fbs        NICOS cache entry with typed data
