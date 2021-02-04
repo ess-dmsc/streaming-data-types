@@ -4,14 +4,36 @@ file_identifier "senv";
 
 enum Location : byte { Unknown = 0, Start, Middle, End }
 
+table Int8Array   { value: [ byte] (required);   }
+table UInt8Array  { value: [ubyte] (required);   }
+table Int16Array  { value: [ short] (required);  }
+table UInt16Array { value: [ushort] (required);  }
+table Int32Array    { value: [ int] (required);    }
+table UInt32Array   { value: [uint] (required);    }
+table Int64Array   { value: [ long] (required);   }
+table UInt64Array  { value: [ulong] (required);   }
+
+union ValueUnion {
+    Int8Array,
+    UInt8Array,
+    Int16Array,
+    UInt16Array,
+    Int32Array,
+    UInt32Array,
+    Int64Array,
+    UInt64Array
+}
+
 table SampleEnvironmentData {
-    Name: string (required);     // Name of the device plus channel number (e.g. "SomeName_3").
-    Channel: int;                // Channel number, currently a value from 0 to 3.
-    PacketTimestamp: ulong;      // The timestamp (in nanoseconds) of the first sample in the value vector.
-    TimeDelta: double;           // Time in nanoseconds between samples.
-    TimestampLocation: Location; // Relevant only when oversampling has been done; is the timestamp from the start.
+    Name: string (required);     // Name of the device/source of the data.
+    Channel: int;                // Can be used to store the ADC channel number. Should be set to -1 if not used.
+    PacketTimestamp: ulong;      // The timestamp (in nanoseconds since UNIX epoch) of the first sample in the value vector.
+    TimeDelta: double;           // Time in nanoseconds between samples. Available for "compression" of the schema. Should
+                                 // be set to <= 0 if not used.
+    TimestampLocation: Location; // Relevant when the delta time between two consecutive timestamps is long in comparison
+                                 // to the resolution of the timestamp. For example, when using oversampling.
                                  // middle or end of the samples that were summed to produce each oversampled sample.
-    Values: [ushort] (required); // The sample values.
+    Values: ValueUnion (required); // The sample values.
     Timestamps: [ulong];         // OPTIONAL (nanosecond) timestamps of each individual sample.
     MessageCounter: ulong;       // Monotonically increasing counter.
 }
