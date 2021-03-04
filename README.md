@@ -60,13 +60,10 @@ f140        f140_general.fbs                  [OBSOLETE] Can encode an arbitrary
 f141        f141_ntarraydouble.fbs            [OBSOLETE] A simple array of double, testing file writing
 f142        f142_logdata.fbs                  For log data, for example forwarded EPICS PV update
 f143        f143_structure.fbs                [OBSOLETE] Arbitrary nested data
-rit0        rit0_psi_sinq_schema.fbs          Neutron event data according the RITA2
 ev42        ev42_events.fbs                   Multi-institution neutron event data
 is84        is84_isis_events.fbs              ISIS specific addition to event messages
 ba57        ba57_run_info.fbs                 [OBSOLETE] Run start/stop information for Mantid [superceded by pl72]
 df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
-ai33        ai33_det_count_imgs.fbs           Accumulated counts of detection events
-ai34        ai34_det_counts.fbs               Counts on each detector pixel from a single pulse
 senv        senv_data.fbs                     Used for storing for waveforms from DG ADC readout system.
 NDAr        NDAr_NDArray_schema.fbs           (DEPRECATED) Holds binary blob of data with n dimensions.
 ADAr        ADAr_area_detector_array.fbs      Holds EPICS area detector array data (in a flatbuffer format).
