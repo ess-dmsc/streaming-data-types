@@ -1,3 +1,4 @@
+// General schema for histogram
 
 file_identifier "hs00";
 
@@ -25,15 +26,24 @@ table DimensionMetaData {
 // Represents a n-dimensional histogram
 // Subsets of histogram are also supported
 table EventHistogram {
-    source: string;              // Source name
-    timestamp: ulong;            // Timestamp (in ns, after unix epoch)
-    dim_metadata: [DimensionMetaData]; // Meta data for each dimension
-    last_metadata_timestamp: ulong; // Timestamp (ns, after unix epoch) when the last metadata information was written
-    current_shape: [uint] (required);  // Shape of the current data in each dimension
-    offset: [uint];              // Offset giving the starting index in each dimension
-    data: Array;                 // Data represented in RowMajor order (C Style), filled with 0 if missing
-    errors: Array;               // Errors in calculation of histogram data (same size as data)
-    info: string;                // Additional information (Integrated/Processed)
+    source: string;                     // Source name
+    timestamp: ulong;                   // Timestamp (in ns, after unix epoch)
+    dim_metadata: [DimensionMetaData];  // Meta data for each dimension
+    last_metadata_timestamp: ulong;     // Timestamp (ns, after unix epoch) when the last metadata information was written
+    current_shape: [uint] (required);   // Shape of the current data in each dimension
+    offset: [uint];                     // Offset giving the starting index in each dimension
+    data: Array;                        // Data represented in RowMajor order (C Style), filled with 0 if missing
+    errors: Array;                      // Errors in calculation of histogram data (same size as data)
+    info: string;                       // Additional information (Integrated/Processed)
 }
+
+// The "current_shape" and "offset" fields can be used to define a slice of a 
+// larger histogram. This allows breaking a large histogram into multiple messages.
+// For example the dim_metadata could look like this:
+// dim_metadata=[DimensionMetaData(label="x", length=10, ...), DimensionMetaData(label="y", length=10, ...)]
+// and each row could be sent as a separate message by using:
+// current_shape=[10, 1] and offset=[0, 0] in the 1st message
+// current_shape=[10, 1] and offset=[0, 1] in the 2nd message
+// and so on.
 
 root_type EventHistogram;
