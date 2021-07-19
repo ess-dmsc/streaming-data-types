@@ -27,6 +27,7 @@ table RunStart {                                     //  *Mantid*    // *File Wr
                                                                                       // Periods provide a way to segregate data at the data acquisition stage
     detector_spectrum_map: SpectraDetectorMapping;   //  Optional    //  Unused       // Map spectrum numbers in the event messages to detector IDs in the instrument definition (optional, for ISIS only)
     metadata : string;                               //  Unused      //  Optional     // Holds a JSON string with (static) metadata about the measurement. E.g. proposal id.
+    control_topic : string;                          //  Unused      //  Optional     // Topic on which the File Writer will listen for further commands and publish status messages when started from a pool
 }
 
 root_type RunStart;
