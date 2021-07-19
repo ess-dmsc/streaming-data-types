@@ -4,7 +4,7 @@ file_identifier "wrdn";
 
 table FinishedWriting {
     service_id : string (required);     // milliseconds since Unix epoch (1 Jan 1970). When set to 0, will trigger a "stop NOW" code path in the file writer.
-    job_id : string (required);         // The unique identifier of the file writing job
+    job_id : string (required);         // Uuid of the file writing job.
     error_encountered : bool;           // True if stopped due to error
     file_name : string (required);      // Name of file that was just closed.
     metadata : string;                  // JSON string with metadata about the file that was just closed.

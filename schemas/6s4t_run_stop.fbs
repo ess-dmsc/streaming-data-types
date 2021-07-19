@@ -12,9 +12,9 @@ file_identifier "6s4t";
 table RunStop {              //  *Mantid*    // *File Writer* // *Description*
     stop_time : uint64;      //  Required    //  Required     // milliseconds since Unix epoch (1 Jan 1970). When set to 0, will trigger a "stop NOW" code path in the file writer.
     run_name : string;       //  Required    //  Unused       // Name for the run, must match corresponding field in RunStart
-    job_id : string;         //  Unused      //  Required     // A unique identifier for the file writing job
+    job_id : string;         //  Unused      //  Required     // Uuid of the job that is to get a new stop time. 
     service_id : string;     //  Unused      //  Optional     // The identifier for the instance of the file-writer that should handle this command
-    command_id : string;     //  Unused      //  Required     // Required for uniquely identifying a stop command.
+    command_id : string;     //  Unused      //  Required     // Command uuid for uniquely identifying the stop command.
 }
 
 root_type RunStop;
