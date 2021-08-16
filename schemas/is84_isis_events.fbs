@@ -9,3 +9,10 @@ table ISISData {
   run_state : RunState;  // current instrument run state
   proton_charge : float; // at ESS this will likely come through EPICS forwarder instead
 }
+
+// a simple array variant that can be embedded in the facility data for ev43 
+table ArrayISISData {
+  period_number : [uint];
+  run_state : RunState;   // do not anticipate the run state changing in the message lifetime  
+  proton_charge : [float]; 
+}
