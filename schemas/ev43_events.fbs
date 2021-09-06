@@ -1,0 +1,18 @@
+// Schema for neutron detection event data with multiple pulse events
+
+file_identifier "ev43";
+
+table EventMessage {
+    source_name : string;    // optional field identifying the producer type, for example detector type
+    message_id : ulong;      // consecutive numbers, to detect missing or unordered messages
+    pulse_time : [ulong];    // Nanoseconds since Unix epoch (1 Jan 1970)
+                             // If pulse times are available in the aquisition system, this field holds
+                             // those timestamps. Holds wall time otherwise.
+    pulse_index : [uint];    // Index into the array for the start of the neutron events linked to the 
+                             // corresponding pulse time. Pulse index and pulse time are the same length.
+    time_of_flight : [uint]; // Nanoseconds
+                             // Time of flight for each event if pulse time is available. If not, a
+                             // (positive) offset from the wall time stored in the `pulse_time`.
+    detector_id : [uint];    // Identifiers that represent the positions of the events in the detector(s).
+}
+root_type EventMessage;
