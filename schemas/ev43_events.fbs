@@ -2,6 +2,8 @@
 
 file_identifier "ev43";
 
+namespace ev43;
+
 table EventMessage {
     source_name : string;    // optional field identifying the producer type, for example detector type
     message_id : ulong;      // consecutive numbers, to detect missing or unordered messages
