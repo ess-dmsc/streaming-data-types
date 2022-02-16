@@ -2,7 +2,7 @@
 
 file_identifier "pvCn";
 
-enum ConnectionInfo: ushort {
+enum ConnectionInfo: short {
   UNKNOWN,              // Universal
   NEVER_CONNECTED,      // Universal
   CONNECTED,            // Universal
