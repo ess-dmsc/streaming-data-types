@@ -49,9 +49,9 @@ union Value {
 }
 
 table ScalarData {
-	source_name: string (required);      // EPICS PV name
+  source_name: string (required);      // EPICS PV name
   timestamp: long;                     // Nanoseconds since UNIX epoch
-	value: Value (required);             // May be scalar or array
+  value: Value (required);             // May be scalar or array
 }
 
 root_type ScalarData;
