@@ -1,0 +1,57 @@
+// EPICS PV scalar data, for example "slow" sample environment measurements
+
+
+file_identifier "scal";
+
+table Byte   { value:  byte;   }
+table UByte  { value: ubyte;   }
+table Short  { value:  short;  }
+table UShort { value: ushort;  }
+table Int    { value:  int;    }
+table UInt   { value: uint;    }
+table Long   { value:  long;   }
+table ULong  { value: ulong;   }
+table Float  { value:  float;  }
+table Double { value:  double; }
+
+table ArrayByte   { value: [ byte];   }
+table ArrayUByte  { value: [ubyte];   }
+table ArrayShort  { value: [ short];  }
+table ArrayUShort { value: [ushort];  }
+table ArrayInt    { value: [ int];    }
+table ArrayUInt   { value: [uint];    }
+table ArrayLong   { value: [ long];   }
+table ArrayULong  { value: [ulong];   }
+table ArrayFloat  { value: [ float];  }
+table ArrayDouble { value: [ double]; }
+
+union Value {
+	Byte,
+	UByte,
+	Short,
+	UShort,
+	Int,
+	UInt,
+	Long,
+	ULong,
+	Float,
+	Double,
+	ArrayByte,
+	ArrayUByte,
+	ArrayShort,
+	ArrayUShort,
+	ArrayInt,
+	ArrayUInt,
+	ArrayLong,
+	ArrayULong,
+	ArrayFloat,
+	ArrayDouble,
+}
+
+table ScalarData {
+	source_name: string (required);      // EPICS PV name
+  timestamp: long;                     // Nanoseconds since UNIX epoch
+	value: Value (required);             // May be scalar or array
+}
+
+root_type ScalarData;
