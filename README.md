@@ -79,7 +79,7 @@ and work with the flat buffers union data type in your root element.
 | x5f2 | `x5f2_status.fbs               ` | Status update and heartbeat message for any software
 | rf5k | `rf5k_forwarder_config.fbs     ` | Configuration update for Forwarder
 
-## Usefu'l information:
+## Useful information:
 
 - [Have CMake download and compile schema](documentation/cmakeCompileSchema.md)
 - [Time formats we use and how to convert between them](documentation/timestamps.md)
