@@ -17,19 +17,9 @@ schema definition file as:
 file_identifier = "abcd";
 ```
 
-The schema ids must be unique on the network.
-You can generate a new `file_identifier` by visiting [this webpage](https://www.random.org/strings/?num=1&len=4&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new).
+The file identifiers (also called "schema id") must be unique on the network. When creating a new schema, try to pick a schema id for your new schema that is memorable or failing that, generate a random one using [this webpage](https://www.random.org/strings/?num=1&len=4&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new).
 
-Table of schema file identifiers follows later in this README.
-
-To get your very own file identifier, please just pick one available and
-document it here in the README and do upload the schema as well.
-
-
-## Namespace
-
-Please namespace your schema so that the generated c++ headers do not collide.
-Including e.g. the schema id in the namespace name avoids any collision.
+Table of schema file identifiers follows later in this README. Please add your own (new schema) with file identifier to that table.
 
 
 ## Backwards compatibility
@@ -44,47 +34,52 @@ If you feel that you may need a lot of schema ids, you can use a single schema
 and work with the flat buffers union data type in your root element.
 
 
-## Naming
+## Schema coding standard
 
-Please prefix your schema files in this repository with your chosen schema id
-so that we can easily avoid id collisions.
-Tables should use UpperCamelCase and fields should use snake_case. Try to keep names consistent with equivalent fields in existing schema.
+* Prefix your schema files in this repository with your chosen schema id to more easily prevent id collision.
+* Tables should use _UpperCamelCase_.
+* Fields should use snake_case.
+* Try to keep names consistent with equivalent fields in existing schema, e.g.:
+  * `timestamp` for timestamp
+  * `source_name` for a string indicating origin/source of data in flatbuffer
+  * `service_id` for a string indicating the name of the service that created the flatbuffer
+* Do not use unsigned integers unless required for your application.
 
 
 ## Schema ids
 
-```
-ID            Flatbuffer schema file name
 
-f140        f140_general.fbs                  [OBSOLETE] Can encode an arbitrary EPICS PV
-f141        f141_ntarraydouble.fbs            [OBSOLETE] A simple array of double, testing file writing
-f142        f142_logdata.fbs                  For log data, for example forwarded EPICS PV update
-f143        f143_structure.fbs                [OBSOLETE] Arbitrary nested data
-ev42        ev42_events.fbs                   Multi-institution neutron event data for a single pulse
-ev43        ev43_events.fbs                   Multi-institution neutron event data from multiple pulses
-is84        is84_isis_events.fbs              ISIS specific addition to event messages
-ba57        ba57_run_info.fbs                 [OBSOLETE] Run start/stop information for Mantid [superceded by pl72]
-df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
-senv        senv_data.fbs                     Used for storing for waveforms from DG ADC readout system.
-NDAr        NDAr_NDArray_schema.fbs           (DEPRECATED) Holds binary blob of data with n dimensions.
-ADAr        ADAr_area_detector_array.fbs      Holds EPICS area detector array data (in a flatbuffer format).
-mo01        mo01_nmx.fbs                      Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks.
-ns10        ns10_cache_entry.fbs              NICOS cache entry
-ns11        ns11_typed_cache_entry.fbs        NICOS cache entry with typed data
-hs00        hs00_event_histogram.fbs          Event histogram stored in n dim array
-dtdb        dtdb_adc_pulse_debug.fbs          Debug fields that can be added to the ev42 schema
-ep00        ep00_epics_connection_info.fbs    Status of the EPICS connection
-json        json_json.fbs                     Carries a JSON payload
-tdct        tdct_timestamps.fbs               Timestamps from a device (e.g. a chopper)
-pl72        pl72_run_start.fbs                File writing, run start message for file writer and Mantid
-6s4t        6s4t_run_stop.fbs                 File writing, run stop message for file writer and Mantid
-answ        answ_action_response.fbs          Holds the result of a command to the filewriter.
-wrdn        wrdn_finished_writing.fbs         Message from the filewriter when it is done writing a file.
-x5f2        x5f2_status.fbs                   Status update and heartbeat message for any software
-rf5k        rf5k_forwarder_config.fbs         Configuration update for Forwarder
-```
+| ID   | File name                        | Description                                                          |
+|------|----------------------------------|----------------------------------------------------------------------|
+| f140 | `f140_general.fbs              ` | [OBSOLETE] Can encode an arbitrary EPICS PV
+| f141 | `f141_ntarraydouble.fbs        ` | [OBSOLETE] A simple array of double, testing file writing
+| f142 | `f142_logdata.fbs              ` | For log data, for example forwarded EPICS PV update
+| f143 | `f143_structure.fbs            ` | [OBSOLETE] Arbitrary nested data
+| ev42 | `ev42_events.fbs               ` | Multi-institution neutron event data for a single pulse
+| ev43 | `ev43_events.fbs               ` | Multi-institution neutron event data from multiple pulses
+| is84 | `is84_isis_events.fbs          ` | ISIS specific addition to event messages
+| ba57 | `ba57_run_info.fbs             ` | [OBSOLETE] Run start/stop information for Mantid [superceded by pl72]
+| df12 | `df12_det_spec_map.fbs         ` | Detector-spectrum map for Mantid
+| senv | `senv_data.fbs                 ` | Used for storing for waveforms from DG ADC readout system.
+| NDAr | `NDAr_NDArray_schema.fbs       ` | (DEPRECATED) Holds binary blob of data with n dimensions.
+| ADAr | `ADAr_area_detector_array.fbs  ` | Holds EPICS area detector array data (in a flatbuffer format).
+| mo01 | `mo01_nmx.fbs                  ` | Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks.
+| ns10 | `ns10_cache_entry.fbs          ` | NICOS cache entry
+| ns11 | `ns11_typed_cache_entry.fbs    ` | NICOS cache entry with typed data
+| hs00 | `hs00_event_histogram.fbs      ` | Event histogram stored in n dim array
+| dtdb | `dtdb_adc_pulse_debug.fbs      ` | Debug fields that can be added to the ev42 schema
+| ep00 | `ep00_epics_connection_info.fbs` | (DEPRECATED) Status of the EPICS connection
+| pvCn | `pvCn_epics_pv_connection.fbs  ` | Status or event of EPICS connection. Replaces _ep00__.
+| json | `json_json.fbs                 ` | Carries a JSON payload
+| tdct | `tdct_timestamps.fbs           ` | Timestamps from a device (e.g. a chopper)
+| pl72 | `pl72_run_start.fbs            ` | File writing, run start message for file writer and Mantid
+| 6s4t | `6s4t_run_stop.fbs             ` | File writing, run stop message for file writer and Mantid
+| answ | `answ_action_response.fbs      ` | Holds the result of a command to the filewriter.
+| wrdn | `wrdn_finished_writing.fbs     ` | Message from the filewriter when it is done writing a file.
+| x5f2 | `x5f2_status.fbs               ` | Status update and heartbeat message for any software
+| rf5k | `rf5k_forwarder_config.fbs     ` | Configuration update for Forwarder
 
-## Useful information:
+## Usefu'l information:
 
 - [Have CMake download and compile schema](documentation/cmakeCompileSchema.md)
 - [Time formats we use and how to convert between them](documentation/timestamps.md)
