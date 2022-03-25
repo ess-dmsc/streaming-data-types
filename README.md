@@ -58,7 +58,7 @@ ID            Flatbuffer schema file name
 
 f140        f140_general.fbs                  [OBSOLETE] Can encode an arbitrary EPICS PV
 f141        f141_ntarraydouble.fbs            [OBSOLETE] A simple array of double, testing file writing
-f142        f142_logdata.fbs                  (DEPRECATED) For log data, for example forwarded EPICS PV update
+f142        f142_logdata.fbs                  (DEPRECATED) For log data, for example forwarded EPICS PV update [superceded by scal]
 f143        f143_structure.fbs                [OBSOLETE] Arbitrary nested data
 ev42        ev42_events.fbs                   Multi-institution neutron event data for a single pulse
 ev43        ev43_events.fbs                   Multi-institution neutron event data from multiple pulses
@@ -82,7 +82,7 @@ answ        answ_action_response.fbs          Holds the result of a command to t
 wrdn        wrdn_finished_writing.fbs         Message from the filewriter when it is done writing a file.
 x5f2        x5f2_status.fbs                   Status update and heartbeat message for any software
 rf5k        rf5k_forwarder_config.fbs         Configuration update for Forwarder
-scal        scal_epics_scalar_data.fbs        Data from EPICS PVs. Replaces _f142_.
+scal        scal_epics_scalar_data.fbs        Data from EPICS PVs.
 ```
 
 ## Useful information:
