@@ -38,7 +38,7 @@ and work with the flat buffers union data type in your root element.
 
 * Prefix your schema files in this repository with your chosen schema id to more easily prevent id collision.
 * Tables should use _UpperCamelCase_.
-* Fields should use snake_case.
+* Fields should use *snake_case*.
 * Try to keep names consistent with equivalent fields in existing schema, e.g.:
   * `timestamp` for timestamp
   * `source_name` for a string indicating origin/source of data in flatbuffer
