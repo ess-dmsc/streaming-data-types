@@ -15,4 +15,4 @@ table Event44Message {
     pixel_id : [int];                   // Identifiers that represent the positions of the events in the detector(s).
 }
 
-root_type EventMessage;
+root_type Event44Message;
