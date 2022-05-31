@@ -62,7 +62,7 @@ f142        f142_logdata.fbs                  For log data, for example forwarde
 f143        f143_structure.fbs                [OBSOLETE] Arbitrary nested data
 ev42        ev42_events.fbs                   Multi-institution neutron event data for a single pulse
 ev43        ev43_events.fbs                   Multi-institution neutron event data from multiple pulses
-ev44        ev44_events.fbs                   Multi-institution neutron event data for both single and multpole pulses
+ev44        ev44_events.fbs                   Multi-institution neutron event data for both single and multiple pulses
 is84        is84_isis_events.fbs              ISIS specific addition to event messages
 ba57        ba57_run_info.fbs                 [OBSOLETE] Run start/stop information for Mantid [superceded by pl72]
 df12        df12_det_spec_map.fbs             Detector-spectrum map for Mantid
