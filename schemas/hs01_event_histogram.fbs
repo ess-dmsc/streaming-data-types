@@ -1,0 +1,49 @@
+// General schema for histogram
+
+file_identifier "hs01";
+
+table ArrayInt   { value: [int];    }
+table ArrayLong  { value: [long];   }
+table ArrayDouble { value: [double];  }
+table ArrayFloat  { value: [float];   }
+
+// Union of allowed data types for the arrays
+union Array {
+    ArrayInt,
+    ArrayLong,
+    ArrayDouble,
+    ArrayFloat,
+}
+
+// Meta information for one dimension
+table DimensionMetaData {
+    length: int;            // Length of the full histogram along this dimension
+    unit: string;           // Unit
+    label: string;          // Label
+    bin_boundaries: Array;  // Boundary information (should be of length: DimensionMetaData.length+1)
+}
+
+// Represents a n-dimensional histogram
+// Subsets of histogram are also supported
+table EventHistogram {
+    source: string;                     // Source name
+    timestamp: long;                    // Timestamp (in ns, after unix epoch)
+    dim_metadata: [DimensionMetaData];  // Meta data for each dimension
+    last_metadata_timestamp: long;      // Timestamp (ns, after unix epoch) when the last metadata information was written
+    current_shape: [int] (required);    // Shape of the current data in each dimension
+    offset: [int];                      // Offset giving the starting index in each dimension
+    data: Array;                        // Data represented in RowMajor order (C Style), filled with 0 if missing
+    errors: Array;                      // Errors in calculation of histogram data (same size as data)
+    info: string;                       // Additional information (Integrated/Processed)
+}
+
+// The "current_shape" and "offset" fields can be used to define a slice of a 
+// larger histogram. This allows breaking a large histogram into multiple messages.
+// For example the dim_metadata could look like this:
+// dim_metadata=[DimensionMetaData(label="x", length=10, ...), DimensionMetaData(label="y", length=10, ...)]
+// and each row could be sent as a separate message by using:
+// current_shape=[10, 1] and offset=[0, 0] in the 1st message
+// current_shape=[10, 1] and offset=[0, 1] in the 2nd message
+// and so on.
+
+root_type EventHistogram;
