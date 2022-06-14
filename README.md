@@ -17,7 +17,7 @@ schema definition file as:
 file_identifier = "abcd";
 ```
 
-The file identifiers (also called "schema id") must be unique on the network. When creating a new schema, try to pick a schema id for your new schema that is memorable or failing that, generate a random one using [this webpage](https://www.random.org/strings/?num=1&len=4&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new).
+The file identifiers (also called "schema id") must be unique on the network. When creating a new schema generate a random one using [this webpage](https://www.random.org/strings/?num=1&len=4&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new).
 
 Table of schema file identifiers follows later in this README. Please add your own (new schema) with file identifier to that table.
 
@@ -37,7 +37,7 @@ and work with the flat buffers union data type in your root element.
 ## Schema coding standard
 
 * Prefix your schema files in this repository with your chosen schema id to more easily prevent id collision.
-* Tables should use _UpperCamelCase_.
+* Tables should use *UpperCamelCase*.
 * Fields should use *snake_case*.
 * Try to keep names consistent with equivalent fields in existing schema, e.g.:
   * `timestamp` for timestamp
@@ -69,7 +69,7 @@ and work with the flat buffers union data type in your root element.
 | hs01 | `hs01_event_histogram.fbs      ` | Event histogram stored in n dim array
 | dtdb | `dtdb_adc_pulse_debug.fbs      ` | Debug fields that can be added to the ev42 schema
 | ep00 | `ep00_epics_connection_info.fbs` | (DEPRECATED) Status of the EPICS connection
-| pvCn | `pvCn_epics_pv_connection.fbs  ` | Status or event of EPICS connection. Replaces _ep00__.
+| ep01 | `ep01_epics_connection.fbs  `    | Status or event of EPICS connection. Replaces _ep00__.
 | json | `json_json.fbs                 ` | Carries a JSON payload
 | tdct | `tdct_timestamps.fbs           ` | Timestamps from a device (e.g. a chopper)
 | pl72 | `pl72_run_start.fbs            ` | File writing, run start message for file writer and Mantid

@@ -1,6 +1,6 @@
 // Represent events about the underlying EPICS connection.
 
-file_identifier "pvCn";
+file_identifier "ep01";
 
 enum ConnectionInfo: short {
   UNKNOWN,              // Universal
