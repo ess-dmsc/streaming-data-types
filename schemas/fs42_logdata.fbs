@@ -1,7 +1,7 @@
-// EPICS PV scalar data, for example "slow" sample environment measurements
+// data from "slow" updating devices (one value/array at a time)
+// often from EPICS PVs
 
-
-file_identifier "scal";
+file_identifier "fs42";
 
 table Byte   { value:  byte;   }
 table UByte  { value: ubyte;   }
@@ -48,10 +48,10 @@ union Value {
 	ArrayDouble,
 }
 
-table ScalarData {
+table Fs42Data {
   source_name: string (required);      // EPICS PV name
-  timestamp: long;                     // Nanoseconds since UNIX epoch
+  timestamp: long (required);          // Nanoseconds since UNIX epoch
   value: Value (required);             // May be scalar or array
 }
 
-root_type ScalarData;
+root_type Fs42Data;
