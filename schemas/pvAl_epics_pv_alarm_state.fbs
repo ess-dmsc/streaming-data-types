@@ -48,7 +48,7 @@ enum AlarmSeverity: short {
   INVALID,
 }
 
-table AlarmState {
+table PV_AlarmState {
   source_name: string (required);        // Process variable name that produced this alarm state
   timestamp: long;                       // Nanoseconds since UNIX epoch
   state: AlarmState = NONE;              // Details of EPICS alarm
@@ -57,4 +57,4 @@ table AlarmState {
   message: string;                       // Alarm message. Only (potentially) provided when the alarm is received via pvAccess (optional)
 }
 
-root_type AlarmState;
+root_type PV_AlarmState;
