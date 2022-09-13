@@ -69,7 +69,7 @@ and work with the flat buffers union data type in your root element.
 | hs01 | `hs01_event_histogram.fbs      ` | Event histogram stored in n dim array
 | dtdb | `dtdb_adc_pulse_debug.fbs      ` | Debug fields that can be added to the ev42 schema
 | ep00 | `ep00_epics_connection_info.fbs` | (DEPRECATED) Status of the EPICS connection
-| ep01 | `ep01_epics_connection.fbs  `    | Status or event of EPICS connection. Replaces _ep00__.
+| ep01 | `ep01_epics_connection.fbs  `    | Status or event of EPICS connection. Replaces _ep00_.
 | json | `json_json.fbs                 ` | Carries a JSON payload
 | tdct | `tdct_timestamps.fbs           ` | Timestamps from a device (e.g. a chopper)
 | pl72 | `pl72_run_start.fbs            ` | File writing, run start message for file writer and Mantid
