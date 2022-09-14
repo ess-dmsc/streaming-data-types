@@ -1,7 +1,6 @@
-// data from "slow" updating devices (one value/array at a time)
-// often from EPICS PVs
+// Controls related log data, typically from EPICS or NICOS.
 
-file_identifier "fs42";
+file_identifier "f144";
 
 table Byte   { value:  byte;   }
 table UByte  { value: ubyte;   }
@@ -48,10 +47,10 @@ union Value {
 	ArrayDouble,
 }
 
-table Fs42Data {
+table LogData {
   source_name: string (required);      // EPICS PV name
   timestamp: long (required);          // Nanoseconds since UNIX epoch
   value: Value (required);             // May be scalar or array
 }
 
-root_type Fs42Data;
+root_type LogData;

@@ -58,9 +58,9 @@ ID            Flatbuffer schema file name
 
 f140        f140_general.fbs                  [OBSOLETE] Can encode an arbitrary EPICS PV
 f141        f141_ntarraydouble.fbs            [OBSOLETE] A simple array of double, testing file writing
-f142        f142_logdata.fbs                  (DEPRECATED) For log data, for example forwarded EPICS PV update [superceded by fs42]
+f142        f142_logdata.fbs                  (DEPRECATED) For log data, for example forwarded EPICS PV update [superceded by f144]
 f143        f143_structure.fbs                [OBSOLETE] Arbitrary nested data
-fs42        fs42_logdata.fbs                  "Slow" data from EPICS PVs.
+f144        f144_logdata.fbs                  Controls related log data, typically from EPICS or NICOS.
 ev42        ev42_events.fbs                   Multi-institution neutron event data for a single pulse
 ev43        ev43_events.fbs                   Multi-institution neutron event data from multiple pulses
 is84        is84_isis_events.fbs              ISIS specific addition to event messages
