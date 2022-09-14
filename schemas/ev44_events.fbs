@@ -1,0 +1,19 @@
+// Schema for neutron detection event data
+
+file_identifier "ev44";
+
+table Event44Message {
+    source_name : string (required);            // optional field identifying the producer type, for example detector type
+    reference_time : [long] (required);         // Nanoseconds since Unix epoch (1 Jan 1970)
+                                                // If pulse times are available in the aquisition system, this field holds
+                                                // those timestamps. Holds wall time otherwise.
+    reference_time_index : [int] (required);    // Index into the array for the start of the neutron events linked to the 
+                                                // corresponding pulse/reference time. reference_time_index and reference_time 
+                                                // are the same length.
+    time_of_flight : [int];                     // Nanoseconds
+                                                // Time of flight for each event if pulse time is available. If not, a
+                                                // (positive) offset from the wall time stored in the `reference_time`.
+    pixel_id : [int];                           // Identifiers that represent the positions of the events in the detector(s).
+}
+
+root_type Event44Message;
