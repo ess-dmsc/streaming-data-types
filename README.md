@@ -78,6 +78,7 @@ and work with the flat buffers union data type in your root element.
 | wrdn | `wrdn_finished_writing.fbs     ` | Message from the filewriter when it is done writing a file.
 | x5f2 | `x5f2_status.fbs               ` | Status update and heartbeat message for any software
 | rf5k | `rf5k_forwarder_config.fbs     ` | Configuration update for Forwarder
+| ea00 | `ea00_epics_alarm_state.fbs    ` | EPICS PV Alarm status and severity
 
 
 ## Useful information:

@@ -1,0 +1,60 @@
+// EPICS PV Alarm status and severity
+
+file_identifier "ea00";
+
+// In practice: pvAccess alarm state
+enum AlarmState: short {
+  NONE,
+  DEVICE,
+  DRIVER,
+  RECORD,
+  DB,
+  CONF,
+  UNDEFINED,
+  CLIENT,
+}
+
+// These values maps to AlarmState as per the following link:
+// https://github.com/epics-base/pvAccessCPP/blob/7240f97e76c191f2c197d8d2986fa2355c88c801/src/ca/dbdToPv.cpp#L109
+enum CAAlarmState: short {
+  NO_ALARM,
+  READ,
+  WRITE,
+  HIHI,
+  HIGH,
+  LOLO,
+  LOW,
+  STATE,
+  COS,
+  COMM,
+  TIMED,
+  HWLIMIT,
+  CALC,
+  SCAN,
+  LINK,
+  SOFT,
+  BAD_SUB,
+  UDF,
+  DISABLE,
+  SIMM,
+  READ_ACCESS,
+  WRITE_ACCESS,
+}
+
+enum AlarmSeverity: short {
+  NO_ALARM,
+  MINOR,
+  MAJOR,
+  INVALID,
+}
+
+table EpicsAlarm {
+  source_name: string (required);        // Process variable name that produced this alarm state
+  timestamp: long;                       // Nanoseconds since UNIX epoch
+  state: AlarmState = NONE;              // Details of EPICS alarm
+  ca_state: CAAlarmState = NO_ALARM;     // Details of the EPICS alarm if received via channel access. Never check only this field as pvAccess alarms will leave it at "NO_ALARM".
+  severity: AlarmSeverity = NO_ALARM;    // Severity of current EPICS alarm status
+  message: string;                       // Alarm message. Only (potentially) provided when the alarm is received via pvAccess (optional)
+}
+
+root_type EpicsAlarm;
