@@ -12,6 +12,8 @@ table Int32Array    { value: [ int] (required);    }
 table UInt32Array   { value: [uint] (required);    }
 table Int64Array   { value: [ long] (required);   }
 table UInt64Array  { value: [ulong] (required);   }
+table ArrayDouble { value: [double] (required);   }
+table ArrayFloat  { value: [float] (required);   }
 
 union ValueUnion {
     Int8Array,
@@ -21,7 +23,9 @@ union ValueUnion {
     Int32Array,
     UInt32Array,
     Int64Array,
-    UInt64Array
+    UInt64Array,
+    ArrayDouble,
+    ArrayFloat
 }
 
 table SampleEnvironmentData {
