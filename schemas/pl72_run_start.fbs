@@ -20,7 +20,7 @@ table RunStart {                                     //  *Mantid*    // *File Wr
                                                                                       // If present Mantid will parse this to get the instrument geometry, otherwise it will attempt
                                                                                       // to look up an Instrument Definition File (IDF) based on the instrument name
     job_id : string;                                 //  Unused      //  Required     // Uuid for the file writing job, serves as job-id.
-    broker : string;                                 //  Unused      //  Required     // Broker name and port, for example "localhost:9092", from which the file writer should get data
+    broker : string;                                 //  Unused      //  Unused       // (Obsolete) Broker name and port, for example "localhost:9092", from which the file writer should get data
     service_id : string;                             //  Unused      //  Optional     // The identifier for the instance of the file-writer that should handle this command
     filename : string;                               //  Unused      //  Required     // Name of the file to write, for example run_1234.nxs
     n_periods : uint32 = 1;                          //  Optional    //  Unused       // Number of periods (ISIS only)
