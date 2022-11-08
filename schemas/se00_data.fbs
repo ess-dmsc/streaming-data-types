@@ -1,7 +1,6 @@
 //Used to transmit fast sample environment data
-// NOTE: THIS SCHEMA HAS BEEN DEPRECATED
 
-file_identifier "senv";
+file_identifier "se00";
 
 enum Location : byte { Unknown = 0, Start, Middle, End }
 
@@ -13,6 +12,8 @@ table Int32Array    { value: [ int] (required);    }
 table UInt32Array   { value: [uint] (required);    }
 table Int64Array   { value: [ long] (required);   }
 table UInt64Array  { value: [ulong] (required);   }
+table DoubleArray { value: [double] (required);   }
+table FloatArray  { value: [float] (required);   }
 
 union ValueUnion {
     Int8Array,
@@ -22,7 +23,9 @@ union ValueUnion {
     Int32Array,
     UInt32Array,
     Int64Array,
-    UInt64Array
+    UInt64Array,
+    DoubleArray,
+    FloatArray
 }
 
 table SampleEnvironmentData {
