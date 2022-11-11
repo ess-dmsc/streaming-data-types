@@ -1,4 +1,4 @@
-//Used to transmit fast sample environment data
+//Used for storing arrays with optional timestamps, for example waveform data.
 
 file_identifier "se00";
 
