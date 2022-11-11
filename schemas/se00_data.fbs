@@ -1,0 +1,45 @@
+//Used for storing arrays with optional timestamps, for example waveform data.
+
+file_identifier "se00";
+
+enum Location : byte { Unknown = 0, Start, Middle, End }
+
+table Int8Array   { value: [ byte] (required);   }
+table UInt8Array  { value: [ubyte] (required);   }
+table Int16Array  { value: [ short] (required);  }
+table UInt16Array { value: [ushort] (required);  }
+table Int32Array    { value: [ int] (required);    }
+table UInt32Array   { value: [uint] (required);    }
+table Int64Array   { value: [ long] (required);   }
+table UInt64Array  { value: [ulong] (required);   }
+table DoubleArray { value: [double] (required);   }
+table FloatArray  { value: [float] (required);   }
+
+union ValueUnion {
+    Int8Array,
+    UInt8Array,
+    Int16Array,
+    UInt16Array,
+    Int32Array,
+    UInt32Array,
+    Int64Array,
+    UInt64Array,
+    DoubleArray,
+    FloatArray
+}
+
+table SampleEnvironmentData {
+    name: string (required);     // Name of the device/source of the data.
+    channel: int;                // Can be used to store the ADC channel number. Should be set to -1 if not used.
+    packet_timestamp: long;      // The timestamp (in nanoseconds since UNIX epoch) of the first sample in the value vector.
+    time_delta: double;           // Time in nanoseconds between samples. Available for "compression" of the schema. Should
+                                 // be set to <= 0 if not used.
+    timestamp_location: Location; // Relevant when the delta time between two consecutive timestamps is long in comparison
+                                 // to the resolution of the timestamp. For example, when using oversampling.
+                                 // middle or end of the samples that were summed to produce each oversampled sample.
+    values: ValueUnion (required); // The sample values.
+    timestamps: [long];         // OPTIONAL (nanosecond) timestamps of each individual sample.
+    message_counter: long;       // Monotonically increasing counter.
+}
+
+root_type SampleEnvironmentData;

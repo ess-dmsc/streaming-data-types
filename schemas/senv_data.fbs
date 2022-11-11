@@ -1,4 +1,5 @@
 //Used to transmit fast sample environment data
+// NOTE: THIS SCHEMA HAS BEEN DEPRECATED
 
 file_identifier "senv";
 
