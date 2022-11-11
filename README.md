@@ -36,7 +36,10 @@ and work with the flat buffers union data type in your root element.
 
 ## Schema coding standard
 
-* Prefix your schema files in this repository with your chosen schema id to more easily prevent id collision.
+* Completely new schemas should have an ID comprising of two characters plus 00, e.g. hs00
+* When updating an existing schema with a breaking change then the new schema should have the same ID but with the number incremented, e.g. hs00 -> hs01
+  * For older schema which don't end with two numbers, propose a new name which matches the convention.
+* Prefix your schema files in this repository with the chosen schema id to more easily prevent id collision.
 * Tables should use *UpperCamelCase*.
 * Fields should use *snake_case*.
 * Try to keep names consistent with equivalent fields in existing schema, e.g.:
