@@ -65,7 +65,6 @@ and work with the flat buffers union data type in your root element.
 | df12 | `df12_det_spec_map.fbs         ` | Detector-spectrum map for Mantid
 | senv | `senv_data.fbs                 ` | (DEPRECATED) Used for storing for waveforms from DG ADC readout system.
 | se00 | `se00_data.fbs                 ` | Used for storing arrays with optional timestamps, for example waveform data. Replaces _senv_. 
-| senv | `senv_data.fbs                 ` | Used for storing for waveforms from DG ADC readout system
 | NDAr | `NDAr_NDArray_schema.fbs       ` | (DEPRECATED) Holds binary blob of data with n dimensions
 | ADAr | `ADAr_area_detector_array.fbs  ` | Holds EPICS area detector array data (in a flatbuffer format)
 | mo01 | `mo01_nmx.fbs                  ` | Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks
