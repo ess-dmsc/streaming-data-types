@@ -29,17 +29,17 @@ union ValueUnion {
 }
 
 table SampleEnvironmentData {
-    Name: string (required);     // Name of the device/source of the data.
-    Channel: int;                // Can be used to store the ADC channel number. Should be set to -1 if not used.
-    PacketTimestamp: long;      // The timestamp (in nanoseconds since UNIX epoch) of the first sample in the value vector.
-    TimeDelta: double;           // Time in nanoseconds between samples. Available for "compression" of the schema. Should
+    name: string (required);     // Name of the device/source of the data.
+    channel: int;                // Can be used to store the ADC channel number. Should be set to -1 if not used.
+    packet_timestamp: long;      // The timestamp (in nanoseconds since UNIX epoch) of the first sample in the value vector.
+    time_delta: double;           // Time in nanoseconds between samples. Available for "compression" of the schema. Should
                                  // be set to <= 0 if not used.
-    TimestampLocation: Location; // Relevant when the delta time between two consecutive timestamps is long in comparison
+    timestamp_location: Location; // Relevant when the delta time between two consecutive timestamps is long in comparison
                                  // to the resolution of the timestamp. For example, when using oversampling.
                                  // middle or end of the samples that were summed to produce each oversampled sample.
-    Values: ValueUnion (required); // The sample values.
-    Timestamps: [long];         // OPTIONAL (nanosecond) timestamps of each individual sample.
-    MessageCounter: long;       // Monotonically increasing counter.
+    values: ValueUnion (required); // The sample values.
+    timestamps: [long];         // OPTIONAL (nanosecond) timestamps of each individual sample.
+    message_counter: long;       // Monotonically increasing counter.
 }
 
 root_type SampleEnvironmentData;
