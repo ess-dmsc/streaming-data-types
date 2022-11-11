@@ -14,6 +14,6 @@
 
 ## Approval Criteria
 
-This PR should not be merged until Tobias R, Mark K and Jack H have given their explicit approval in the comments section.
+This PR should not be merged until Tobias R and Mark K have given their explicit approval in the comments section.
 
 
