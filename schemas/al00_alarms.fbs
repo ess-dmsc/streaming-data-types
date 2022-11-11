@@ -1,0 +1,19 @@
+// Generic alarm schema
+
+file_identifier "al00";
+
+enum Severity: short {
+  OK,
+  MINOR,
+  MAJOR,
+  INVALID,
+}
+
+table Alarm {
+  source_name: string;                   // Sourec of the alarm state (e.g. EPICS PV, NICOS device, etc.)
+  timestamp: long;                       // Nanoseconds since UNIX epoch
+  severity: Severity = OK;               // Severity of current alarm
+  message: string;                       // Describes the nature of the alarm
+}
+
+root_type Alarm;
