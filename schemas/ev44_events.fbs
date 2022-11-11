@@ -4,7 +4,7 @@ file_identifier "ev44";
 
 table Event44Message {
     source_name : string (required);            // Field identifying the producer type, for example detector type
-    message_id : long (required);             // Consecutive numbers, to detect missing or unordered messages
+    message_id : ulong (required);              // Consecutive numbers, to detect missing or unordered messages
     reference_time : [long] (required);         // Nanoseconds since Unix epoch (1 Jan 1970)
                                                 // If pulse times are available in the aquisition system, this field holds
                                                 // those timestamps. Holds wall time otherwise.
