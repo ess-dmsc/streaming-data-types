@@ -13,7 +13,6 @@ table Alarm {
   source_name: string;                   // Sourec of the alarm state (e.g. EPICS PV, NICOS device, etc.)
   timestamp: long;                       // Nanoseconds since UNIX epoch
   severity: Severity = OK;               // Severity of current alarm
-  level: int = 0;                        // Severity of current alarm as a number (optional)
   message: string;                       // Describes the nature of the alarm
 }
 
