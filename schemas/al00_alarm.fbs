@@ -10,7 +10,7 @@ enum Severity: short {
 }
 
 table Alarm {
-  source_name: string;                   // Sourec of the alarm state (e.g. EPICS PV, NICOS device, etc.)
+  source_name: string;                   // Source of the alarm state (e.g. EPICS PV, NICOS device, etc.)
   timestamp: long;                       // Nanoseconds since UNIX epoch
   severity: Severity = OK;               // Severity of current alarm
   message: string;                       // Describes the nature of the alarm
