@@ -7,10 +7,10 @@ enum ConnectionInfo: short {
   NEVER_CONNECTED,      // Universal
   CONNECTED,            // Universal
   DISCONNECTED,         // Universal
-  DESTROYED,            // CA (not verified)
-  CANCELLED,            // pvAccess
-  FINISHED,             // pvAccess
-  REMOTE_ERROR,         // pvAccess
+  DESTROYED,            // Previously was used as a catch-all state (remove in next version of this schema?)
+  CANCELLED,            // pvAccess - client cancelled the subscription
+  FINISHED,             // pvAccess - the server has indicated it will send no more messages
+  REMOTE_ERROR,         // pvAccess - the server has sent an "exception" to the client
 }
 
 table EpicsPVConnectionInfo {
