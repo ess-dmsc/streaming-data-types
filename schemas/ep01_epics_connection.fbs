@@ -7,7 +7,7 @@ enum ConnectionInfo: short {
   NEVER_CONNECTED,      // Universal
   CONNECTED,            // Universal
   DISCONNECTED,         // Universal
-  DESTROYED,            // Previously was used as a catch-all state (remove in next version of this schema?)
+  DESTROYED,            // Was used as a catch-all state in ep00 (remove in next version of this schema?)
   CANCELLED,            // pvAccess - client cancelled the subscription
   FINISHED,             // pvAccess - the server has indicated it will send no more messages
   REMOTE_ERROR,         // pvAccess - the server has sent an "exception" to the client
