@@ -47,10 +47,10 @@ union Value {
 	ArrayDouble,
 }
 
-table LogDataf144 {
+table LogData144 {
   source_name: string (required);      // EPICS PV name
   timestamp: long;                     // Nanoseconds since UNIX epoch
   value: Value (required);             // May be scalar or array
 }
 
-root_type LogDataf144;
+root_type LogData144;
