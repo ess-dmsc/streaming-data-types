@@ -53,4 +53,4 @@ table LogData {
   value: Value (required);             // May be scalar or array
 }
 
-root_type LogData;
+root_type LogDataf144;
