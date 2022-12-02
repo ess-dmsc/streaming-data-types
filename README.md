@@ -18,7 +18,7 @@ file_identifier = "abcd";
 ```
 
 The file identifiers (also called "schema id") must be unique on the network. When creating a new schema generate a random one using [this webpage](https://www.random.org/strings/?num=1&len=4&digits=on&upperalpha=on&loweralpha=on&unique=on&format=html&rnd=new).
-The `root_type` should include the schema version number. For example the f144 schema has
+The `root_type` should include the schema version number. For example, the f144 schema has
 the `root_type`:
 ```
 root_type LogData144;
