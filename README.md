@@ -21,7 +21,7 @@ The file identifiers (also called "schema id") must be unique on the network. Wh
 The `root_type` should include the schema version number. For example, the f144 schema has
 the `root_type`:
 ```
-root_type LogData144;
+root_type f144_LogData;
 ```
 
 Table of schema file identifiers follows later in this README. Please add your own (new schema) with file identifier to that table.
