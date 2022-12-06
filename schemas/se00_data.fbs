@@ -28,7 +28,7 @@ union ValueUnion {
     FloatArray
 }
 
-table SampleEnvironmentData {
+table se00_SampleEnvironmentData {
     name: string (required);     // Name of the device/source of the data.
     channel: int;                // Can be used to store the ADC channel number. Should be set to -1 if not used.
     packet_timestamp: long;      // The timestamp (in nanoseconds since UNIX epoch) of the first sample in the value vector.
@@ -42,4 +42,4 @@ table SampleEnvironmentData {
     message_counter: long;       // Monotonically increasing counter.
 }
 
-root_type SampleEnvironmentData;
+root_type se00_SampleEnvironmentData;
