@@ -5,7 +5,7 @@ import ecdcpipeline.PipelineBuilder
 project = "streaming-data-types"
 
 container_build_nodes = [
-  'centos7': ContainerBuildNode.getDefaultContainerBuildNode('centos7-gcc8')
+  'centos7': ContainerBuildNode.getDefaultContainerBuildNode('centos7-gcc11')
 ]
 
 pipeline_builder = new PipelineBuilder(this, container_build_nodes)
