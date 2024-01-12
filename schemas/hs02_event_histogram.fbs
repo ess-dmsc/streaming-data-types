@@ -29,7 +29,7 @@ table DimensionMetaData {
 
 // Represents a n-dimensional histogram
 // Subsets of histogram are also supported
-table EventHistogram {
+table hs02_EventHistogram {
     source_name: string;                // Source name
     timestamp: long;                    // Timestamp (in ns, after unix epoch)
     dim_metadata: [DimensionMetaData];  // Meta data for each dimension
