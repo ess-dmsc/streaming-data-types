@@ -4,7 +4,7 @@
 
 # Tries to locate flatc with find_program.
 
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.5)
 project(streaming-data-types)
 
 if(EXISTS "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
@@ -20,6 +20,8 @@ set(schemas_subdir "schemas")
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${schemas_subdir}")
 file(GLOB_RECURSE flatbuffers_schemata RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/schemas" "schemas/*.fbs")
 
+set(flatbuffers_generated_python "")
+
 foreach (f0 ${flatbuffers_schemata})
 	string(REGEX REPLACE "\\.fbs$" "" s0 ${f0})
 	set(fbs "${schemas_subdir}/${s0}.fbs")
@@ -32,6 +34,18 @@ foreach (f0 ${flatbuffers_schemata})
 		COMMENT "Process ${fbs} using ${FLATC}"
 	)
 	list(APPEND flatbuffers_generated_headers "${CMAKE_CURRENT_BINARY_DIR}/${fbh}")
+
+	string(REGEX REPLACE "\\.fbs$" ".py" fbp ${f0})
+	add_custom_command(
+		OUTPUT "${fbp}"
+		COMMAND ${FLATC} --python --gen-mutable --gen-name-strings --scoped-enums "${CMAKE_CURRENT_SOURCE_DIR}/${fbs}"
+		DEPENDS "${fbs}"
+		WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${schemas_subdir}"
+		COMMENT "Process ${fbs} to ${fbp} using ${FLATC}"
+	)
+	list(APPEND flatbuffers_generated_python "${CMAKE_CURRENT_BINARY_DIR}/${fbp}")
 endforeach()
 
 add_custom_target(flatbuffers_generate ALL DEPENDS ${flatbuffers_generated_headers})
+
+add_custom_target(python ALL DEPENDS ${flatbuffers_generated_python})
