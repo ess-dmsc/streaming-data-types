@@ -21,8 +21,8 @@ union Array {
 
 // Meta information for one dimension
 table DimensionMetaData {
-    length: int (required);    // Length of the full histogram along this dimension
     label: string (required);  // Label
+    length: int;               // Length of the full histogram along this dimension
     unit: string;              // Unit
     bin_boundaries: Array;     // Boundary information (should be of length: DimensionMetaData.length+1)
 }
