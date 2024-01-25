@@ -12,7 +12,7 @@ table da00_Variable {
     label: string;             // (optional) label describing the data
     source: string;            // (optional) EPICS PV name, DRV_INFO string, etc. [expected for attributes]
     data_type: da00_dtype;     // data type for the stored data in the array
-    dims: [string] (required); // The ordered names of the axes of this data
+    axes: [string] (required); // The ordered names of the axes of this data
     shape: [long] (required);  // Shape of the multi-dimensional array
     data: [ubyte] (required);  // C-ordered flat array interpreted as unsigned 8-bit integers
 }
