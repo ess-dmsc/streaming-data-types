@@ -18,11 +18,9 @@ table da00_Variable {
 }
 
 table da00_DataArray {
-    source_name: string (required);// Source name of array
-    timestamp: ulong;              // Timestamp in nanoseconds since UNIX epoch
-    variables: [da00_Variable];    // Variable dataset objects which could contain different data with every message
-    constants: [da00_Variable];    // Variable dataset objects which are unchanged from message-to-message
-    attributes: [da00_Variable];   // Variable attribute objects
+    source_name: string (required);   // Source name of array
+    timestamp: ulong;                 // Timestamp in nanoseconds since UNIX epoch
+    data: [da00_Variable] (required); // One or more dataset/attribute
 }
 
 root_type da00_DataArray;
