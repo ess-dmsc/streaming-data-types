@@ -9,8 +9,8 @@ table Event44Message {
                                                 // If pulse times are available in the aquisition system, this field holds
                                                 // those timestamps. Holds wall time otherwise.
     reference_time_index : [int] (required);    // Index into the time_of_flight array for the start of the neutron events linked
-                                                // to the corresponding pulse/reference time. If time_of_flight is empty, the convention
-                                                // is to use "-1" as indices here. reference_time_index and reference_time are the same length.
+                                                // to the corresponding pulse/reference time.
+                                                // reference_time_index and reference_time are the same length.
     time_of_flight : [int];                     // Nanoseconds
                                                 // Time of flight for each event if pulse time is available. If not, a
                                                 // (positive) offset from the wall time stored in the `reference_time`.
