@@ -1,0 +1,26 @@
+
+// A flatbuffer schema for holding histogram data or EPICS area detector updates
+// A merger of hs00/hs01 and ADAr aimed at compatibility with scipp DataArrays
+
+file_identifier "da00";
+
+enum da00_dtype: byte {none, int8, uint8, int16, uint16, int32, uint32, int64, uint64, float32, float64, c_string}
+
+table da00_Variable {
+    name: string (required);   // What this data represents: e.g., 'data', 'errors', '{axis_name}'
+    unit: string;              // (optional) unit name for the represented data [expected for datasets]
+    label: string;             // (optional) label describing the data
+    source: string;            // (optional) EPICS PV name, DRV_INFO string, etc. [expected for attributes]
+    data_type: da00_dtype;     // data type for the stored data in the array
+    axes: [string];            // (optional) The ordered names of the axes of this data [expected if meaningful]
+    shape: [long] (required);  // Shape of the multi-dimensional array
+    data: [ubyte] (required);  // C-ordered flat array interpreted as unsigned 8-bit integers
+}
+
+table da00_DataArray {
+    source_name: string (required);   // Source name of array
+    timestamp: long;                  // Timestamp in nanoseconds since UNIX epoch
+    data: [da00_Variable] (required); // One or more dataset/attribute
+}
+
+root_type da00_DataArray;
