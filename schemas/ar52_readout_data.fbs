@@ -6,7 +6,6 @@ file_identifier "ar52";
 table RawReadoutMessage {
     source_name : string (required);            // Field identifying the producer type, for example detector type
     message_id : long;                          // Consecutive numbers, to detect missing or unordered messages
-
     raw_data : [ubyte];                         // UDP payload buffer, unsigned bytes
 }
 
