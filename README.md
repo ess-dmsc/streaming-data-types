@@ -66,7 +66,7 @@ and work with the flat buffers union data type in your root element.
 | ev42 | `ev42_events.fbs               ` | Multi-institution neutron event data for a single pulse                                       |
 | ev43 | `ev43_events.fbs               ` | Multi-institution neutron event data from multiple pulses                                     |
 | ev44 | `ev44_events.fbs               ` | Multi-institution neutron event data for both single and multiple pulses                      |
-| ar52 | `ar52_readout_data.fbs         ` | Streaming raw ESS detector readout data
+| ar51 | `ar51_readout_data.fbs         ` | Streaming raw ESS detector readout data
 | is84 | `is84_isis_events.fbs          ` | ISIS specific addition to event messages                                                      |
 | ba57 | `ba57_run_info.fbs             ` | [OBSOLETE] Run start/stop information for Mantid [superseded by pl72]                         |
 | df12 | `df12_det_spec_map.fbs         ` | Detector-spectrum map for Mantid                                                              |
