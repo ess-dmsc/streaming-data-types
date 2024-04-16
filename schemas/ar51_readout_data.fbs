@@ -1,0 +1,12 @@
+// Schema for arbitrary binary buffer data
+// Developed for streaming raw ESS Readout Payload
+
+file_identifier "ar51";
+
+table RawReadoutMessage {
+    source_name : string (required);            // Field identifying the producer type, for example detector type
+    message_id : long;                          // Consecutive numbers, to detect missing or unordered messages
+    raw_data : [ubyte];                         // UDP payload buffer, unsigned bytes
+}
+
+root_type RawReadoutMessage;
