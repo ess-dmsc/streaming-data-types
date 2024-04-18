@@ -2,9 +2,9 @@
 
 **Time format**|**Example of where used**|**Explanation of format**|**Type (flatbuffers)**
 :-----:|:-----:|:-----:|:-----:
-Nanoseconds past epoch|Event schema|Nanoseconds since Unix epoch (1 Jan 1970), requires 64 bit integer|ulong
+Nanoseconds past epoch|Event schema|Nanoseconds since Unix epoch (1 Jan 1970), requires 64 bit integer|long
 ISO 8601|NeXus files|https://en.wikipedia.org/wiki/ISO\_8601, UTC for NeXus|string
-EPICS timestamp|EPICS PVs|Struct of seconds since 1 Jan 1990 and nanoseconds past that|stuct (ulong, int)
+EPICS timestamp|EPICS PVs|Struct of seconds since 1 Jan 1990 and nanoseconds past that|stuct (long, int)
 
 ## Example conversions
 
@@ -21,11 +21,11 @@ def nanoseconds_to_iso8601(nanoseconds):
 
 C++:
 ```cpp
-uint64_t epicsToNanosecsPastEpoch(uint64_t epicsSeconds, int32_t epicsNanoseconds) {
+int64_t epicsToNanosecsPastEpoch(int64_t epicsSeconds, int32_t epicsNanoseconds) {
   // You must be explicit about type here (hence the "L" suffix) or C++ will happily
   // convert your constants to double, which will mess up the calculation.
-  std::uint64_t unixSeconds = epicsSeconds + 631152000L;
-  std::uint64_t nanosecondsPastEpoch = (unixSeconds * 1000000000L) + epicsNanoseconds;
+  std::int64_t unixSeconds = epicsSeconds + 631152000L;
+  std::int64_t nanosecondsPastEpoch = (unixSeconds * 1000000000L) + epicsNanoseconds;
   return nanosecondsPastEpoch;
 }
 ```
