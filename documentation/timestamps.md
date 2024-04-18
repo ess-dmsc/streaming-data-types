@@ -4,7 +4,7 @@
 :-----:|:-----:|:-----:|:-----:
 Nanoseconds past epoch|Event schema|Nanoseconds since Unix epoch (1 Jan 1970), requires 64 bit integer|long
 ISO 8601|NeXus files|https://en.wikipedia.org/wiki/ISO\_8601, UTC for NeXus|string
-EPICS timestamp|EPICS PVs|Struct of seconds since 1 Jan 1990 and nanoseconds past that|stuct (long, int)
+EPICS timestamp|EPICS PVs|Struct of seconds since 1 Jan 1990 and nanoseconds past that|struct (long, int)
 
 ## Example conversions
 
