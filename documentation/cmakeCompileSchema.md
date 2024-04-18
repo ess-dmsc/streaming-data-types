@@ -1,4 +1,4 @@
-#Automatic downloading and compilation of schema files
+# Automatic downloading and compilation of schema files
 
 It is possible to have CMake download the schema files and generate C++ header files from those schema files automatically. Instructions are as follows.
 
