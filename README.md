@@ -73,7 +73,8 @@ and work with the flat buffers union data type in your root element.
 | senv | `senv_data.fbs                 ` | (DEPRECATED) Used for storing for waveforms from DG ADC readout system.                       |
 | se00 | `se00_data.fbs                 ` | Used for storing arrays with optional timestamps, for example waveform data. Replaces _senv_.| 
 | NDAr | `NDAr_NDArray_schema.fbs       ` | (DEPRECATED) Holds binary blob of data with n dimensions                                      |
-| ADAr | `ADAr_area_detector_array.fbs  ` | Holds EPICS area detector array data (in a flatbuffer format)                                 |
+| ADAr | `ADAr_area_detector_array.fbs  ` | (DEPRECATED) EPICS area detector array data [superseded by ad00]
+| ad00 | `ad00_area_detector_array.fbs  ` | EPICS area detector array data
 | mo01 | `mo01_nmx.fbs                  ` | Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks                          | 
 | ns10 | `ns10_cache_entry.fbs          ` | NICOS cache entry                                                                             |
 | ns11 | `ns11_typed_cache_entry.fbs    ` | NICOS cache entry with typed data                                                             |
@@ -92,7 +93,6 @@ and work with the flat buffers union data type in your root element.
 | rf5k | `rf5k_forwarder_config.fbs     ` | Configuration update for Forwarder                                                            |
 | al00 | `al00_alarm.fbs                ` | Generic alarm schema for EPICS, NICOS, etc.                                                   |
 | da00 | `da00_dataarray.fbs            ` | Pseudo-scipp DataArray with time-dependent and constant Variables                             |
-
 
 ## Useful information:
 
