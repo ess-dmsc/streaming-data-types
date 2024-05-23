@@ -39,4 +39,4 @@ table ConfigUpdate {
     streams: [Stream];           // Details what should be forwarded where, empty if config_change=REMOVEALL
 }
 
-root_type ConfigUpdate;
+root_type fc00_ConfigUpdate;
