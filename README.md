@@ -66,15 +66,15 @@ and work with the flat buffers union data type in your root element.
 | ev42 | `ev42_events.fbs               ` | Multi-institution neutron event data for a single pulse                                       |
 | ev43 | `ev43_events.fbs               ` | Multi-institution neutron event data from multiple pulses                                     |
 | ev44 | `ev44_events.fbs               ` | Multi-institution neutron event data for both single and multiple pulses                      |
-| ar51 | `ar51_readout_data.fbs         ` | Streaming raw ESS detector readout data
+| ar51 | `ar51_readout_data.fbs         ` | Streaming raw ESS detector readout data                                                       |
 | is84 | `is84_isis_events.fbs          ` | ISIS specific addition to event messages                                                      |
 | ba57 | `ba57_run_info.fbs             ` | [OBSOLETE] Run start/stop information for Mantid [superseded by pl72]                         |
 | df12 | `df12_det_spec_map.fbs         ` | Detector-spectrum map for Mantid                                                              |
 | senv | `senv_data.fbs                 ` | (DEPRECATED) Used for storing for waveforms from DG ADC readout system.                       |
-| se00 | `se00_data.fbs                 ` | Used for storing arrays with optional timestamps, for example waveform data. Replaces _senv_.| 
+| se00 | `se00_data.fbs                 ` | Used for storing arrays with optional timestamps, for example waveform data. Replaces _senv_. | 
 | NDAr | `NDAr_NDArray_schema.fbs       ` | (DEPRECATED) Holds binary blob of data with n dimensions                                      |
-| ADAr | `ADAr_area_detector_array.fbs  ` | (DEPRECATED) EPICS area detector array data [superseded by ad00]
-| ad00 | `ad00_area_detector_array.fbs  ` | EPICS area detector array data
+| ADAr | `ADAr_area_detector_array.fbs  ` | (DEPRECATED) EPICS area detector array data [superseded by ad00]                              |
+| ad00 | `ad00_area_detector_array.fbs  ` | EPICS area detector array data                                                                |
 | mo01 | `mo01_nmx.fbs                  ` | Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks                          | 
 | ns10 | `ns10_cache_entry.fbs          ` | NICOS cache entry                                                                             |
 | ns11 | `ns11_typed_cache_entry.fbs    ` | NICOS cache entry with typed data                                                             |
@@ -90,7 +90,8 @@ and work with the flat buffers union data type in your root element.
 | answ | `answ_action_response.fbs      ` | Holds the result of a command to the filewriter                                               |
 | wrdn | `wrdn_finished_writing.fbs     ` | Message from the filewriter when it is done writing a file                                    |
 | x5f2 | `x5f2_status.fbs               ` | Status update and heartbeat message for any software                                          |
-| rf5k | `rf5k_forwarder_config.fbs     ` | Configuration update for Forwarder                                                            |
+| rf5k | `rf5k_forwarder_config.fbs     ` | (DEPRECATED) Configuration update for Forwarder [superseded by fc00]                          |
+| fc00 | `fc00_forwarder_config.fbs     ` | Configuration update for Forwarder                                                            |
 | al00 | `al00_alarm.fbs                ` | Generic alarm schema for EPICS, NICOS, etc.                                                   |
 | da00 | `da00_dataarray.fbs            ` | Pseudo-scipp DataArray with time-dependent and constant Variables                             |
 
