@@ -1,0 +1,42 @@
+// Forwarder Configuration Update
+// Add or remove channels from a Forwarder configuration
+//
+// Typical producers and consumers:
+// Produced by NICOS
+// Consumed by Forwarder
+
+file_identifier "fc00";
+
+enum UpdateType: ushort {
+  ADD,
+  REMOVE,
+  REMOVEALL,
+  REPLACE
+}
+
+enum Protocol: ushort {
+  PVA,  // EPICS PV access
+  CA,   // EPICS channel access
+  FAKE  // Forwarder generates fake updates, frequency configurable with command line argument
+}
+
+table Stream {
+  // If config_change=ADD then all fields of Stream must be populated.
+  // If config_change=REMOVE then at least one of the string fields must be populated,
+  // and the Forwarder will remove any streams which match all of the populated string fields.
+  // "populated" here means supplying a non-empty string for the field.
+  // Wildcards '?' (single character) and '*' (multi-character) can be used to match topic or channel name,
+  // Wildcards cannot be used to match schema as they are valid characters in schema identifiers.
+  channel: string;           // Name of the EPICS channel/pv (e.g. "MYIOC:VALUE1")
+  schema: string;            // Identify the output format for updates from the named channel (e.g. "f142" or "tdct")
+  topic: string;             // Name of the output topic for updates from the named channel (e.g. "LOKI_motionControl")
+  protocol: Protocol = PVA;  // Protocol for channel, EPICS PV access by default
+  periodic: int32 = 0;         // Periodically producing last value if there is no new data, 0 means only send new data
+}
+
+table fc00_ConfigUpdate {
+    config_change: UpdateType;   // Type of config change, add streams, remove streams, remove all streams or replace (which works as remove all and add in one)
+    streams: [Stream];           // Details what should be forwarded where, empty if config_change=REMOVEALL
+}
+
+root_type fc00_ConfigUpdate;
