@@ -1,0 +1,23 @@
+// Schema for ansto variant of neutron detection event data
+
+file_identifier "an44";
+
+table an44_EventMessage {
+    source_name : string (required);            // Field identifying the producer type, for example detector type
+    message_id : long;                          // Consecutive numbers, to detect missing or unordered messages
+    reference_time : [long] (required);         // Nanoseconds since Unix epoch (1 Jan 1970)
+                                                // If pulse times are available in the acquisition system, this field holds
+                                                // those timestamps. Holds wall time otherwise.
+    reference_time_index : [int] (required);    // Index into the time_of_flight array for the start of the neutron events linked
+                                                // to the corresponding pulse/reference time.
+                                                // reference_time_index and reference_time are the same length.
+    time_of_flight : [int];                     // Nanoseconds
+                                                // Time of flight for each event if pulse time is available. If not, a
+                                                // (positive) offset from the wall time stored in the `reference_time`.
+                                                // Cannot be empty if events are being sent.
+    pixel_id : [int];                           // Identifiers that represent the positions of the events in the detector(s).
+                                                // Can be empty even when events are sent if the pixel_id is implicit (e.g. single-pixel beam monitor).
+    weight : [short];                           // Records a weight for the matching neutron event if present, otherwise is empty
+}
+
+root_type an44_EventMessage;
