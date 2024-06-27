@@ -62,7 +62,7 @@ and work with the flat buffers union data type in your root element.
 | f141 | `f141_ntarraydouble.fbs        ` | [OBSOLETE] A simple array of double, testing file writing                                     |
 | f142 | `f142_logdata.fbs              ` | For log data, for example forwarded EPICS PV update [superseded by f144]                      |
 | f143 | `f143_structure.fbs            ` | [OBSOLETE] Arbitrary nested data                                                              |
-| f144 | `f144_logdata.fbs              ` | Controls related log data, typically from EPICS or NICOS                                      |
+| f144 | `f144_logdata.fbs              ` | Controls related log data, typically from EPICS or NICOS. Note: not to be used for array data |
 | ev42 | `ev42_events.fbs               ` | Multi-institution neutron event data for a single pulse                                       |
 | ev43 | `ev43_events.fbs               ` | Multi-institution neutron event data from multiple pulses                                     |
 | ev44 | `ev44_events.fbs               ` | Multi-institution neutron event data for both single and multiple pulses                      |
