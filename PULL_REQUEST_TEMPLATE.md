@@ -15,5 +15,4 @@
 ## Approval Criteria
 
 This PR should not be merged until Matt C has given their explicit approval in the comments section.
-
-
+SCIPP should also be consulted on changes which may affect them.
