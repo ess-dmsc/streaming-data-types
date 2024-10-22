@@ -77,9 +77,9 @@ and work with the flat buffers union data type in your root element.
 | ADAr | `ADAr_area_detector_array.fbs  ` | (DEPRECATED) EPICS area detector array data [superseded by ad00]                              |
 | ad00 | `ad00_area_detector_array.fbs  ` | EPICS area detector array data                                                                |
 | mo01 | `mo01_nmx.fbs                  ` | Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks                          | 
-| ns10 | `ns10_cache_entry.fbs          ` | NICOS cache entry                                                                             |
-| ns11 | `ns11_typed_cache_entry.fbs    ` | NICOS cache entry with typed data                                                             |
-| hs00 | `hs00_event_histogram.fbs      ` | Event histogram stored in n dim array                                                         |
+| ns10 | `ns10_cache_entry.fbs          ` | (DEPRECATED) NICOS cache entry                                                                             |
+| ns11 | `ns11_typed_cache_entry.fbs    ` | (DEPRECATED) NICOS cache entry with typed data (not used)                                                |
+| hs00 | `hs00_event_histogram.fbs      ` | (DEPRECATED) Event histogram stored in n dim array                                                         |
 | hs01 | `hs01_event_histogram.fbs      ` | Event histogram stored in n dim array                                                         |
 | dtdb | `dtdb_adc_pulse_debug.fbs      ` | Debug fields that can be added to the ev42 schema                                             |
 | ep00 | `ep00_epics_connection_info.fbs` | (DEPRECATED) Status of the EPICS connection                                                   |
