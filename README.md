@@ -60,7 +60,7 @@ and work with the flat buffers union data type in your root element.
 |------|----------------------------------|-----------------------------------------------------------------------------------------------|
 | f140 | `f140_general.fbs              ` | [OBSOLETE] Can encode an arbitrary EPICS PV                                                   |
 | f141 | `f141_ntarraydouble.fbs        ` | [OBSOLETE] A simple array of double, testing file writing                                     |
-| f142 | `f142_logdata.fbs              ` | (DEPRECATED) For log data, for example forwarded EPICS PV update [superseded by f144]                      |
+| f142 | `f142_logdata.fbs              ` | (DEPRECATED) For log data, for example forwarded EPICS PV update [superseded by f144]         |
 | f143 | `f143_structure.fbs            ` | [OBSOLETE] Arbitrary nested data                                                              |
 | f144 | `f144_logdata.fbs              ` | Controls related log data, typically from EPICS or NICOS. Note: not to be used for array data |
 | ev42 | `ev42_events.fbs               ` | Multi-institution neutron event data for a single pulse                                       |
@@ -77,9 +77,9 @@ and work with the flat buffers union data type in your root element.
 | ADAr | `ADAr_area_detector_array.fbs  ` | (DEPRECATED) EPICS area detector array data [superseded by ad00]                              |
 | ad00 | `ad00_area_detector_array.fbs  ` | EPICS area detector array data                                                                |
 | mo01 | `mo01_nmx.fbs                  ` | Daquiri monitor data: pre-binned histograms, raw hits and NMX tracks                          | 
-| ns10 | `ns10_cache_entry.fbs          ` | (DEPRECATED) NICOS cache entry                                                                             |
-| ns11 | `ns11_typed_cache_entry.fbs    ` | (DEPRECATED) NICOS cache entry with typed data (not used)                                                |
-| hs00 | `hs00_event_histogram.fbs      ` | (DEPRECATED) Event histogram stored in n dim array                                                         |
+| ns10 | `ns10_cache_entry.fbs          ` | (DEPRECATED) NICOS cache entry                                                                |
+| ns11 | `ns11_typed_cache_entry.fbs    ` | (DEPRECATED) NICOS cache entry with typed data (not used)                                     |
+| hs00 | `hs00_event_histogram.fbs      ` | (DEPRECATED) Event histogram stored in n dim array                                            |
 | hs01 | `hs01_event_histogram.fbs      ` | Event histogram stored in n dim array                                                         |
 | dtdb | `dtdb_adc_pulse_debug.fbs      ` | Debug fields that can be added to the ev42 schema                                             |
 | ep00 | `ep00_epics_connection_info.fbs` | (DEPRECATED) Status of the EPICS connection                                                   |
@@ -95,6 +95,7 @@ and work with the flat buffers union data type in your root element.
 | fc00 | `fc00_forwarder_config.fbs     ` | Configuration update for Forwarder                                                            |
 | al00 | `al00_alarm.fbs                ` | Generic alarm schema for EPICS, NICOS, etc.                                                   |
 | da00 | `da00_dataarray.fbs            ` | Pseudo-scipp DataArray with time-dependent and constant Variables                             |
+| un00 | `un00_units.fbs            `     | Engineering units update                                                                      |
 
 ## Useful information:
 
