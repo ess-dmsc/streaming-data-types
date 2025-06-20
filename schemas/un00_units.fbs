@@ -1,0 +1,13 @@
+// Generic units schema
+
+file_identifier "un00";
+
+
+table Units {
+  source_name: string (required);        // Source of the alarm state (e.g. EPICS PV, NICOS device, etc.)
+  timestamp: long;                       // Nanoseconds since UNIX epoch
+  units: string;                         // Describes the engineering units. Note this is optional
+                                         // as a PV may not have a units (.EGU) attribute.
+}
+
+root_type Units;
