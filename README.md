@@ -95,6 +95,8 @@ and work with the flat buffers union data type in your root element.
 | fc00 | `fc00_forwarder_config.fbs     ` | Configuration update for Forwarder                                                            |
 | al00 | `al00_alarm.fbs                ` | Generic alarm schema for EPICS, NICOS, etc.                                                   |
 | da00 | `da00_dataarray.fbs            ` | Pseudo-scipp DataArray with time-dependent and constant Variables                             |
+| vs00 | `vs00_strings.fbs              ` | Timed variable string events                                                                  |
+
 
 ## Useful information:
 
