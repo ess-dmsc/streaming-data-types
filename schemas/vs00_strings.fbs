@@ -1,0 +1,11 @@
+file_identifier "vs00";
+
+// A simple schema to carry a timed string payload.
+
+table StringEvent {
+    timestamp: long; //nanoseconds since Unix epoch (1 Jan 1970)
+    source_name: string; //source of data for filtering
+    data: string; 
+}
+
+root_type StringEvent;
