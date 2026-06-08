@@ -5,7 +5,7 @@ file_identifier "vs00";
 table StringEvent {
     timestamp: long; //nanoseconds since Unix epoch (1 Jan 1970)
     source_name: string; //source of data for filtering
-    data: string; 
+    data: [string];
 }
 
 root_type StringEvent;
