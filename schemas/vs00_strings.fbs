@@ -1,11 +1,11 @@
-file_identifier "vs00";
-
 // A simple schema to carry a timed string payload.
 
-table StringEvent {
-    timestamp: long; //nanoseconds since Unix epoch (1 Jan 1970)
-    source_name: string; //source of data for filtering
-    data: [string];
+file_identifier "vs00";
+
+table vs00_StringData {
+    source_name: string (required);  // Field identifying the producer type, for example EPICS PV
+    timestamp: long (required);      // Nanoseconds since theUnix epoch
+    data: [string] (required);       // May be scalar or array
 }
 
-root_type StringEvent;
+root_type vs00_StringData;
