@@ -1,0 +1,11 @@
+// A simple schema to carry a timed string payload.
+
+file_identifier "vs00";
+
+table vs00_StringData {
+    source_name: string (required);  // Field identifying the producer type, for example EPICS PV
+    timestamp: long (required);      // Nanoseconds since theUnix epoch
+    data: [string] (required);       // May be scalar or array
+}
+
+root_type vs00_StringData;
