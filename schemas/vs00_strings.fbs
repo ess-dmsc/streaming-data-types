@@ -4,7 +4,7 @@ file_identifier "vs00";
 
 table vs00_StringData {
     source_name: string;  // Field identifying the producer type, for example EPICS PV
-    timestamp: long;      // Nanoseconds since theUnix epoch
+    timestamp: long;      // Nanoseconds since the Unix epoch
     data: string;
 }
 
